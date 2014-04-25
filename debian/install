@@ -4,3 +4,4 @@ pgms/mincut/Mincut usr/share/timberwolf/bin
 pgms/syntax/syntax usr/share/timberwolf/bin
 pgms/twmc/TimberWolfMC usr/share/timberwolf/bin
 pgms/twsc/TimberWolfSC usr/share/timberwolf/bin
+bin/show_flows usr/share/timberwolf/bin

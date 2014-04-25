@@ -1,0 +1,96 @@
+Index: timberwolf-6.3.6/pgms/twflow/src/findflow.c
+===================================================================
+--- timberwolf-6.3.6.orig/pgms/twflow/src/findflow.c	2014-04-25 23:07:37.246157943 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/findflow.c	2014-04-26 00:18:28.234203537 +0200
+@@ -93,7 +93,7 @@
+ 	    return( fp ) ;
+ 	}
+ 	/* next try relative to TimberWolf root directory. */
+-	sprintf( filename, "%s/bin/flow/%s/%s.%s", twdirG, flow_dirG, prefix, suffix ) ;
++	sprintf( filename, "%s/bin/flow/%s/%s.%s", TWDIR, flow_dirG, prefix, suffix ) ;
+ 	if( fp = TWOPEN( filename, "r", NOABORT ) ){
+ 	    return( fp ) ;
+ 	}
+@@ -114,7 +114,7 @@
+     sprintf( filename, "%s.%s", prefix, suffix ) ;
+     fp = TWOPEN( filename, "r", NOABORT ) ;
+     if( !(fp) ){
+-	sprintf( filename, "%s/bin/flow/flow/%s.%s",twdirG,prefix,suffix ) ;
++	sprintf( filename, "%s/bin/flow/flow/%s.%s",TWDIR,prefix,suffix ) ;
+ 	fp = TWOPEN( filename, "r", ABORT ) ;
+     }
+     return( fp ) ;
+@@ -158,7 +158,7 @@
+     }
+     if( check_dependencies( &syntax_info ) ){
+ 	/* we need to execute the syntax program */
+-	sprintf( buffer, "%s/bin/syntax %s", twdirG, cktNameG ) ;
++	sprintf( buffer, "%s/bin/syntax %s", TWDIR, cktNameG ) ;
+ 
+ 	/* now log the beginning time */
+ 	Ylog_msg( "Syntax started..." ) ;
+Index: timberwolf-6.3.6/pgms/twflow/src/globals.h
+===================================================================
+--- timberwolf-6.3.6.orig/pgms/twflow/src/globals.h	2014-04-26 00:15:52.698201869 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/globals.h	2014-04-26 00:20:52.198205081 +0200
+@@ -111,6 +111,7 @@
+ EXTERN INT  numobjectsG ;        /* number of program objects */
+ EXTERN char *cktNameG ;          /* name of the design */
+ EXTERN char *twdirG ;            /* name of the TimberWolf directory */
++#define TWDIR "/usr/share/timberwolf"
+ EXTERN char *flow_dirG ;         /* name of user specified flow dir. */
+ EXTERN BOOL graphicsG ;          /* whether graphics is requested */
+ EXTERN BOOL autoflowG ;          /* whether autoflow is enabled */
+Index: timberwolf-6.3.6/pgms/twflow/src/main.c
+===================================================================
+--- timberwolf-6.3.6.orig/pgms/twflow/src/main.c	2014-04-26 00:15:59.658201944 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/main.c	2014-04-26 00:21:35.574205547 +0200
+@@ -70,12 +70,12 @@
+     flow_dirG = NIL(char *) ;
+ 
+     /* make sure we have environment variable */
+-    if(!(twdirG = Ygetenv("TWDIR"))) {
+-	M(ERRMSG,"twflow","Can't get environment variable 'TWDIR'\n") ;
+-	M(MSG,NULL, 
+-	"Please use setenv to set 'TWDIR' to TimberWolf directory\n" ) ;
+-	YexitPgm(MASTERFAIL);
+-    }
++    //if(!(twdirG = Ygetenv("TWDIR"))) {
++	//M(ERRMSG,"twflow","Can't get environment variable 'TWDIR'\n") ;
++	//M(MSG,NULL, 
++	//"Please use setenv to set 'TWDIR' to TimberWolf directory\n" ) ;
++	//YexitPgm(MASTERFAIL);
++    //}
+ 
+     if( argc < 2 || argc > 5 ){
+ 	syntax() ;
+@@ -203,7 +203,7 @@
+     /* If we haven't been given a flow directory override, find */
+     /* the flow directory.  */
+     if(!(flow_dirG)){
+-	sprintf( filename, "%s/bin/flow/flow", twdirG ) ;
++	sprintf( filename, "%s/bin/flow/flow", TWDIR ) ;
+ 	if( flow_dirG = Yfile_slink( filename )){
+ 	    flow_dirG = Ystrclone( flow_dirG ) ;
+ 	} else {
+@@ -278,6 +278,6 @@
+ {
+    char command[LRECL] ; 
+    /* now show user the flow directories */ 
+-   sprintf( command, "%s/bin/show_flows", twdirG ) ;
++   sprintf( command, "%s/bin/show_flows", TWDIR ) ;
+    Ysystem( "show_flows", ABORT, command, NULL ) ;
+ } /* end show_flows */
+Index: timberwolf-6.3.6/pgms/twflow/src/program.c
+===================================================================
+--- timberwolf-6.3.6.orig/pgms/twflow/src/program.c	2014-04-25 23:07:37.246157943 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/program.c	2014-04-26 00:19:53.258204449 +0200
+@@ -58,7 +58,7 @@
+ 	sprintf( command, "%s", Yfixpath( obj->path,TRUE ) ) ;
+     } else {
+ 	/* otherwise take default TimberWolf directory */
+-	sprintf( command, "%s/bin/%s", twdirG, obj->name ) ;
++	sprintf( command, "%s/bin/%s", TWDIR, obj->name ) ;
+     }
+     argv = adjptr->argv ;
+     for( i = 0 ; i < adjptr->argc; i++ ){

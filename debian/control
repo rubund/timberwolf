@@ -1,0 +1,12 @@
+Source: timberwolf
+Section: electronics
+Priority: extra
+Maintainer: Ruben Undheim <ruben.undheim@gmail.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: timberwolf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Timberwolf - Placement for digital design 
+ Placement for digital design

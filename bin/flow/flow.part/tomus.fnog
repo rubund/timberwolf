@@ -1,0 +1,42 @@
+/* 
+numobjects 2
+
+pobject TimberWolfSC 1: 0
+path  : 
+drawn : 150 550 450 650
+edge 0:
+ifiles: $.blk $.scel $.par
+ofiles: $.out $.pin $.pl1
+args  : -n $
+
+pobject sc_route 2: 1
+path  : 
+drawn : 150 350 450 450
+edge 1: 
+ifiles: $.mdat $.out $.pin $.pl1
+ofiles:
+args  : -n $
+drawn : 300 450 300 550
+	300 450 320 470
+	300 450 280 470
+*/
+numobjects 2
+
+pobject TimberWolfSC 1: 0
+path  : 
+drawn : 150 550 450 650
+edge 0:
+ifiles: $.blk $.scel $.par
+ofiles: $.out $.pin $.pl1
+args  : -n $
+
+pobject sleep 2: 1
+path  : /bin/sleep
+drawn : 150 350 450 450
+edge 1: 
+ifiles: $.mdat $.out $.pin $.pl1
+ofiles:
+args  : 10
+drawn : 300 450 300 550
+	300 450 320 470
+	300 450 280 470

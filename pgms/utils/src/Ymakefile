@@ -1,0 +1,88 @@
+# Ymakefile for program net_util
+#  "@(#) Ymakefile (Yale) version 1.6 4/21/91 " 
+#
+#include macros
+
+DEST=../
+PNAME1=build_menu
+PNAME2=net_util
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	build_menu.c \
+	net_util.c  
+
+OBJ1= \
+	${O}build_menu.o 
+
+OBJ2= \
+	${O}net_util.o 
+
+INS= 
+
+info:   ; 
+	-@${ECHO} "make - usage:" 
+	-@${ECHO} "   make ${PNAME1}" 
+	-@${ECHO} "   make ${PNAME2}"
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+install:${PNAME1} ${PNAME2}
+
+# how to make build_menu program
+${PNAME1}:${DEST}${PNAME1} ;
+
+${DEST}${PNAME1}:${OBJ1} ${YALECAD} 
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME1} ${OBJ1} ${O}date.o \
+	${YALECAD} ${LINKLIB} 
+
+# how to make net_util program
+${PNAME2}:${DEST}${PNAME2} ;
+
+${DEST}${PNAME2}:${OBJ2} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME2} ${OBJ2} ${O}date.o \
+	${YALECAD} ${LINKLIB} 
+
+clean: ;
+	${RM} ${O}* *~ core foo *.bak
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}net_util.o:net_util.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  net_util.c
+	${MV} net_util.o ${O}net_util.o
+
+${O}build_menu.o:build_menu.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  build_menu.c
+	${MV} build_menu.o ${O}build_menu.o
+
+
+# end makefile

@@ -1,0 +1,108 @@
+# Ymakefile for program psc
+#  "@(#) Ymakefile (Yale) version 1.4 6/12/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=psc
+PNAME2=check_status
+MENU=psc_menu
+PSC_SCRIPT=psc_sched
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	check_status.c \
+	main.c \
+	graphics.c \
+	jobs.c 
+
+OBJ= \
+	${O}main.o \
+	${O}graphics.o \
+	${O}jobs.o 
+
+OBJ2= \
+	${O}check_status.o
+
+INS=  codes.h globals.h menus.h
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make psc program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# how to make check_status program
+${DEST}${PNAME2}:${OBJ2} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME2} ${OBJ2} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+	# echo "-- Done with making check_status"
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+	# echo "-- Done with update (yalecad changed)"
+
+install:${DEST}${PNAME} ${DEST}${PNAME2}
+
+install_non_yale:${DEST}${PNAME} ${DEST}${PNAME2}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make psc lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} ${MENU} ${PSC_SCRIPT}
+${SRC} ${INS} ${YMAKEFILE} ${MENU} ${PSC_SCRIPT}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}graphics.o:graphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graphics.c
+	${MV} graphics.o ${O}graphics.o
+${O}jobs.o:jobs.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  jobs.c
+	${MV} jobs.o ${O}jobs.o
+${O}check_status.o:check_status.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  check_status.c
+	${MV} check_status.o ${O}check_status.o
+
+# end makefile

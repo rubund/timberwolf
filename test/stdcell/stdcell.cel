@@ -1,0 +1,295 @@
+cell aslf A!@#$%^&*()_+|-=\[]{};'`:"~,./<>?bn
+/* orient 3 */
+left  -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_1/$AND2_1/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B7 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell a $COUNT_1/$AND2_1/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 101 signal TW_PASS_THRU  layer 1   0  13 
+    equiv name 102  layer 1  0  -13 
+
+cell 14 $COUNT_1/$AND2_1/$ND2_1A
+nomirror
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B6 layer 1   -2 13
+pin name 00#B  signal $COUNT_1/$FJK3_1$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_1/$AND2_1/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 15 $COUNT_1/$AND2_2/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_1/$AND2_2/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal CONT1 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 16 $COUNT_1/$AND2_2/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B7 layer 1   -2 13
+pin name 00#B  signal $COUNT_1/$FJK3_2$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_1/$AND2_2/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 17 $COUNT_1/$AND2_3/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_1/$AND2_3/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B6 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 18 $COUNT_1/$AND2_3/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B5 layer 1   -2 13
+pin name 00#B  signal $COUNT_1/$FJK3_3$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_1/$AND2_3/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 19 $COUNT_1/$AND2_4/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_1/$AND2_4/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B5 layer 1   -1 -13
+   unequiv name 01#Z layer 1   -1 13
+   unequiv name 02#Z layer 1   0 13
+   unequiv name 03#Z layer 1   0 -13
+
+cell 20 $COUNT_1/$AND2_4/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B4 layer 1   -2 13
+pin name 00#B  signal $COUNT_1/$FJK3_4$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_1/$AND2_4/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 21 $COUNT_1/$FJK3_1
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B6 layer 1   -31 13
+pin name 00#K  signal B6 layer 1   -29 13
+pin name 00#Q  signal $COUNT_1/$FJK3_1$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 22 $COUNT_1/$FJK3_2
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B7 layer 1   -31 13
+pin name 00#K  signal B7 layer 1   -29 13
+pin name 00#Q  signal $COUNT_1/$FJK3_2$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 23 $COUNT_1/$FJK3_3
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B5 layer 1   -31 13
+pin name 00#K  signal B5 layer 1   -29 13
+pin name 00#Q  signal $COUNT_1/$FJK3_3$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 24 $COUNT_1/$FJK3_4
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B4 layer 1   -31 13
+pin name 00#K  signal B4 layer 1   -29 13
+pin name 00#Q  signal $COUNT_1/$FJK3_4$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 25 $COUNT_1/$FJK3_5
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal $COUNT_2$CY layer 1   -31 13
+pin name 00#K  signal $COUNT_2$CY layer 1   -29 13
+pin name 00#Q  signal B4 layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 26 $COUNT_2/$AND2_1/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_2/$AND2_1/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B3 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 27 $COUNT_2/$AND2_1/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B2 layer 1   -2 13
+pin name 00#B  signal $COUNT_2/$FJK3_1$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_2/$AND2_1/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 28 $COUNT_2/$AND2_2/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_2/$AND2_2/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal $COUNT_2$CY layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 29 $COUNT_2/$AND2_2/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B3 layer 1   -2 13
+pin name 00#B  signal $COUNT_2/$FJK3_2$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_2/$AND2_2/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 30 $COUNT_2/$AND2_3/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_2/$AND2_3/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B2 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 31 $COUNT_2/$AND2_3/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B1 layer 1   -2 13
+pin name 00#B  signal $COUNT_2/$FJK3_3$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_2/$AND2_3/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 32 $COUNT_2/$AND2_4/$IV_1
+left -2  right 2  bottom -13  top 13
+pin name 00#A  signal $COUNT_2/$AND2_4/$ND2_1$Z layer 1   1 13
+pin name 00#Z  signal B1 layer 1   -1 -13
+   equiv name 01#Z layer 1   -1 13
+
+cell 33 $COUNT_2/$AND2_4/$ND2_1
+left -3  right 3  bottom -13  top 13
+pin name 00#A  signal B0 layer 1   -2 13
+pin name 00#B  signal $COUNT_2/$FJK3_4$Q layer 1   0 -13
+   equiv name 01#B layer 1   0 13
+pin name 00#Z  signal $COUNT_2/$AND2_4/$ND2_1$Z layer 1   2 -13
+   equiv name 01#Z layer 1   2 13
+
+cell 34 $COUNT_2/$FJK3_1
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B2 layer 1   -31 13
+pin name 00#K  signal B2 layer 1   -29 13
+pin name 00#Q  signal $COUNT_2/$FJK3_1$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 35 $COUNT_2/$FJK3_2
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B3 layer 1   -31 13
+pin name 00#K  signal B3 layer 1   -29 13
+pin name 00#Q  signal $COUNT_2/$FJK3_2$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 36 $COUNT_2/$FJK3_3
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B1 layer 1   -31 13
+pin name 00#K  signal B1 layer 1   -29 13
+pin name 00#Q  signal $COUNT_2/$FJK3_3$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 37 $COUNT_2/$FJK3_4
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal B0 layer 1   -31 13
+pin name 00#K  signal B0 layer 1   -29 13
+pin name 00#Q  signal $COUNT_2/$FJK3_4$Q layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+cell 38 $COUNT_2/$FJK3_5
+left -32  right 32  bottom -13  top 13
+pin name 00#CD  signal MCLEAR layer 1   -3 13
+pin name 00#CP  signal MCLOCK layer 1   1 13
+pin name 00#J  signal IN1 layer 1   -31 13
+pin name 00#K  signal IN1 layer 1   -29 13
+pin name 00#Q  signal B0 layer 1   27 -13
+   equiv name 01#Q layer 1   27 13
+
+
+pad 1 name #B0
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side B
+pin name 00##BRISTLE signal B0 layer 1  -1 13
+
+pad 5 name #B4
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side B
+pin name 00##BRISTLE signal B4 layer 1  -1 13
+
+pad 9 name #IN1
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side B
+pin name 00##BRISTLE signal IN1 layer 1  -1 13
+
+pad 4 name #B3
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side L
+pin name 00##BRISTLE signal B3 layer 1  1 13
+
+pad 8 name #B7
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side L
+pin name 00##BRISTLE signal B7 layer 1  1 13
+
+pad 12 name #MCY
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side L
+pin name 00##BRISTLE signal CONT1 layer 1  1 13
+
+pad 2 name #B1
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side R
+pin name 00##BRISTLE signal B1 layer 1  -1 13
+
+pad 6 name #B5
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side R
+pin name 00##BRISTLE signal B5 layer 1  -1 13
+
+pad 10 name #MCLEAR
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side R
+pin name 00##BRISTLE signal MCLEAR layer 1  -1 13
+
+pad 3 name #B2
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side T
+pin name 00##BRISTLE signal B2 layer 1  -1 13
+
+pad 7 name #B6
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side T
+pin name 00##BRISTLE signal B6 layer 1  -1 13
+
+pad 11 name #MCLOCK
+corners 4 -2 -13 -2 13 2 13 2 -13 
+restrict side T
+pin name 00##BRISTLE signal MCLOCK layer 1  -1 13
+
+padgroup padgroup1 nopermute
+#B0 fixed
+#B4 fixed
+#IN1 fixed
+restrict side B
+
+padgroup padgroup2 nopermute
+#B3 fixed
+#B7 fixed
+#MCY fixed
+restrict side L
+
+padgroup padgroup3 nopermute
+#B1 fixed
+#B5 fixed
+#MCLEAR fixed
+restrict side R
+
+padgroup padgroup4 nopermute
+#B2 fixed
+#B6 fixed
+#MCLOCK fixed
+restrict side T

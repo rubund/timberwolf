@@ -1,0 +1,119 @@
+#  makefile for graphics program drawTW 
+#  "@(#) Ymakefile (Yale) version 3.7 6/12/91"
+#
+#include macros
+
+#destination of output executable
+PNAME=drawTW
+DEST=../
+
+#where object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC=    main.c    \
+	quick.c   \
+	twmc.c    \
+	twsc.c 
+
+OBJ=    ${O}main.o   \
+	${O}quick.o  \
+	${O}twmc.o  \
+	${O}twsc.o
+
+INS=globals.h
+
+info:
+	-@echo "make ${PNAME} - usage:"
+	-@echo "Non-yale users should type "
+	-@echo "    'make install_non_yale' - for first compile or "
+	-@echo "    'make non_yale' for subsequent compiles"
+	-@echo " "
+
+# how to make draw program
+${DEST}${PNAME}:${OBJ} ${YALECAD} 
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o 
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB} 
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}:
+
+
+install:${DEST}${PNAME} 
+
+install_non_yale:
+	if( test -d ${XLIB} ) then \
+		echo " " ; \
+		echo "Note:found ${XLIB}"; \
+		echo "making version with XWindow graphics..." ;\
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" ;\
+		echo " " ; \
+	else \
+		echo " " ; \
+		echo "Note:didn't find ${XLIB}" ; \
+		echo "making version without XWindow graphics..." ; \
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" LINKLIB=-lm ;\
+	fi ; 
+
+clean:
+	rm -r -f ${O}*
+
+clean_no_yacc:
+	rm -r -f ${OBJ} y.tab.c
+
+map :   
+	nm -apg ${PNAME}
+
+lint:
+#	lint ${IDIR} -Ctwtmp ${SRC2}
+#	lint ${IDIR} ${SRC} llib-ltwtmp.ln
+	lint ${IDIR} *.c  > fool
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# ********************* begin sccs *********************************
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+# **********************  end sccs *********************************
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+# how to compile the src 
+${O}main.o:	main.c ${INS}
+	${CC} ${IDIR} ${CLEANUP} ${CFLAGS} ${OPTIONS} -c main.c
+	${MV} main.o ${O}main.o 
+
+${O}quick.o:	quick.c ${INS}
+	${CC} ${IDIR} ${CFLAGS} ${OPTIONS} -c quick.c
+	${MV} quick.o ${O}quick.o 
+
+${O}twmc.o:	twmc.c ${INS}
+	${CC} ${IDIR} ${CFLAGS} ${OPTIONS} -c twmc.c
+	${MV} twmc.o ${O}twmc.o 
+
+${O}twsc.o:	twsc.c ${INS}
+	${CC} ${IDIR} ${CFLAGS} ${OPTIONS} -c twsc.c
+	${MV} twsc.o ${O}twsc.o 
+
+
+#end of makefile

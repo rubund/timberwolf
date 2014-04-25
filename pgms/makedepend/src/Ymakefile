@@ -1,0 +1,91 @@
+# Ymakefile for program makedepend
+#  "@(#) Ymakefile (Yale) version 1.8 2/5/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=makedepend
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+LINKLIB=-lm
+
+SRC= \
+	include.c \
+	main.c \
+	parse.c \
+	pr.c 
+
+OBJ= \
+	${O}include.o \
+	${O}main.o \
+	${O}parse.o \
+	${O}pr.o 
+
+INS= \
+	def.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+
+# how to make makedepend program
+${DEST}${PNAME}:${OBJ} 
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${LINKLIB} 
+
+install:${DEST}${PNAME}
+
+install_non_yale:
+	make ${DEST}${PNAME} GETDATE= CC=${CC} \
+	    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+	    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+	    CFLAGS="${CFLAGS}" LINKLIB="${LINKLIB}" ;
+	echo " "
+
+clean: ;
+	${RM} ${O}* *~ core *.bak
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${OPTIONS} ${IDIR} ${SRC}
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}cppsetup.o:cppsetup.c ${INS}
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  cppsetup.c
+	${MV} cppsetup.o ${O}cppsetup.o
+${O}include.o:include.c ${INS}
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  include.c
+	${MV} include.o ${O}include.o
+${O}main.o:main.c ${INS}
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}parse.o:parse.c ${INS}
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  parse.c
+	${MV} parse.o ${O}parse.o
+${O}pr.o:pr.c ${INS}
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  pr.c
+	${MV} pr.o ${O}pr.o
+
+# end makefile

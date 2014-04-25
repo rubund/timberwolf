@@ -1,0 +1,81 @@
+.TH MCC 1 "26 December 1986"
+.SH NAME
+mcc \- merge \fBC\fP compiler
+.SH SYNOPSIS
+.B mcc 
+\ \ 
+.I <cc command line args>
+
+.SH INTRODUCTION
+Ridding a program of syntax errors involves a cycle of compiling and
+editing.
+For a large program, this process can extend over many cycles.
+Most \fBC\fP compilers present syntax errors as a list of source line
+numbers and messages.
+This information must be remembered or copied elsewhere before the
+editor is invoked and erases the screen.
+This compile/edit cycle can be speeded considerably by eliminating the
+error message copying step.
+The user can choose the C compiler by setting the environment parameter
+COMPILER, i.e. "setenv COMPILER cc". Currently you have choice of the
+Ultrix compiler cc, which is the default, and the Vax complier vcc.
+
+.SH DESCRIPTION
+.B Mcc
+brings together the \fBC\fP compiler \fBcc\fP(1), and the screen
+editor \fBvi\fP(1).
+It runs the \fBC\fP compiler, passing all command line arguments.
+It's behavior is identical to the \fBC\fP compiler, unless the
+compiler detects syntax errors in the source.
+For example:  Use
+.sp 0.5
+	\fLmcc prog.c -o prog\fP
+.sp 0.3
+instead of
+.sp 0.3
+	\fLcc prog.c -o prog\fP
+.sp 0.5
+.B Mcc
+merges the source with the syntax error messages and invokes
+\fBvi\fP on the merged file.
+The cursor is positioned on the first line in error.
+Every error message follows the line it refers to.
+Appended to the error line is a reference to the next error line
+or the string "\fL(last error)\fP".
+Once the corrections have been made the editor should 
+be exited normally.
+.B Mcc
+strips the error messages from the source and re-invokes the compiler
+for another try.
+.PP
+This process continues until the program is free of syntax
+errors.
+The edit/compile cycle can be broken
+by leaving the editor without making changes or 
+by terminating \fBmcc\fP with a keyboard interrupt
+having left the editor.
+.PP
+Since errors from the linker \fBld\fP(1) do not contain line numbers
+\fBmcc\fP lists them and exits.
+.PP
+Since \fBmcc\fP returns the same exit value as \fBcc\fP,
+it can be utilized by \fBmake\fP(1).
+By setting \fLCC=mcc\fP either as an exported environment variable
+or within a \fImakefile\fP, \fBmake\fP will invoke 
+\fBcc\fP via \fBmcc\fP.
+This feature allows simple syntax errors to be repaired without
+having to re-run the entire \fBmake\fP.
+.PP
+An alternative editor to \fBvi\fP may be specified by assigning
+its name to the environment variable EDITOR.
+Similarly, an alternative compiler name can be assigned to COMPILER.
+The compiler syntax error messages must match the format of
+the \fBC\fP preprocessor or \fBC\fP compiler.
+
+.SH FILES
+/tmp/err*	Syntax errors from \fBcc\fP
+.br
+/tmp/pid.source	Merged source and errors
+
+.SH "SEE ALSO"
+cc(1), vi(1), make(1)

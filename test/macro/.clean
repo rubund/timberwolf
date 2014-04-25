@@ -1,0 +1,30 @@
+#!/bin/csh
+#
+# Clean up the directory of any files produced by TimberWolf
+# Files to save are the input files: .cel, .par, .par.sav and .net
+# Only save a .par file if there is no .par.sav.
+#
+set project=`ls *.cel`
+set project=${project:r}
+if ($project == "") then
+   set project=`pwd`
+   set project=${project:t}
+endif
+set keepfiles="${project}.cel ${project}.par.sav ${project}.net"
+if (!(-f ${project}.par.sav)) then
+   set keepfiles="${keepfiles} ${project}.par"
+endif
+set keeplist=""
+foreach i ($keepfiles)
+   if (-f $i) then
+      mv $i tmp.$i
+      set keeplist="${keeplist} $i"
+   endif
+end
+rm -f ${project}* >& /dev/null
+foreach i ($keeplist)
+   mv tmp.$i $i
+end
+if (!(-f ${project}.par.sav) && -f ${project}.par) then
+   mv ${project}.par ${project}.par.sav
+endif

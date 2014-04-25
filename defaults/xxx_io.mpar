@@ -1,0 +1,4 @@
+cost_only
+do.channel.graph
+do.compaction 3
+do.global.route

@@ -1,0 +1,594 @@
+# Ymakefile for Yalecad libary archives.
+#  "@(#) Ymakefile (Yale) version 3.36 3/6/92 " 
+#
+#include macros
+
+# name of archive 1) using system memory manager 2) yale memory manager.
+NYCADSYS=libycad.sys.a 
+NYCADMEM=libycad.mem.a
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	assign.c \
+	buster.c \
+	cleanup.c \
+	colors.c \
+	deck.c \
+	dialog.c \
+	draw.c \
+	dset.c \
+	edcolors.c \
+	file.c \
+	getftime.c \
+        graph.c \
+	grid.c \
+	hash.c \
+	heap.c \
+	list.c \
+	log.c \
+	matrix.c \
+	menus.c \
+	message.c \
+	mst.c \
+	mytime.c \
+	okmalloc.c \
+	path.c \
+	plot.c \
+	program.c \
+	project.c \
+	queue.c \
+	quicksort.c \
+	radixsort.c \
+	rand.c \
+	rbtree.c \
+	relpath.c \
+	set.c \
+	stat.c \
+	stats.c \
+	string.c \
+	svd.c \
+	system.c \
+	time.c \
+	timer.c \
+	trans.c \
+	wgraphics.c \
+	ydebug.c \
+	yreadpar.c 
+
+OBJ= \
+	${O}assign.o \
+	${O}buster.o \
+	${O}cleanup.o \
+	${O}colors.o \
+	${O}deck.o \
+	${O}dialog.o \
+	${O}draw.o \
+	${O}dset.o \
+	${O}edcolors.o \
+	${O}file.o \
+	${O}getftime.o \
+	${O}graph.o \
+	${O}grid.o \
+	${O}hash.o \
+	${O}heap.o \
+	${O}list.o \
+	${O}log.o \
+	${O}matrix.o \
+	${O}menus.o \
+	${O}message.o \
+	${O}mst.o \
+	${O}mytime.o \
+	${O}path.o \
+	${O}plot.o \
+	${O}program.o \
+	${O}project.o \
+	${O}queue.o \
+	${O}quicksort.o \
+	${O}radixsort.o \
+	${O}rand.o \
+	${O}rbtree.o \
+	${O}relpath.o \
+	${O}set.o \
+	${O}stat.o \
+	${O}stats.o \
+	${O}string.o \
+	${O}svd.o \
+	${O}system.o \
+	${O}time.o \
+	${O}timer.o \
+	${O}trans.o \
+	${O}wgraphics.o \
+	${O}ydebug.o \
+	${O}yreadpar.o 
+
+INS= \
+	info.h 
+
+
+info:   ;
+	-@echo "make archives - usage:"
+	-@echo "Non-yale users should type 'make install_non_yale'"
+	-@echo " "
+
+# we need to specify all variables so that master makefile can override
+# them.
+archives:
+	-@if( test -d ${XLIB}${NOGRAPHICS} ) then \
+		echo " " ; \
+		echo "Note:found ${XLIB}"; \
+		echo "making library version with XWindow graphics..." ;\
+		make ${YCADMEM} MEMORYFLAG= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+		    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+		    YCADSYS=${YCADSYS} YCADMEM=${YCADMEM} AR=${AR} ; \
+		make ${YCADSYS} MEMORYFLAG= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+		    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+		    YCADSYS=${YCADSYS} YCADMEM=${YCADMEM} AR=${AR} ; \
+		echo " " ; \
+	else \
+		echo " " ; \
+		echo "Note:didn't find ${XLIB} or NOGRAPHICS requested"; \
+		echo "making version without XWindow graphics..." ; \
+		make ${YCADMEM} MEMORYFLAG= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+		    YCADSYS=${YCADSYS} YCADMEM=${YCADMEM} AR=${AR} ; \
+		make ${YCADSYS} MEMORYFLAG= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+		    YCADSYS=${YCADSYS} YCADMEM=${YCADMEM} AR=${AR} ; \
+		echo " " ; \
+	fi ; 
+
+# puts library in correct system place at Yale
+install_yale: 
+	make archives CC=${CC} CLEANUP=${CLEANUP} \
+		NOGRAPHICS=${NOGRAPHICS} UNIX=${UNIX} DEBUG=${DEBUG} \
+		CFLAGS="${CFLAGS}" AR=${AR} RANLIB=${RANLIB}
+
+# puts library relative to this directory at Yale
+install:install_non_yale
+
+install_non_yale:
+	make archives CC=${CC} CLEANUP=${CLEANUP} \
+		NOGRAPHICS=${NOGRAPHICS} UNIX=${UNIX} DEBUG=${DEBUG} \
+		CFLAGS="${CFLAGS}" \
+		YCADSYS=${NYCADSYS} YCADMEM=${NYCADMEM} AR=${AR}
+
+clean:
+	${RM} ${O}* *~ foo *.bak
+
+# how to build makefile dependencies
+depend : ;
+	-@if( test -d ${XLIB} ) then \
+	    ${ECHO} "depending with graphics" ; \
+	    ${ECHO} "${MAKEDEPEND} ${CFLAGS} ${OPTIONS}  ${IDIR} ${SRC}" ; \
+	    ${MAKEDEPEND} ${CFLAGS} ${OPTIONS}  ${IDIR} ${SRC} ; \
+	else \
+	    ${ECHO} "depending with no X graphics " ; \
+	    ${ECHO} "${MAKEDEPEND} ${CFLAGS} -DNOGRAPHICS ${OPTIONS} \
+	    ${IDIR} ${SRC}" ; \
+	    ${MAKEDEPEND} ${CFLAGS} -DNOGRAPHICS ${OPTIONS} ${IDIR} ${SRC}; \
+	fi ; 
+
+# for apollo inlibs 
+inlib: ;
+	${LD} -o ycadmemlib -A allmarks -A noallres ${O}mem.mem.o ${OBJ}
+	${LD} -o ycadsyslib -A allmarks -A noallres ${O}mem.sys.o ${OBJ}
+
+motiflib: ;
+	${MV} draw.c motif/xdraw.c
+	${MV} menus.c motif/xmenus.c
+	${MV} motif/menus.c menus.c
+	${MV} motif/draw.c draw.c
+
+xlib: ;
+	${MV} draw.c motif/mdraw.c
+	${MV} menus.c motif/mmenus.c
+	${MV} motif/xmenus.c menus.c
+	${MV} motif/xdraw.c draw.c
+	${MV} motif/mmenus.c motif/menus.c
+	${MV} motif/mdraw.c motif/draw.c
+
+# make the library quickly at yale.
+quick :
+	make install AR=echo RANLIB=echo
+	make reset
+
+# how to make lib lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+reset: $(OBJ)
+	make reset_lib O=""
+
+reset_lib:
+	${RM} ${NYCADMEM} ${NYCADSYS}
+	${RM} ${objdir}/${NYCADMEM} ${objdir}/${NYCADSYS}
+	for i in $(OBJ); do \
+		( cd ${objdir} ;${AR} qv ${NYCADMEM} $$i ; \
+		${AR} qv ${NYCADSYS} $$i ; ) \
+	done ;
+	( cd ${objdir} ; \
+	    ${AR} rv ${NYCADMEM} mem.mem.o ; \
+	    ${AR} rv ${NYCADSYS} mem.sys.o ; \
+	    ${MV} ${NYCADMEM} ../lib/${NYCADMEM} ; \
+	    ${MV} ${NYCADSYS} ../lib/${NYCADSYS} ; \
+	) ;
+	${RANLIB} ${NYCADMEM}
+	${RANLIB} ${NYCADSYS}
+
+# profiling library.
+profile:
+	make prolib objdir="../obj.pro" NYCADSYS=libycad.sys-p.a  \
+	NYCADMEM=libycad.mem-p.a CFLAGS="-O -pg"
+
+
+prolib: 
+	make ${NYCADMEM} MEMORYFLAG= CC=${CC} \
+	    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+	    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+	    NYCADSYS=${NYCADSYS} NYCADMEM=${NYCADMEM} \
+	    objdir="${objdir}" ;
+	make ${NYCADSYS} MEMORYFLAG= CC=${CC} \
+	    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+	    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+	    NYCADSYS=${NYCADSYS} NYCADMEM=${NYCADMEM} \
+	    objdir="${objdir}" ;
+
+proclean:
+	${RM} ../obj.pro/* *~ foo *.bak
+
+# memory debug library.
+memory:
+	make memlib objdir="../obj.mem" NYCADMEM=libycad.mem-d.a  \
+	CFLAGS="-g -DMEM_DEBUG"
+
+
+memlib: 
+	make ${NYCADMEM} MEMORYFLAG= CC=${CC} \
+	    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+	    UNIX=${UNIX} DEBUG=${DEBUG} CFLAGS="${CFLAGS}" \
+	    NYCADSYS=${NYCADSYS} NYCADMEM=${NYCADMEM} \
+	    objdir="${objdir}" ;
+
+memclean:
+	${RM} ../obj.mem/* *~ foo *.bak
+
+# test program rules.
+
+test:	assign.test dset.test graph.test list.test path.test plot.test \
+        radixsort.test rand.test rbtree.test stats.test svd.test mem.test
+
+testclean:
+	${RM} assign.test dset.test graph.test list.test path.test plot.test \
+        radixsort.test rand.test rbtree.test stats.test svd.test mem.test
+	${RM} assign.o dset.o graph.o list.o path.o plot.o rand.o \
+	radixsort.test rbtree.o stats.o svd.o okmalloc.o
+
+
+# ********************* begin sccs *********************************
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+# **********************  end sccs *********************************
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+
+# How to compile the sources
+${O}assign.o:assign.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  assign.c
+	${AR} rv ${NYCADMEM} assign.o
+	${AR} rv ${NYCADSYS} assign.o
+	${MV} assign.o ${O}assign.o
+${O}buster.o:buster.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  buster.c
+	${AR} rv ${NYCADMEM} buster.o
+	${AR} rv ${NYCADSYS} buster.o
+	${MV} buster.o ${O}buster.o
+${O}cleanup.o:cleanup.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c cleanup.c
+	${AR} rv ${NYCADMEM} cleanup.o
+	${AR} rv ${NYCADSYS} cleanup.o
+	${MV} cleanup.o ${O}cleanup.o
+${O}colors.o:colors.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  colors.c
+	${AR} rv ${NYCADMEM} colors.o
+	${AR} rv ${NYCADSYS} colors.o
+	${MV} colors.o ${O}colors.o
+${O}deck.o:deck.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  deck.c
+	${AR} rv ${NYCADMEM} deck.o
+	${AR} rv ${NYCADSYS} deck.o
+	${MV} deck.o ${O}deck.o
+${O}dialog.o:dialog.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  dialog.c
+	${AR} rv ${NYCADMEM} dialog.o
+	${AR} rv ${NYCADSYS} dialog.o
+	${MV} dialog.o ${O}dialog.o
+${O}draw.o:draw.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  draw.c
+	${AR} rv ${NYCADMEM} draw.o
+	${AR} rv ${NYCADSYS} draw.o
+	${MV} draw.o ${O}draw.o
+${O}dset.o:dset.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  dset.c
+	${AR} rv ${NYCADMEM} dset.o
+	${AR} rv ${NYCADSYS} dset.o
+	${MV} dset.o ${O}dset.o
+${O}edcolors.o:edcolors.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  edcolors.c
+	${AR} rv ${NYCADMEM} edcolors.o
+	${AR} rv ${NYCADSYS} edcolors.o
+	${MV} edcolors.o ${O}edcolors.o
+${O}file.o:file.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  file.c
+	${AR} rv ${NYCADMEM} file.o
+	${AR} rv ${NYCADSYS} file.o
+	${MV} file.o ${O}file.o
+${O}getftime.o:getftime.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  getftime.c
+	${AR} rv ${NYCADMEM} getftime.o
+	${AR} rv ${NYCADSYS} getftime.o
+	${MV} getftime.o ${O}getftime.o
+${O}graph.o:graph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graph.c
+	${AR} rv ${NYCADMEM} graph.o
+	${AR} rv ${NYCADSYS} graph.o
+	${MV} graph.o ${O}graph.o
+${O}grid.o:grid.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  grid.c
+	${AR} rv ${NYCADMEM} grid.o
+	${AR} rv ${NYCADSYS} grid.o
+	${MV} grid.o ${O}grid.o
+${O}hash.o:hash.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  hash.c
+	${AR} rv ${NYCADMEM} hash.o
+	${AR} rv ${NYCADSYS} hash.o
+	${MV} hash.o ${O}hash.o
+${O}heap.o:heap.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  heap.c
+	${AR} rv ${NYCADMEM} heap.o
+	${AR} rv ${NYCADSYS} heap.o
+	${MV} heap.o ${O}heap.o
+${O}list.o:list.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  list.c
+	${AR} rv ${NYCADMEM} list.o
+	${AR} rv ${NYCADSYS} list.o
+	${MV} list.o ${O}list.o
+${O}log.o:log.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  log.c
+	${AR} rv ${NYCADMEM} log.o
+	${AR} rv ${NYCADSYS} log.o
+	${MV} log.o ${O}log.o
+${O}matrix.o:matrix.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  matrix.c
+	${AR} rv ${NYCADMEM} matrix.o
+	${AR} rv ${NYCADSYS} matrix.o
+	${MV} matrix.o ${O}matrix.o
+${O}menus.o:menus.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  menus.c
+	${AR} rv ${NYCADMEM} menus.o
+	${AR} rv ${NYCADSYS} menus.o
+	${MV} menus.o ${O}menus.o
+${O}message.o:message.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  message.c
+	${AR} rv ${NYCADMEM} message.o
+	${AR} rv ${NYCADSYS} message.o
+	${MV} message.o ${O}message.o
+${O}mst.o:mst.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  mst.c
+	${AR} rv ${NYCADMEM} mst.o
+	${AR} rv ${NYCADSYS} mst.o
+	${MV} mst.o ${O}mst.o
+${O}mytime.o:mytime.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  mytime.c
+	${AR} rv ${NYCADMEM} mytime.o
+	${AR} rv ${NYCADSYS} mytime.o
+	${MV} mytime.o ${O}mytime.o
+# NOTE that okmalloc has been shortened to mem so it will fit using ar.
+# the two different version of memory routines
+# system version
+${O}mem.sys.o:	okmalloc.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c okmalloc.c
+	${MV} okmalloc.o mem.sys.o
+	${AR} rv ${NYCADSYS} mem.sys.o
+	${MV} mem.sys.o ${O}mem.sys.o
+# memory manager version
+${O}mem.mem.o:	okmalloc.c
+	${CC} ${MEMORYFLAG} ${CFLAGS} ${IDIR} ${OPTIONS} -c okmalloc.c
+	${MV} okmalloc.o mem.mem.o
+	${AR} rv ${NYCADMEM} mem.mem.o
+	${MV} mem.mem.o ${O}mem.mem.o
+${O}path.o:path.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  path.c
+	${AR} rv ${NYCADMEM} path.o
+	${AR} rv ${NYCADSYS} path.o
+	${MV} path.o ${O}path.o
+${O}plot.o:plot.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  plot.c
+	${AR} rv ${NYCADMEM} plot.o
+	${AR} rv ${NYCADSYS} plot.o
+	${MV} plot.o ${O}plot.o
+${O}program.o:program.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  program.c
+	${AR} rv ${NYCADMEM} program.o
+	${AR} rv ${NYCADSYS} program.o
+	${MV} program.o ${O}program.o
+${O}project.o:project.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  project.c
+	${AR} rv ${NYCADMEM} project.o
+	${AR} rv ${NYCADSYS} project.o
+	${MV} project.o ${O}project.o
+${O}queue.o:queue.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  queue.c
+	${AR} rv ${NYCADMEM} queue.o
+	${AR} rv ${NYCADSYS} queue.o
+	${MV} queue.o ${O}queue.o
+${O}quicksort.o:quicksort.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  quicksort.c
+	${AR} rv ${NYCADMEM} quicksort.o
+	${AR} rv ${NYCADSYS} quicksort.o
+	${MV} quicksort.o ${O}quicksort.o
+${O}rand.o:rand.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  rand.c
+	${AR} rv ${NYCADMEM} rand.o
+	${AR} rv ${NYCADSYS} rand.o
+	${MV} rand.o ${O}rand.o
+${O}radixsort.o:radixsort.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  radixsort.c
+	${AR} rv ${NYCADMEM} radixsort.o
+	${AR} rv ${NYCADSYS} radixsort.o
+	${MV} radixsort.o ${O}radixsort.o
+${O}rbtree.o:rbtree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  rbtree.c
+	${AR} rv ${NYCADMEM} rbtree.o
+	${AR} rv ${NYCADSYS} rbtree.o
+	${MV} rbtree.o ${O}rbtree.o
+${O}relpath.o:relpath.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  relpath.c
+	${AR} rv ${NYCADMEM} relpath.o
+	${AR} rv ${NYCADSYS} relpath.o
+	${MV} relpath.o ${O}relpath.o
+${O}set.o:set.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  set.c
+	${AR} rv ${NYCADMEM} set.o
+	${AR} rv ${NYCADSYS} set.o
+	${MV} set.o ${O}set.o
+${O}stat.o:stat.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stat.c
+	${AR} rv ${NYCADMEM} stat.o
+	${AR} rv ${NYCADSYS} stat.o
+	${MV} stat.o ${O}stat.o
+${O}stats.o:stats.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stats.c
+	${AR} rv ${NYCADMEM} stats.o
+	${AR} rv ${NYCADSYS} stats.o
+	${MV} stats.o ${O}stats.o
+${O}string.o:string.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  string.c
+	${AR} rv ${NYCADMEM} string.o
+	${AR} rv ${NYCADSYS} string.o
+	${MV} string.o ${O}string.o
+${O}svd.o:svd.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  svd.c
+	${AR} rv ${NYCADMEM} svd.o
+	${AR} rv ${NYCADSYS} svd.o
+	${MV} svd.o ${O}svd.o
+${O}system.o:system.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  system.c
+	${AR} rv ${NYCADMEM} system.o
+	${AR} rv ${NYCADSYS} system.o
+	${MV} system.o ${O}system.o
+${O}tech.o:tech.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  tech.c
+	${AR} rv ${NYCADMEM} tech.o
+	${AR} rv ${NYCADSYS} tech.o
+	${MV} tech.o ${O}tech.o
+${O}time.o:time.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  time.c
+	${AR} rv ${NYCADMEM} time.o
+	${AR} rv ${NYCADSYS} time.o
+	${MV} time.o ${O}time.o
+${O}timer.o:timer.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  timer.c
+	${AR} rv ${NYCADMEM} timer.o
+	${AR} rv ${NYCADSYS} timer.o
+	${MV} timer.o ${O}timer.o
+${O}trans.o:trans.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  trans.c
+	${AR} rv ${NYCADMEM} trans.o
+	${AR} rv ${NYCADSYS} trans.o
+	${MV} trans.o ${O}trans.o
+${O}wgraphics.o:wgraphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  wgraphics.c
+	${AR} rv ${NYCADMEM} wgraphics.o
+	${AR} rv ${NYCADSYS} wgraphics.o
+	${MV} wgraphics.o ${O}wgraphics.o
+${O}ydebug.o:ydebug.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ydebug.c
+	${AR} rv ${NYCADMEM} ydebug.o
+	${AR} rv ${NYCADSYS} ydebug.o
+	${MV} ydebug.o ${O}ydebug.o
+${O}yreadpar.o:yreadpar.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  yreadpar.c
+	${AR} rv ${NYCADMEM} yreadpar.o
+	${AR} rv ${NYCADSYS} yreadpar.o
+	${MV} yreadpar.o ${O}yreadpar.o
+# updating the two archive files 
+${NYCADMEM}: ${O}mem.mem.o ${OBJ}
+	${RANLIB} ${NYCADMEM}
+	${RANLIB} ${NYCADSYS}
+
+${NYCADSYS}: ${O}mem.sys.o ${OBJ}
+	${RANLIB} ${NYCADSYS}
+
+# ################### TEST PROGRAMS ##############################
+assign.test: assign.c
+	${CC} -o assign.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST assign.c \
+	${NYCADMEM} ../../date/src/date.c
+
+dset.test: dset.c
+	${CC} -o dset.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST dset.c \
+	${NYCADMEM} ../../date/src/date.c
+
+graph.test: graph.c
+	${CC} -o graph.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST graph.c \
+	${NYCADMEM} ../../date/src/date.c -lX11 -lm
+
+list.test: list.c
+	${CC} -o list.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST list.c \
+	${NYCADMEM} ../../date/src/date.c
+
+path.test: path.c
+	${CC} -o path.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST path.c \
+	${NYCADMEM} ../../date/src/date.c
+
+plot.test: plot.c
+	${CC} -o plot.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST plot.c \
+	${NYCADMEM} ../../date/src/date.c
+
+radixsort.test: radixsort.c
+	${CC} -o radixsort.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST radixsort.c \
+	${NYCADMEM} ../../date/src/date.c
+
+rand.test: rand.c
+	${CC} -o rand.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST rand.c \
+	${NYCADMEM} ../../date/src/date.c
+
+rbtree.test: rbtree.c
+	${CC} -o rbtree.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST rbtree.c \
+	${NYCADMEM} ../../date/src/date.c
+
+slist.test: slist.c
+	${CC} -o slist.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST slist.c \
+	${NYCADMEM} ../../date/src/date.c
+
+stats.test: stats.c
+	${CC} -o stats.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST stats.c \
+	${NYCADMEM} ../../date/src/date.c
+
+svd.test: svd.c
+	${CC} -o svd.test ${CFLAGS} ${IDIR} ${OPTIONS} -DTEST svd.c \
+	${NYCADMEM} ../../date/src/date.c -lm
+
+mem.test: okmalloc.c
+	${CC} -o mem.test ${CFLAGS} ${IDIR} ${OPTIONS} \
+	-DTEST -DMEM_DEBUG okmalloc.c \
+	libycad.mem-d.a ../../date/src/date.c -lm
+
+# end makefile

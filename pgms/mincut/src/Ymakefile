@@ -1,0 +1,116 @@
+# Ymakefile for program nocut
+#  "@(#) Ymakefile (Yale) version 1.1 7/30/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=Mincut
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	main.c \
+#ifdef YALE \
+	readcells.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readcells.y \
+#else /* YALE */ \
+	readcells.c \
+#endif /* YALE */ 
+	output.c
+
+OBJ= \
+	${O}main.o \
+	${O}output.o \
+	${O}readcells.o 
+
+INS= \
+	globals.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make nocut program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make syntax lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#used to make documentation
+bnf :  ys.awk 
+	${AWK} -f ys.awk readcells.y > foo
+	sed -e 's/;//' foo > tw_bnf
+	${RM} foo
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}output.o:output.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output.c
+	${MV} output.o ${O}output.o
+#ifdef YALE
+${O}readcells.o:readcells.y readcells.l
+	${LEX} readcells.l
+	${LEXMV} lex.yy.c readcells_l.h
+	${YACC} readcells.y
+	${YACCMV} y.tab.c readcells.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readcells.c > tmp; 	${MV} tmp readcells.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcells.c
+	${MV} readcells.o ${O}readcells.o
+readcells.y:
+readcells.l:
+#else  /* YALE */ 
+${O}readcells.o:readcells.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcells.c
+	${MV} readcells.o ${O}readcells.o
+#endif /* YALE */ 
+
+# end makefile

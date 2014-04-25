@@ -1,0 +1,41 @@
+NAME: yacr
+DESCRIPTION: channel router
+TYPE: T
+PACKAGES:  mm port
+MISC: README1 README2 README3 yacr.5 yacr.doc yacr.typ progs.h tst
+INSTALL: ${OCTTOOLS}/doc/yacr.doc ${OCTTOOLS}/man/man5/yacr.5
+
+EXTRAFLAGS: 
+
+SOURCES: addcol.c addrow.c allocate.c clean.c cost.c cycle.c density.c graph.c input.c irreg.c left.c level.c main.c maze.c maze1.c maze2.c maze3.c misc.c output.c place.c right.c route.c select.c stack.c stats.c verify.c
+HEADERS: yacr.h
+OBJECTS: addcol.o addrow.o allocate.o clean.o cost.o cycle.o density.o graph.o input.o irreg.o left.o level.o main.o maze.o maze1.o maze2.o maze3.o misc.o output.o place.o right.o route.o select.o stack.o stats.o verify.o
+SYSLIBS:  -lm
+
+VERBATIMSTART
+test::
+	@(${CADBIN}/${TARGET} tst/1 | cmp -s - tst/1.out)
+	@(${CADBIN}/${TARGET} tst/ex1 | cmp -s - tst/ex1.out)
+	@(${CADBIN}/${TARGET} tst/ex2 | cmp -s - tst/ex2.out)
+
+${OCTTOOLS}/doc/yacr.doc: yacr.doc
+	rm -f $@
+	${TBL} < yacr.doc | nroff -me > $@
+
+${OCTTOOLS}/man/man5/yacr.5: yacr.5
+	rm -f $@
+	${TBL} < yacr.5 > $@
+
+print::
+	${TBL} < yacr.5 | ${TROFF} -P${PRINTER} ${MACROS}
+
+print-docs::
+	${TBL} < yacr.doc | ${TROFF} -P${PRINTER} -me
+
+documentation::
+
+VERBATIMEND
+
+TESTNAME: $(NAME)-test
+TESTSOURCES: 
+TESTOBJECTS: 

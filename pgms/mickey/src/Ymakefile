@@ -1,0 +1,298 @@
+# Ymakefile for program Mickey
+#  "@(#) Ymakefile (Yale) version 1.3 5/29/91 "
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=Mickey
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	assign_net.c \
+	construct_tree.c \
+	dens_heap.c \
+	equiv_func.c \
+	random_interchange.c \
+	find_empty_room.c \
+	free_mem.c \
+	gen_graph.c \
+	long_path.c \
+	find_subgraph.c \
+	graphics.c\
+	heap_func.c \
+	init_assign.c \
+	one_channel_net.c \
+	output.c \
+	path_tree.c \
+	read_dgraph.c \
+	output_route.c \
+	read_graph.c \
+	stack_func.c \
+	read_pin_list.c \
+	store_route.c \
+	two_pin_tree.c \
+	steiner_tree.c \
+	utils.c \
+	read_net.c \
+	update_route.c \
+	update_weight.c \
+	main.c \
+	init_info.c \
+	analog_bound.c\
+	analog_func.c\
+	analog_match.c \
+	analog_route.c \
+	analog_common_point.c \
+	analog_segment_width.c \
+	analog_width.c\
+	debug.c\
+	find_zero_cap_channel.c\
+	analog_random_interchange.c\
+	analog_voltage_drop.c\
+	find_special_route.c\
+	checker.c
+
+OBJ= \
+	${O}assign_net.o \
+	${O}construct_tree.o \
+	${O}dens_heap.o \
+	${O}equiv_func.o \
+	${O}random_interchange.o \
+	${O}find_empty_room.o \
+	${O}free_mem.o \
+	${O}gen_graph.o \
+	${O}long_path.o \
+	${O}find_subgraph.o \
+	${O}graphics.o\
+	${O}heap_func.o \
+	${O}init_assign.o \
+	${O}one_channel_net.o \
+	${O}output.o \
+	${O}path_tree.o \
+	${O}read_dgraph.o \
+	${O}output_route.o \
+	${O}read_graph.o \
+	${O}stack_func.o \
+	${O}read_pin_list.o \
+	${O}store_route.o \
+	${O}two_pin_tree.o \
+	${O}steiner_tree.o \
+	${O}utils.o \
+	${O}read_net.o \
+	${O}update_route.o \
+	${O}update_weight.o \
+	${O}main.o \
+	${O}init_info.o \
+	${O}analog_bound.o\
+	${O}analog_func.o\
+	${O}analog_match.o\
+	${O}analog_route.o\
+	${O}analog_common_point.o\
+	${O}analog_segment_width.o\
+	${O}analog_width.o\
+	${O}debug.o\
+	${O}find_zero_cap_channel.o\
+	${O}analog_random_interchange.o\
+	${O}analog_voltage_drop.o\
+	${O}find_special_route.o\
+	${O}checker.o
+
+INS= \
+	define.h \
+	dgraph.h \
+	gg_router.h \
+	heap_func.h \
+	macros.h \
+	steiner_tree.h \
+	analog.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make Mickey program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* *~ core *.bak
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make Mickey lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${IMAKEFILE}
+${SRC} ${INS} ${IMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}assign_net.o:assign_net.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  assign_net.c
+	${MV} assign_net.o ${O}assign_net.o
+${O}construct_tree.o:construct_tree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  construct_tree.c
+	${MV} construct_tree.o ${O}construct_tree.o
+${O}dens_heap.o:dens_heap.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  dens_heap.c
+	${MV} dens_heap.o ${O}dens_heap.o
+${O}equiv_func.o:equiv_func.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  equiv_func.c
+	${MV} equiv_func.o ${O}equiv_func.o
+${O}random_interchange.o:random_interchange.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  random_interchange.c
+	${MV} random_interchange.o ${O}random_interchange.o
+${O}find_empty_room.o:find_empty_room.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  find_empty_room.c
+	${MV} find_empty_room.o ${O}find_empty_room.o
+${O}free_mem.o:free_mem.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  free_mem.c
+	${MV} free_mem.o ${O}free_mem.o
+${O}gen_graph.o:gen_graph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  gen_graph.c
+	${MV} gen_graph.o ${O}gen_graph.o
+${O}long_path.o:long_path.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  long_path.c
+	${MV} long_path.o ${O}long_path.o
+${O}find_subgraph.o:find_subgraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  find_subgraph.c
+	${MV} find_subgraph.o ${O}find_subgraph.o
+${O}graphics.o:graphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graphics.c
+	${MV} graphics.o ${O}graphics.o
+${O}heap_func.o:heap_func.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  heap_func.c
+	${MV} heap_func.o ${O}heap_func.o
+${O}init_assign.o:init_assign.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  init_assign.c
+	${MV} init_assign.o ${O}init_assign.o
+${O}one_channel_net.o:one_channel_net.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  one_channel_net.c
+	${MV} one_channel_net.o ${O}one_channel_net.o
+${O}output.o:output.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output.c
+	${MV} output.o ${O}output.o
+${O}path_tree.o:path_tree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  path_tree.c
+	${MV} path_tree.o ${O}path_tree.o
+${O}read_dgraph.o:read_dgraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  read_dgraph.c
+	${MV} read_dgraph.o ${O}read_dgraph.o
+${O}output_route.o:output_route.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output_route.c
+	${MV} output_route.o ${O}output_route.o
+${O}read_graph.o:read_graph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  read_graph.c
+	${MV} read_graph.o ${O}read_graph.o
+${O}stack_func.o:stack_func.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stack_func.c
+	${MV} stack_func.o ${O}stack_func.o
+${O}stats.o:stats.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stats.c
+	${MV} stats.o ${O}stats.o
+${O}read_pin_list.o:read_pin_list.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  read_pin_list.c
+	${MV} read_pin_list.o ${O}read_pin_list.o
+${O}store_route.o:store_route.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  store_route.c
+	${MV} store_route.o ${O}store_route.o
+${O}two_pin_tree.o:two_pin_tree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  two_pin_tree.c
+	${MV} two_pin_tree.o ${O}two_pin_tree.o
+${O}steiner_tree.o:steiner_tree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  steiner_tree.c
+	${MV} steiner_tree.o ${O}steiner_tree.o
+${O}utils.o:utils.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  utils.c
+	${MV} utils.o ${O}utils.o
+${O}read_net.o:read_net.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  read_net.c
+	${MV} read_net.o ${O}read_net.o
+${O}update_route.o:update_route.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  update_route.c
+	${MV} update_route.o ${O}update_route.o
+${O}update_weight.o:update_weight.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  update_weight.c
+	${MV} update_weight.o ${O}update_weight.o
+${O}analog_bound.o:analog_bound.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_bound.c
+	${MV} analog_bound.o ${O}analog_bound.o
+${O}analog_func.o:analog_func.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_func.c
+	${MV} analog_func.o ${O}analog_func.o
+${O}analog_route.o:analog_route.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_route.c
+	${MV} analog_route.o ${O}analog_route.o
+${O}analog_common_point.o:analog_common_point.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_common_point.c
+	${MV} analog_common_point.o ${O}analog_common_point.o
+${O}analog_match.o:analog_match.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_match.c
+	${MV} analog_match.o ${O}analog_match.o
+${O}analog_segment_width.o:analog_segment_width.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_segment_width.c
+	${MV} analog_segment_width.o ${O}analog_segment_width.o
+${O}analog_width.o:analog_width.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_width.c
+	${MV} analog_width.o ${O}analog_width.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}init_info.o:init_info.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  init_info.c
+	${MV} init_info.o ${O}init_info.o
+${O}debug.o:debug.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  debug.c
+	${MV} debug.o ${O}debug.o
+${O}find_zero_cap_channel.o:find_zero_cap_channel.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  find_zero_cap_channel.c
+	${MV} find_zero_cap_channel.o ${O}find_zero_cap_channel.o
+${O}analog_random_interchange.o:analog_random_interchange.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_random_interchange.c
+	${MV} analog_random_interchange.o ${O}analog_random_interchange.o
+${O}analog_voltage_drop.o:analog_voltage_drop.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  analog_voltage_drop.c
+	${MV} analog_voltage_drop.o ${O}analog_voltage_drop.o
+${O}find_special_route.o:find_special_route.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  find_special_route.c
+	${MV} find_special_route.o ${O}find_special_route.o
+${O}checker.o:checker.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  checker.c
+	${MV} checker.o ${O}checker.o
+
+# end makefile

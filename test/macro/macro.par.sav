@@ -1,0 +1,29 @@
+# This is the TimberWolf system default parameter file when only
+# macros are present in a design.
+#
+#   Please change the variables below to their appropriate values.
+#
+RULES
+    layer   metal  0.05  0.1E-15   horizontal
+    layer   poly   20.0  0.1E-15   vertical
+    via     contact  metal poly
+    width   metal  5.0
+    spacing metal  metal    5.0
+    width   poly   5.0
+    spacing poly   poly     5.0
+    width   contact 5.0
+
+ENDRULES
+
+TWMC*padspacing:                   abut
+TWMC*chip.aspect.ratio:            1.0
+TWMC*default.tracks.per.channel:   0
+TWMC*do.channel.graph: 	           on
+TWMC*do.global.route:              on
+TWMC*do.compaction:                3
+TWMC*vertical_wire_weight:         1.0
+TWMC*vertical_path_weight:         1.0
+TWMC*restart:                      off
+TWMC*graphics.wait:                off
+TWMC*random.seed: 1188705869
+TWMC*sc_output_files 		: on

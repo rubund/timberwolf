@@ -1,0 +1,11 @@
+# Example Xdefaults file.
+#
+# Add following TimberWolf graphics to Xdefaults file:
+#
+
+# TimberWolf graphics
+# sets initial size of window */
+twgraphics*geometry:       500x500+100+0
+#twgraphics*font:           9x15
+twgraphics*dialogbox:      300x300+100+400
+#twgraphics*slow:           on

@@ -1,0 +1,146 @@
+#   @(#) README (Yale) version 1.3 2/5/91
+
+Release notes:
+---------------------------------------------------------------
+8/27/03: PostScript documentation collected into a single
+    file and page headers updated to work with GhostScript.
+
+8/26/03: TimberWolf-6.1: Ported to Linux (Tim Edwards)
+    This is currently the default compilation.
+    There is a corresponding file pgms/ymake/linux.macro
+    which has already been copied to Ymake.macro
+
+7/21/06: TimberWolf-6.2: Revised all calls to varargs to
+    use stdargs instead, for $#@! gcc compatibility.
+    Also, moved the detailed router "mighty" (TimberWolfDR)
+    from the "yale-only install" to the standard set.
+
+5/4/11: TimberWolf-6.3: Made a significant number of changes
+    to make a clean compile on a 64-bit system.  Includes
+    one serious bug fix of a malloc error causing an out-of-
+    bounds array access.
+---------------------------------------------------------------
+
+Shortened install instructions for the highly impatient:
+
+   1)  source .twrc
+   2)  make Makefiles
+   3)  make install_non_yale
+
+   If the system is non-Linux or something non-standard,
+   check the definitions in pgms/ymake/Ymake.macro file.
+   In particular, 64-bit systems may need to copy
+   pgms/ymake/linux64.macro to pgms/ymake/Ymake.macro,
+   as it links to the X11 libraries in lib64.
+
+   Everything is made in local directories and linked to
+   the "bin" subdirectory.  Running TimberWolf requires
+   first always sourcing the contents of .twrc *in the
+   source directory*.  e.g.,
+
+     pushd /usr/local/src/timberwolf-6.2 ; source .twrc ; popd
+
+   and ensuring that the executables are in your search path:
+
+     setenv PATH "${PATH}:/usr/local/src/timberwolf-6.2/bin"
+  
+   after which you can run:
+
+     TimberWolf <project_name>
+     
+---------------------------------------------------------------
+
+Notes on compiling and porting TimberWolf.  These notes are from
+the original TimberWolf-6.0 release (1992).
+
+The TimberWolf system has documentation in PostScript format
+for printing and online help.  File is TimberWolf/doc/TimberWolf.ps.
+
+1.  The TimberWolf system makes extensive use of the make utility.
+    Correctly constructing Timberwolf without using make is possible
+    but not without considerable difficulty.  TimberWolf allows the
+    uses to change various parameters which may vary from machine to
+    machine. There is an csh script called ymake in the directory
+    ./TimberWolf/pgms/ymake which converts a machine independent
+    makefile template (the Ymakefile) into a makefile in each of the
+    source directories.  This awk program uses the file Ymake.macro
+    in this directory to include and redefine the names and paths
+    of programs and files used by make.  For example, if the
+    user wanted to change to a different compiler, say gcc, we
+    would enter CC=gcc in the Ymake.macro files.  We furnish macro
+    files for some of the popular machines.  Just rename these 
+    files to Ymake.macro to use them.
+
+2.  We no longer use yacc and lex on foreign machines due to
+    differences between implementations.  Instead, we furnish
+    only the resultant c files.
+
+3.  The TimberWolf system uses an library archive containing frequently
+    used utility functions.  Most of the programs need to link to 
+    this library. It is important that this library be compiled correctly
+    for any of the following steps of the make process to work correctly.
+    The source for the library is in ./TimberWolf/pgms/Ylib/lib.
+
+3.  The TimberWolf system requires two environment variables to 
+    function properly. The environment variable TWDIR specifies
+    where the TimberWolf code resides.  ALWAYS Set the 
+    environment variable TWDIR to the full pathname of the TimberWolf
+    root directory before installation or execution.  For example, 
+    type 'setenv TWDIR /home/john/TimberWolf' if the TimberWolf 
+    tape was read into the /home/john directory.  
+
+    The environment variable DATADIR is the pathname of a 
+    directory of where graphic dump files will be stored.  
+    
+    A convenience csh script has been furnished to initialize
+    the environment variable.  Set the current working directory
+    to the TimberWolf root directory and type
+	source .twrc 
+    Both environment variables will be set and the root directory
+    will be added to your search path.
+
+4.  After reading the tape, proceed to the ./TimberWolf/pgms/ymake 
+    directory to inspect the Ymake.macro file.  Make changes as needed.
+    If no changes need to be made to this file, the following ymake step
+    is not necessary.  Make sure set the environment variable TWDIR has
+    been set.  Next, go to the TimberWolf root directory - ./TimberWolf.
+    Type 'make Makefiles' to update all the Makefiles from Ymakefiles.
+    Note:If you don't have awk, you will need to edit all subdirectory
+    Makefiles.  Ymake is a shell script that call the makedepend program
+    to add program dependencies into the Makefile.  If makedepend
+    gives you problems you may avoid calling makedepend by changing 
+    the Ymake.macro file.  (Call ymake with argument 'nodepend' ). See the
+    file for details. The penalty is inaccuracy with respect to include
+    file dependencies.  If you are building the entire system, this
+    will not matter.  
+    
+5.  Now we are ready to compile and link the system.
+    Type "make install_non_yale". This will first create the utility
+    archive in the ./TimberWolf/pgms/Ylib/lib directory.  Since
+    TimberWolf is able to use XWindows, this makefile looks to see if
+    the XWindow version 11 include directory exists.  If it does exist,
+    then it is assumed that X11 is installed on your system.  If X11
+    does exist on your system but not in this directory, the easier fix
+    is to create a link in /usr/include to point to the correct location.
+    See makefile in that directory for details.  Next the makefile will
+    compile and link the TimberWolf programs. Remember, if you do not use
+    the non_yale dependencies you will encounter difficulties.
+
+6.  TimberWolf makes heavy use of X graphics although it may be
+    turned off.  We therefore supply a sample portion of the .Xdefaults
+    file for the TimberWolf system.  It may be found in 
+    ./TimberWolf/defaults/.Xdefaults.
+
+7.  Once TimberWolf is compiled and linked, go to the ./test directory.
+    Two examples are given.  You should be able to run either example
+    to completion.
+
+8.  The makefile also contains two useful utility functions - delpgms
+    and production.  Make delpgms deletes all the program  - useful to 
+    begin the make process.  Make production strips all the debug
+    information from the program.
+
+9.  Beware of problems with the Xserver on the Sun.  The default
+    server has bugs.  You should be running the X11R3 server with
+    Purdue fixes or the X11R4 server.  Let us know if you have 
+    any problems.

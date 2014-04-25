@@ -1,0 +1,2126 @@
+cell 1 G32
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S294.TTER__S1178 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S198.ITAL__S2586 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 2 G33
+left -40 right 40 bottom -56 top 56
+pin name P#16 signal S297.ETTER__S654 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+pin name P#15 signal S210.ITAL__S2574 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+
+cell 3 G34
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S295.ETTER__S922 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S217.ITAL__S2562 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 4 G35
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S300.ETTER__S647 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S226.ITAL__S2552 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 5 G36
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S301.ETTER__S645 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S238.ITAL__S2542 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 6 G37
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S304.ETTER__S643 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S143.ITAL__S2532 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 7 G38
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S266.ETTER__S857 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S154.ITAL__S2522 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 8 G39
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S273.ETTER__S592 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S176.ITAL__S2494 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 9 G40
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S255.TTER__S1127 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S184.ITAL__S2482 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 10 G41
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S289.ETTER__S816 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S201.ITAL__S2457 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 11 G42
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S264.ETTER__S608 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S197.ITAL__S2462 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 12 G43
+left -88 right 88 bottom -56 top 56
+pin name P#20$$ signal S267.ETTER__S600 layer 1 -24 56
+equiv name P#21$ layer 1 -24 -56
+pin name P#27 signal S213.ITAL__S2437 layer 1 56 56
+equiv name P#31 layer 1 56 -56
+
+cell 13 G44
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S263.TTER__S1243 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S218.ITAL__S2433 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 14 G45
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S262.TTER__S1244 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S243.ITAL__S2413 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 15 G46
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S287.ETTER__S570 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S138.ITAL__S2409 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 16 G47
+left -48 right 48 bottom -56 top 56
+pin name P#15 signal S288.ETTER__S562 layer 1 0 56
+equiv name P#14 layer 1 0 -56
+pin name P#16 signal S159.ITAL__S2389 layer 1 32 56
+equiv name P#17 layer 1 32 -56
+
+cell 17 G48
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S211.ITAL__S2316 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S204.ITAL__S2328 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 18 G49
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S211.ITAL__S2316 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S205.N49 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+cell 19 G50
+left -48 right 48 bottom -56 top 56
+pin name P#11 signal S195.ITAL__S2211 layer 1 32 56
+equiv name P#10 layer 1 32 -56
+pin name P#7 signal S194.ITAL__S2213 layer 1 16 56
+equiv name P#6 layer 1 16 -56
+pin name P#4 signal S168.N59 layer 1 -16 56
+equiv name P#5 layer 1 -16 -56
+
+cell 20 G51
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S230.N86 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S184.ITAL__S2482 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+cell 21 G52
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S249.ETTER__S751 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#2 signal S226.ITAL__S2552 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#20 signal S199.N78 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#24 signal S163.N77 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+
+cell 22 G53
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S258.ETTER__S745 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#2 signal S238.ITAL__S2542 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#20 signal S231.N79 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#24 signal S163.N77 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+
+cell 23 G54
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#2 signal S217.ITAL__S2562 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#20 signal S193.N82 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#24 signal S163.N77 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+
+cell 24 G55
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S259.ETTER__S742 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S163.N77 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S158.N81 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S154.ITAL__S2522 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 25 G56
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S252.ETTER__S748 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#20 signal S240.N80 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#24 signal S163.N77 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#2 signal S143.ITAL__S2532 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 26 G57
+left -64 right 64 bottom -56 top 56
+pin name P#7 signal S292.TTER__S1192 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#11 signal S242.N69 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+pin name P#4 signal S198.ITAL__S2586 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+
+cell 27 G58
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S198.ITAL__S2586 layer 1 64 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S2..DIV_32__S149 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S1..DIV_32__S180 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S1..DIV_32__S180 layer 1 -80 -56
+
+cell 28 G59
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S7..DIV_32__S138 layer 1 64 56
+pin name P#9 signal S3..DIV_32__S148 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S2..DIV_32__S149 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S2..DIV_32__S149 layer 1 -80 -56
+
+cell 29 G60
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S8..DIV_32__S134 layer 1 64 56
+pin name P#9 signal S4..DIV_32__S147 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S3..DIV_32__S148 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S3..DIV_32__S148 layer 1 -80 -56
+
+cell 30 G61
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S9..DIV_32__S130 layer 1 64 56
+pin name P#9 signal S5..DIV_32__S146 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S4..DIV_32__S147 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S4..DIV_32__S147 layer 1 -80 -56
+
+cell 31 G62
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S10.DIV_32__S126 layer 1 64 56
+pin name P#9 signal S6..DIV_32__S145 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S5..DIV_32__S146 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S5..DIV_32__S146 layer 1 -80 -56
+
+cell 32 G63
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S242.N69 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S167.N68 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S167.N68 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#10$ signal S6..DIV_32__S145 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S6..DIV_32__S145 layer 1 -80 -56
+pin name P#12 signal S0..DIV_32__S122 layer 1 64 56
+
+cell 33 G64
+left -96 right 96 bottom -56 top 56
+pin name P#17 signal S230.N86 layer 1 -16 56
+equiv name P#14 layer 1 0 -56
+pin name P#20 signal S184.ITAL__S2482 layer 1 -32 56
+equiv name P#19 layer 1 -16 -56
+pin name P#2 signal S167.N68 layer 1 80 56
+equiv name P#1 layer 1 80 -56
+
+cell 34 G65
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S298.TTER__S1161 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S216.N85 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S138.ITAL__S2409 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 35 G66
+left -176 right 176 bottom -56 top 56
+pin name P#26 signal S204.ITAL__S2328 layer 1 -160 56
+equiv name P#10$ layer 1 -80 -56
+pin name P#12 signal S192.N48 layer 1 144 -56
+equiv name P#12$ layer 1 72 56
+pin name P#27 signal S189.ITAL__S1457 layer 1 152 56
+equiv name P#10$$ layer 1 80 -56
+pin name P#14 signal S187.N71 layer 1 56 56
+equiv name P#9 layer 1 48 -56
+pin name P#13 signal S155.N70 layer 1 120 56
+equiv name P#8 layer 1 120 -56
+pin name P#26$ signal S155.N70 layer 1 -96 -56
+equiv name P#25 layer 1 -112 56
+
+cell 36 G67
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S248.TTER__S1260 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S247.TTER__S1262 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 37 G68
+left -56 right 56 bottom -56 top 56
+pin name P#7 signal S247.TTER__S1262 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S234.ITAL__S2290 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S212.N55 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 38 G69
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S219.N56 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S212.N55 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S166.N54 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 39 G70
+left -224 right 224 bottom -56 top 56
+pin name P#12$ signal S227.ITAL__S1407 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+pin name P#26$ signal S216.N85 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S216.N85 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#13 signal S172.N60 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S172.N60 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#12 signal S168.N59 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+
+cell 40 G71
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S215.N62 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S11..DIV_16__S81 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 41 G72
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S166.N54 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S13..DIV_16__S49 layer 1 64 56
+pin name P#10$ signal S12..DIV_16__S52 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S12..DIV_16__S52 layer 1 -80 -56
+pin name P#8 signal S11..DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S11..DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 42 G73
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S15..DIV_16__S35 layer 1 64 56
+pin name P#10$ signal S14..DIV_16__S38 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S14..DIV_16__S38 layer 1 -80 -56
+pin name P#9 signal S12..DIV_16__S52 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S11..DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S11..DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 43 G74
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S212.N55 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S212.N55 layer 1 -80 -56
+pin name P#9 signal S17..DIV_16__S10 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S16..DIV_16__S21 layer 1 64 56
+pin name P#8 signal S11..DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S11..DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 44 G75
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S18.R.DIV_16__S7 layer 1 64 56
+pin name P#10$ signal S17..DIV_16__S10 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S17..DIV_16__S10 layer 1 -80 -56
+pin name P#9 signal S14..DIV_16__S38 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S11..DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S11..DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 45 G76
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S216.N85 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S215.N62 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S165.N76 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+
+cell 46 G77
+left -72 right 72 bottom -56 top 56
+pin name P#4 signal S229.N72 layer 1 -8 56
+equiv name P#5 layer 1 -24 -56
+pin name P#19 signal S174.N73 layer 1 -40 -56
+equiv name P#20 layer 1 -40 56
+pin name P#9 signal S171.N52 layer 1 40 -56
+pin name P#23 signal S171.N52 layer 1 24 56
+pin name P#7 signal S170.N53 layer 1 8 56
+equiv name P#6 layer 1 8 -56
+pin name P#21 signal S165.N76 layer 1 56 56
+pin name P#22 signal S165.N76 layer 1 56 -56
+
+cell 47 G78
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S140.N51 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S21.V_512B__S241 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 48 G79
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S219.N56 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S31.V_512B__S161 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S27.V_512B__S178 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 49 G80
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S140.N51 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S140.N51 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S35.V_512B__S147 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S33.V_512B__S158 layer 1 64 56
+pin name P#10$ signal S31.V_512B__S161 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S31.V_512B__S161 layer 1 -80 -56
+
+cell 50 G81
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S140.N51 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S140.N51 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S38.V_512B__S133 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S37.V_512B__S144 layer 1 64 56
+pin name P#10$ signal S35.V_512B__S147 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S35.V_512B__S147 layer 1 -80 -56
+
+cell 51 G82
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S219.N56 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S140.N51 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S140.N51 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S39.V_512B__S130 layer 1 64 56
+pin name P#10$ signal S38.V_512B__S133 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S38.V_512B__S133 layer 1 -80 -56
+
+cell 52 G83
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S140.N51 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S140.N51 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S27.V_512B__S178 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S20.V_512B__S116 layer 1 64 56
+pin name P#10$ signal S19.V_512B__S119 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S19.V_512B__S119 layer 1 -80 -56
+
+cell 53 G84
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S24.V_512B__S102 layer 1 64 56
+pin name P#10$ signal S23.V_512B__S105 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S23.V_512B__S105 layer 1 -80 -56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S19.V_512B__S119 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+
+cell 54 G85
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S214.N50 layer 1 64 56
+pin name P#9 signal S25.IV_512B__S63 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S22.V_512B__S237 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S22.V_512B__S237 layer 1 -80 -56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 55 G86
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S28.IV_512B__S49 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S26.IV_512B__S60 layer 1 64 56
+pin name P#10$ signal S25.IV_512B__S63 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S25.IV_512B__S63 layer 1 -80 -56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 56 G87
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S30.IV_512B__S35 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S29.IV_512B__S46 layer 1 64 56
+pin name P#10$ signal S28.IV_512B__S49 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S28.IV_512B__S49 layer 1 -80 -56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 57 G88
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S34.IV_512B__S21 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S32.IV_512B__S32 layer 1 64 56
+pin name P#10$ signal S30.IV_512B__S35 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S30.IV_512B__S35 layer 1 -80 -56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 58 G89
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S36.IV_512B__S18 layer 1 64 56
+pin name P#10$ signal S34.IV_512B__S21 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S34.IV_512B__S21 layer 1 -80 -56
+pin name P#9 signal S23.V_512B__S105 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S21.V_512B__S241 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S21.V_512B__S241 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 59 G90
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S192.N48 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S159.ITAL__S2389 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S153.N63 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 60 G91
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S155.N70 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S42.TR_18B__S364 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 61 G92
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S155.N70 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S47.TR_18B__S350 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 62 G93
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S155.N70 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S54.TR_18B__S337 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 63 G94
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S219.N56 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S69.TR_18B__S402 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S65.TR_18B__S407 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 64 G95
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S219.N56 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S72.TR_18B__S393 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S70.TR_18B__S398 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 65 G96
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S235.N46 layer 1 64 56
+pin name P#9 signal S76.TR_18B__S381 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S75.TR_18B__S383 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S75.TR_18B__S383 layer 1 -80 -56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 66 G97
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S67.TR_18B__S404 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S67.TR_18B__S404 layer 1 -80 -56
+pin name P#9 signal S56.TR_18B__S164 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S55.TR_18B__S165 layer 1 64 56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 67 G98
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S71.TR_18B__S395 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S71.TR_18B__S395 layer 1 -80 -56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S44.TR_18B__S226 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S43.TR_18B__S227 layer 1 64 56
+
+cell 68 G99
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S237.N44 layer 1 64 56
+pin name P#10$ signal S76.TR_18B__S381 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S76.TR_18B__S381 layer 1 -80 -56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S40.TR_18B__S379 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+
+cell 69 G100
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S65.TR_18B__S407 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S57.TR_18B__S163 layer 1 64 56
+pin name P#10$ signal S56.TR_18B__S164 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S56.TR_18B__S164 layer 1 -80 -56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 70 G101
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S70.TR_18B__S398 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S45.TR_18B__S225 layer 1 64 56
+pin name P#10$ signal S44.TR_18B__S226 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S44.TR_18B__S226 layer 1 -80 -56
+
+cell 71 G102
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S239.N42 layer 1 64 56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S41.TR_18B__S377 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S40.TR_18B__S379 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S40.TR_18B__S379 layer 1 -80 -56
+
+cell 72 G103
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S69.TR_18B__S402 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S69.TR_18B__S402 layer 1 -80 -56
+pin name P#9 signal S59.TR_18B__S160 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S58.TR_18B__S161 layer 1 64 56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 73 G104
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S72.TR_18B__S393 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S72.TR_18B__S393 layer 1 -80 -56
+pin name P#9 signal S48.TR_18B__S222 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S46.TR_18B__S223 layer 1 64 56
+
+cell 74 G105
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S241.N40 layer 1 64 56
+pin name P#9 signal S66.NTR_18B__S24 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#10$ signal S41.TR_18B__S377 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S41.TR_18B__S377 layer 1 -80 -56
+
+cell 75 G106
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S61.TR_18B__S158 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S60.TR_18B__S159 layer 1 64 56
+pin name P#10$ signal S59.TR_18B__S160 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S59.TR_18B__S160 layer 1 -80 -56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 76 G107
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S50.TR_18B__S220 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S49.TR_18B__S221 layer 1 64 56
+pin name P#10$ signal S48.TR_18B__S222 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S48.TR_18B__S222 layer 1 -80 -56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 77 G108
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S73.NTR_18B__S10 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S68.NTR_18B__S21 layer 1 64 56
+pin name P#10$ signal S66.NTR_18B__S24 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S66.NTR_18B__S24 layer 1 -80 -56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 78 G109
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S63.TR_18B__S156 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S62.TR_18B__S157 layer 1 64 56
+pin name P#10$ signal S61.TR_18B__S158 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S61.TR_18B__S158 layer 1 -80 -56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 79 G110
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S52.TR_18B__S218 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S51.TR_18B__S219 layer 1 64 56
+pin name P#10$ signal S50.TR_18B__S220 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S50.TR_18B__S220 layer 1 -80 -56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 80 G111
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S74.CNTR_18B__S7 layer 1 64 56
+pin name P#10$ signal S73.NTR_18B__S10 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S73.NTR_18B__S10 layer 1 -80 -56
+pin name P#9 signal S67.TR_18B__S404 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S42.TR_18B__S364 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S42.TR_18B__S364 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 81 G112
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S71.TR_18B__S395 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S64.TR_18B__S155 layer 1 64 56
+pin name P#10$ signal S63.TR_18B__S156 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S63.TR_18B__S156 layer 1 -80 -56
+pin name P#8 signal S54.TR_18B__S337 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S54.TR_18B__S337 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 82 G113
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S219.N56 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S53.TR_18B__S217 layer 1 64 56
+pin name P#10$ signal S52.TR_18B__S218 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S52.TR_18B__S218 layer 1 -80 -56
+pin name P#8 signal S47.TR_18B__S350 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S47.TR_18B__S350 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 83 G114
+left -64 right 64 bottom -56 top 56
+pin name P#4 signal S244.N47 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#7 signal S214.N50 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#11 signal S162.N64 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+
+cell 84 G115
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S243.ITAL__S2413 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S137.N34 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 85 G116
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S218.ITAL__S2433 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S139.N33 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 86 G117
+left -80 right 80 bottom -56 top 56
+pin name P#11 signal S244.N47 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+pin name P#19 signal S146.N39 layer 1 -48 -56
+equiv name P#20 layer 1 -48 56
+pin name P#4 signal S145.N41 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#7 signal S144.N43 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#8 signal S142.N45 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+
+cell 87 G118
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S235.N46 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S147.N38 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S142.N45 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 88 G119
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S237.N44 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S149.N37 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S144.N43 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 89 G120
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S239.N42 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S151.N36 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S145.N41 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 90 G121
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S241.N40 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S152.N35 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S146.N39 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 91 G122
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S243.ITAL__S2413 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S218.ITAL__S2433 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S147.N38 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 92 G123
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S243.ITAL__S2413 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S149.N37 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S139.N33 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+
+cell 93 G124
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S218.ITAL__S2433 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S151.N36 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S137.N34 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 94 G125
+left -56 right 56 bottom -56 top 56
+pin name P#7 signal S152.N35 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S139.N33 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S137.N34 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 95 G126
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S141.N61 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S94.V_1024__S279 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 96 G127
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S141.N61 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S95.V_1024__S268 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 97 G128
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#2 signal S98.V_1024__S261 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#20 signal S79.V_1024__S235 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+
+cell 98 G129
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#2 signal S219.N56 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S172.N60 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+
+cell 99 G130
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S96.V_1024__S139 layer 1 64 56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S90.V_1024__S156 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S89.V_1024__S157 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S89.V_1024__S157 layer 1 -80 -56
+
+cell 100 G131
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S95.V_1024__S268 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S95.V_1024__S268 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S81.V_1024__S218 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S80.V_1024__S219 layer 1 64 56
+pin name P#10$ signal S79.V_1024__S235 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S79.V_1024__S235 layer 1 -80 -56
+
+cell 101 G132
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S97.V_1024__S135 layer 1 64 56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S91.V_1024__S155 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S90.V_1024__S156 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S90.V_1024__S156 layer 1 -80 -56
+
+cell 102 G133
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S95.V_1024__S268 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S95.V_1024__S268 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S83.V_1024__S216 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S82.V_1024__S217 layer 1 64 56
+pin name P#10$ signal S81.V_1024__S218 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S81.V_1024__S218 layer 1 -80 -56
+
+cell 103 G134
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S99.V_1024__S131 layer 1 64 56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S92.V_1024__S154 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S91.V_1024__S155 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S91.V_1024__S155 layer 1 -80 -56
+
+cell 104 G135
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S95.V_1024__S268 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S95.V_1024__S268 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S85.V_1024__S214 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S84.V_1024__S215 layer 1 64 56
+pin name P#10$ signal S83.V_1024__S216 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S83.V_1024__S216 layer 1 -80 -56
+
+cell 105 G136
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S100._1024__S127 layer 1 64 56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S93.V_1024__S153 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#10$ signal S92.V_1024__S154 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S92.V_1024__S154 layer 1 -80 -56
+
+cell 106 G137
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S95.V_1024__S268 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S95.V_1024__S268 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S87.V_1024__S212 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S86.V_1024__S213 layer 1 64 56
+pin name P#10$ signal S85.V_1024__S214 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S85.V_1024__S214 layer 1 -80 -56
+
+cell 107 G138
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S98.V_1024__S261 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#10$ signal S93.V_1024__S153 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S93.V_1024__S153 layer 1 -80 -56
+pin name P#12 signal S77.V_1024__S123 layer 1 64 56
+
+cell 108 G139
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S219.N56 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S95.V_1024__S268 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S95.V_1024__S268 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S88.V_1024__S211 layer 1 64 56
+pin name P#10$ signal S87.V_1024__S212 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S87.V_1024__S212 layer 1 -80 -56
+
+cell 109 G140
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S179.N66 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S179.N66 layer 1 -80 -56
+pin name P#8 signal S94.V_1024__S279 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S94.V_1024__S279 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S89.V_1024__S157 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S78.V_1024__S119 layer 1 64 56
+
+cell 110 G141
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S234.ITAL__S2290 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S109._512A__S295 layer 1 64 56
+pin name P#10$ signal S108._512A__S298 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S108._512A__S298 layer 1 -80 -56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 111 G142
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#20 signal S236.N57 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S234.ITAL__S2290 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+
+cell 112 G143
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S216.N85 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S104._512A__S313 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 113 G144
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S110._512A__S161 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S105._512A__S311 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 114 G145
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S114._512A__S147 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S112._512A__S158 layer 1 64 56
+pin name P#10$ signal S110._512A__S161 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S110._512A__S161 layer 1 -80 -56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 115 G146
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S117._512A__S133 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S116._512A__S144 layer 1 64 56
+pin name P#10$ signal S114._512A__S147 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S114._512A__S147 layer 1 -80 -56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 116 G147
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S118._512A__S130 layer 1 64 56
+pin name P#10$ signal S117._512A__S133 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S117._512A__S133 layer 1 -80 -56
+pin name P#9 signal S108._512A__S298 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 117 G148
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S105._512A__S311 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S102._512A__S102 layer 1 64 56
+pin name P#10$ signal S101._512A__S105 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S101._512A__S105 layer 1 -80 -56
+
+cell 118 G149
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S172.N60 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S172.N60 layer 1 -80 -56
+pin name P#9 signal S106.V_512A__S49 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S103.V_512A__S60 layer 1 64 56
+
+cell 119 G150
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S164.ITAL__S2259 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S107.V_512A__S46 layer 1 64 56
+pin name P#10$ signal S106.V_512A__S49 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S106.V_512A__S49 layer 1 -80 -56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 120 G151
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S164.ITAL__S2259 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S164.ITAL__S2259 layer 1 -80 -56
+pin name P#9 signal S113.V_512A__S21 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S111.V_512A__S32 layer 1 64 56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 121 G152
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S115.V_512A__S18 layer 1 64 56
+pin name P#10$ signal S113.V_512A__S21 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S113.V_512A__S21 layer 1 -80 -56
+pin name P#8 signal S104._512A__S313 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S104._512A__S313 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S101._512A__S105 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+
+cell 122 G153
+left -40 right 40 bottom -56 top 56
+pin name P#15 signal S216.N85 layer 1 -8 56
+equiv name P#14 layer 1 -8 -56
+pin name P#16 signal S119.DIV_16__S81 layer 1 24 56
+equiv name P#17 layer 1 24 -56
+
+cell 123 G154
+left -176 right 176 bottom -56 top 56
+pin name P#9 signal S292.TTER__S1192 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S121.DIV_16__S49 layer 1 64 56
+pin name P#10$ signal S120.DIV_16__S52 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S120.DIV_16__S52 layer 1 -80 -56
+pin name P#8 signal S119.DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S119.DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 124 G155
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S123.DIV_16__S35 layer 1 64 56
+pin name P#10$ signal S122.DIV_16__S38 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S122.DIV_16__S38 layer 1 -80 -56
+pin name P#9 signal S120.DIV_16__S52 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S119.DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S119.DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 125 G156
+left -176 right 176 bottom -56 top 56
+pin name P#10$ signal S236.N57 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S236.N57 layer 1 -80 -56
+pin name P#9 signal S125.DIV_16__S10 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S124.DIV_16__S21 layer 1 64 56
+pin name P#8 signal S119.DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S119.DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 126 G157
+left -176 right 176 bottom -56 top 56
+pin name P#12 signal S126..DIV_16__S7 layer 1 64 56
+pin name P#10$ signal S125.DIV_16__S10 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S125.DIV_16__S10 layer 1 -80 -56
+pin name P#9 signal S122.DIV_16__S38 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#8 signal S119.DIV_16__S81 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S119.DIV_16__S81 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+
+cell 127 G158
+left -40 right 40 bottom -56 top 56
+pin name P#7 signal S203.N74 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S131.TST_MOD__S7 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+pin name P#4 signal S127.ST_MOD__S24 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+
+cell 128 G159
+left -40 right 40 bottom -56 top 56
+pin name P#7 signal S163.N77 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S130.ST_MOD__S10 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+pin name P#4 signal S128.ST_MOD__S21 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+
+cell 129 G160
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S197.ITAL__S2462 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S129.ST_MOD__S18 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 130 G161
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S216.N85 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S216.N85 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#9 signal S129.ST_MOD__S18 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+pin name P#12 signal S128.ST_MOD__S21 layer 1 64 56
+pin name P#10$ signal S127.ST_MOD__S24 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S127.ST_MOD__S24 layer 1 -80 -56
+
+cell 131 G162
+left -176 right 176 bottom -56 top 56
+pin name P#8 signal S216.N85 layer 1 112 -56
+equiv name P#13 layer 1 112 56
+pin name P#26$ signal S216.N85 layer 1 -96 -56
+equiv name P#25 layer 1 -128 56
+pin name P#12 signal S131.TST_MOD__S7 layer 1 64 56
+pin name P#10$ signal S130.ST_MOD__S10 layer 1 80 -56
+equiv name P#27 layer 1 160 56
+pin name P#26 signal S130.ST_MOD__S10 layer 1 -80 -56
+pin name P#9 signal S127.ST_MOD__S24 layer 1 48 -56
+equiv name P#14 layer 1 48 56
+
+cell 132 G163
+left -88 right 88 bottom -56 top 56
+pin name P#20$$ signal S240.N80 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+pin name P#27 signal S225.N32 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+
+cell 133 G164
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S224.N31 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S205.N49 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S171.N52 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 134 G165
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S240.N80 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S225.N32 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S170.N53 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 135 G166
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S224.N31 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S205.N49 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+cell 136 G167
+left -48 right 48 bottom -56 top 56
+pin name P#7 signal S252.ETTER__S748 layer 1 16 56
+equiv name P#6 layer 1 16 -56
+pin name P#4 signal S205.N49 layer 1 -16 56
+equiv name P#5 layer 1 -16 -56
+pin name P#11 signal S140.N51 layer 1 32 56
+equiv name P#10 layer 1 32 -56
+
+cell 137 G168
+left -48 right 48 bottom -56 top 56
+pin name P#7 signal S258.ETTER__S745 layer 1 16 56
+equiv name P#6 layer 1 16 -56
+pin name P#4 signal S205.N49 layer 1 -16 56
+equiv name P#5 layer 1 -16 -56
+pin name P#11 signal S141.N61 layer 1 32 56
+equiv name P#10 layer 1 32 -56
+
+cell 138 G169
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S202.N30 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S175.N75 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 139 G170
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S198.ITAL__S2586 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S183.ITAL__S2355 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S175.N75 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+
+cell 140 G171
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S233.N27 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S222.N28 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S202.N30 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 141 G172
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S249.ETTER__S751 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S233.N27 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S198.ITAL__S2586 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 142 G173
+left -64 right 64 bottom -56 top 56
+pin name P#4 signal S222.N28 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#7 signal S183.ITAL__S2355 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#11 signal S148.N84 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+
+cell 143 G174
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S150.N83 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S148.N84 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+cell 144 G175
+left -40 right 40 bottom -56 top 56
+pin name P#7 signal S221.N87 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S150.N83 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+pin name P#8 signal S148.N84 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+
+cell 145 G176
+left -224 right 224 bottom -56 top 56
+pin name P#26$ signal S221.N87 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S221.N87 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#13 signal S216.N85 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S216.N85 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#12$ signal S191.N23 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+pin name P#12 signal S133.DIV_2__S119 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#26 signal S133.DIV_2__S119 layer 1 -208 56
+equiv name P#10$ layer 1 -112 -56
+pin name P#14 signal S132.DIV_2__S120 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+
+cell 146 G177
+left -224 right 224 bottom -56 top 56
+pin name P#26$ signal S221.N87 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S221.N87 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#13 signal S216.N85 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S216.N85 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#14 signal S190.N67 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#12$ signal S134..DIV_2__S50 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+pin name P#12 signal S132.DIV_2__S120 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#26 signal S132.DIV_2__S120 layer 1 -208 56
+equiv name P#10$ layer 1 -112 -56
+
+cell 147 G178
+left -64 right 64 bottom -56 top 56
+pin name P#4 signal S292.TTER__S1192 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#7 signal S191.N23 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#11 signal S190.N67 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+
+cell 148 G179
+left -48 right 48 bottom -56 top 56
+pin name P#7 signal S259.ETTER__S742 layer 1 16 56
+equiv name P#6 layer 1 16 -56
+pin name P#4 signal S240.N80 layer 1 -16 56
+equiv name P#5 layer 1 -16 -56
+pin name P#11 signal S207.N22 layer 1 32 56
+equiv name P#10 layer 1 32 -56
+
+cell 149 G180
+left -64 right 64 bottom -56 top 56
+pin name P#7 signal S258.ETTER__S745 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+pin name P#4 signal S229.N72 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#11 signal S157.N21 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+
+cell 150 G181
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S191.N23 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S173.N20 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 151 G182
+left -56 right 56 bottom -56 top 56
+pin name P#7 signal S210.ITAL__S2574 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S206.N16 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S173.N20 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 152 G183
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S228.N17 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S206.N16 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S155.N70 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+
+cell 153 G184
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S209.N15 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S196.N14 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 154 G185
+left -64 right 64 bottom -56 top 56
+pin name P#11 signal S196.N14 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+pin name P#8 signal S168.N59 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#7 signal S162.N64 layer 1 0 56
+equiv name P#6 layer 1 -16 -56
+pin name P#4 signal S153.N63 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+
+cell 155 G186
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S178.N19 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S174.N73 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S156.N13 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 156 G187
+left -88 right 88 bottom -56 top 56
+pin name P#20$$ signal S178.N19 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+pin name P#27 signal S156.N13 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+
+cell 157 G188
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S200.N12 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#8 signal S180.N10 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#7 signal S161.ITAL__S2261 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 158 G189
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S186.N9 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S180.N10 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 159 G190
+left -80 right 80 bottom -56 top 56
+pin name P#6 signal S205.N49 layer 1 -64 56
+equiv name P#16 layer 1 -64 -56
+pin name P#2 signal S186.N9 layer 1 64 56
+equiv name P#1 layer 1 64 -56
+pin name P#20 signal S155.N70 layer 1 -16 56
+equiv name P#19 layer 1 0 -56
+
+cell 160 G191
+left -64 right 64 bottom -56 top 56
+pin name P#11 signal S200.N12 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+pin name P#4 signal S178.N19 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+pin name P#7 signal S177.N18 layer 1 0 56
+equiv name P#6 layer 1 0 -56
+
+cell 161 G192
+left -32 right 32 bottom -56 top 56
+pin name P#15 signal S223.N8 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+pin name P#16 signal S177.N18 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+
+cell 162 G193
+left -64 right 64 bottom -56 top 56
+pin name P#11 signal S223.N8 layer 1 48 56
+equiv name P#10 layer 1 48 -56
+pin name P#8 signal S209.N15 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#7 signal S201.ITAL__S2457 layer 1 0 56
+equiv name P#6 layer 1 -16 -56
+pin name P#4 signal S155.N70 layer 1 -32 56
+equiv name P#5 layer 1 -32 -56
+
+cell 163 G194
+left -40 right 40 bottom -56 top 56
+pin name P#7 signal S185.N24 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S157.N21 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+pin name P#8 signal S155.N70 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+
+cell 164 G195
+left -40 right 40 bottom -56 top 56
+pin name P#4 signal S205.N49 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+pin name P#7 signal S193.N82 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S155.N70 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+
+cell 165 G196
+left -40 right 40 bottom -56 top 56
+pin name P#7 signal S199.N78 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S175.N75 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+pin name P#4 signal S155.N70 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+
+cell 166 G197
+left -224 right 224 bottom -56 top 56
+pin name P#12$ signal S228.N17 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+pin name P#26$ signal S207.N22 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S207.N22 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#12 signal S187.N71 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#13 signal S185.N24 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S185.N24 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+
+cell 167 G198
+left -224 right 224 bottom -56 top 56
+pin name P#26$ signal S228.N17 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S228.N17 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#12 signal S205.N49 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#13 signal S182.N25 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S182.N25 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#14 signal S181.N7 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#12$ signal S175.N75 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+
+cell 168 G199
+left -56 right 56 bottom -56 top 56
+pin name P#8 signal S231.N79 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+pin name P#4 signal S205.N49 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S194.ITAL__S2213 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+
+cell 169 G200
+left -224 right 224 bottom -56 top 56
+pin name P#12 signal S231.N79 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#14 signal S229.N72 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#26$ signal S195.ITAL__S2211 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S195.ITAL__S2211 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#13 signal S179.N66 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S179.N66 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#12$ signal S169.GITAL__S224 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+
+cell 170 G201
+left -32 right 32 bottom -56 top 56
+pin name P#16 signal S229.N72 layer 1 16 56
+equiv name P#17 layer 1 16 -56
+pin name P#15 signal S182.N25 layer 1 -16 56
+equiv name P#14 layer 1 -16 -56
+
+cell 171 G202
+left -40 right 40 bottom -56 top 56
+pin name P#8 signal S188.N5 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+pin name P#7 signal S182.N25 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#4 signal S155.N70 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+
+cell 172 G203
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S188.N5 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S155.N70 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+cell 173 G204
+left -224 right 224 bottom -56 top 56
+pin name P#12 signal S240.N80 layer 1 192 -56
+equiv name P#27 layer 1 192 56
+pin name P#13 signal S208.N4 layer 1 112 56
+equiv name P#8 layer 1 112 -56
+pin name P#31 signal S208.N4 layer 1 -192 56
+equiv name P#30 layer 1 -208 -56
+pin name P#26$ signal S196.N14 layer 1 -128 -56
+equiv name P#25 layer 1 -144 56
+pin name P#29 signal S196.N14 layer 1 144 -56
+equiv name P#28 layer 1 128 56
+pin name P#14 signal S181.N7 layer 1 16 56
+equiv name P#9 layer 1 16 -56
+pin name P#26 signal S161.ITAL__S2261 layer 1 -208 56
+equiv name P#10$ layer 1 -112 -56
+pin name P#12$ signal S155.N70 layer 1 38 -56
+equiv name P#12$$ layer 1 48 56
+
+cell 174 G205
+left -56 right 56 bottom -56 top 56
+pin name P#4 signal S240.N80 layer 1 -24 -56
+equiv name P#9 layer 1 -40 56
+pin name P#7 signal S160.N3 layer 1 8 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S158.N81 layer 1 -24 56
+equiv name P#5 layer 1 -8 -56
+
+cell 175 G206
+left -176 right 176 bottom -56 top 56
+pin name P#13 signal S223.N8 layer 1 120 56
+equiv name P#8 layer 1 120 -56
+pin name P#26$ signal S223.N8 layer 1 -96 -56
+equiv name P#25 layer 1 -112 56
+pin name P#14 signal S181.N7 layer 1 56 56
+equiv name P#9 layer 1 48 -56
+pin name P#12 signal S178.N19 layer 1 144 -56
+equiv name P#12$ layer 1 72 56
+pin name P#26 signal S160.N3 layer 1 -160 56
+equiv name P#10$ layer 1 -80 -56
+pin name P#27 signal S158.N81 layer 1 152 56
+equiv name P#10$$ layer 1 80 -56
+
+cell 176 G207
+left -176 right 176 bottom -56 top 56
+pin name P#13 signal S216.N85 layer 1 120 56
+equiv name P#8 layer 1 120 -56
+pin name P#26$ signal S216.N85 layer 1 -96 -56
+equiv name P#25 layer 1 -112 56
+pin name P#12 signal S181.N7 layer 1 144 -56
+equiv name P#12$ layer 1 72 56
+pin name P#26 signal S176.ITAL__S2494 layer 1 -160 56
+equiv name P#10$ layer 1 -80 -56
+pin name P#14 signal S136.C.DBNC__S13 layer 1 56 56
+equiv name P#9 layer 1 48 -56
+pin name P#27 signal S135.C.DBNC__S24 layer 1 152 56
+equiv name P#10$$ layer 1 80 -56
+
+cell 177 G208
+left -96 right 96 bottom -56 top 56
+pin name P#21 signal S292.TTER__S1192 layer 1 -40 56
+equiv name P#22 layer 1 -24 -56
+pin name P#24 signal S203.N74 layer 1 -40 -56
+equiv name P#17 layer 1 -80 56
+pin name P#20 signal S164.ITAL__S2259 layer 1 16 56
+equiv name P#19 layer 1 32 -56
+pin name P#2 signal S136.C.DBNC__S13 layer 1 80 56
+equiv name P#15 layer 1 80 -56
+
+cell 178 G209
+left -40 right 40 bottom -56 top 56
+pin name P#4 signal S220.N2 layer 1 -8 -56
+equiv name P#9 layer 1 -24 56
+pin name P#7 signal S208.N4 layer 1 24 56
+equiv name P#6 layer 1 24 -56
+pin name P#8 signal S178.N19 layer 1 -8 56
+equiv name P#5 layer 1 8 -56
+
+cell 179 G210
+left -48 right 48 bottom -56 top 56
+pin name P#7 signal S232.N1 layer 1 16 56
+equiv name P#6 layer 1 16 -56
+pin name P#11 signal S220.N2 layer 1 32 56
+equiv name P#10 layer 1 32 -56
+pin name P#4 signal S213.ITAL__S2437 layer 1 -16 56
+equiv name P#5 layer 1 -16 -56
+
+cell 180 G211
+left -88 right 88 bottom -56 top 56
+pin name P#27 signal S232.N1 layer 1 72 56
+equiv name P#28 layer 1 72 -56
+pin name P#20$$ signal S213.ITAL__S2437 layer 1 -56 56
+equiv name P#21$ layer 1 -56 -56
+
+hardcell 209 name G3
+corners 4 -598 -184 -598 184 598 184 598 -184 
+class 0 8 orientations 0 1 2 3 4 5 6 7                
+pin name P#11 signal XXXX layer 1 0 0
+
+hardcell 210 name G4
+corners 4 -616 -368 -616 368 616 368 616 -368 
+class 0 8 orientations 0 1 2 3 4 5 6 7
+pin name P#11 signal S306.TTER__S1269 layer 1 581 -368
+pin name P#1 signal S248.TTER__S1260 layer 1 -594 368
+pin name P#2 signal S247.TTER__S1262 layer 1 -594 -368
+pin name P#10 signal S245.TTER__S1266 layer 1 607 -368
+
+hardcell 211 name G18
+corners 4 -1256 -350 -1256 350 1256 350 1256 -350 
+class 0 8 orientations 0 1 2 3 4 5 6 7
+pin name P#20 signal S305.ETTER__S509 layer 1 -248 -350
+equiv name P#19 layer 1 -248 350
+pin name P#16 signal S302.ETTER__S517 layer 1 296 -350
+equiv name P#15 layer 1 296 350
+pin name P#12 signal S299.ETTER__S525 layer 1 808 -350
+equiv name P#11 layer 1 808 350
+pin name P#6 signal S298.TTER__S1161 layer 1 1076 350
+equiv name P#5 layer 1 1076 -350
+pin name P#30 signal S293.TTER__S1180 layer 1 -776 -350
+equiv name P#29 layer 1 -776 350
+pin name P#8 signal S259.ETTER__S742 layer 1 840 350
+equiv name P#7 layer 1 840 -350
+pin name P#18 signal S258.ETTER__S745 layer 1 312 350
+equiv name P#17 layer 1 312 -350
+pin name P#28 signal S256.P15A layer 1 -760 350
+equiv name P#27 layer 1 -760 -350
+pin name P#24 signal S252.ETTER__S748 layer 1 -216 -350
+equiv name P#23 layer 1 -216 350
+pin name P#22 signal S251.TTER__S1129 layer 1 -232 350
+equiv name P#21 layer 1 -232 -350
+pin name P#14 signal S251.TTER__S1129 layer 1 280 350
+equiv name P#13 layer 1 280 -350
+pin name P#10 signal S251.TTER__S1129 layer 1 824 350
+equiv name P#9 layer 1 824 -350
+pin name P#26 signal S249.ETTER__S751 layer 1 -744 -350
+equiv name P#25 layer 1 -744 350
+
+
+pad 181 name G11
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#7 signal S297.ETTER__S654 layer 1 40 196
+
+pad 182 name G26
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#13 signal S287.ETTER__S570 layer 1 0 196
+
+pad 183 name G22
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#13 signal S264.ETTER__S608 layer 1 0 196
+
+pad 184 name G27
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#13 signal S288.ETTER__S562 layer 1 0 196
+
+pad 185 name G20
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#13 signal S289.ETTER__S816 layer 1 0 196
+
+pad 186 name G23
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side T
+pin name P#13 signal S267.ETTER__S600 layer 1 0 196
+
+pad 187 name G30
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#13 signal S305.ETTER__S509 layer 1 0 196
+
+pad 188 name G31
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#13 signal S251.TTER__S1129 layer 1 0 196
+
+pad 189 name G10
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#8 signal S294.TTER__S1178 layer 1 -80 196
+pin name P#9 signal S293.TTER__S1180 layer 1 0 196
+
+pad 190 name G5
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#13 signal S256.P15A layer 1 0 196
+
+pad 191 name G21
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#13 signal S255.TTER__S1127 layer 1 0 196
+
+pad 192 name G24
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#13 signal S273.ETTER__S592 layer 1 0 196
+
+pad 193 name G16
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#8 signal S245.TTER__S1266 layer 1 0 196
+
+pad 194 name G17
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side L
+pin name P#8 signal S306.TTER__S1269 layer 1 0 196
+
+pad 195 name G29
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#13 signal S302.ETTER__S517 layer 1 0 196
+
+pad 196 name G28
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#13 signal S299.ETTER__S525 layer 1 0 196
+
+pad 197 name G25
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#13 signal S263.TTER__S1243 layer 1 0 196
+
+pad 198 name G6
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#13 signal S262.TTER__S1244 layer 1 0 196
+
+pad 199 name G13
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#6 signal S301.ETTER__S645 layer 1 0 196
+
+pad 200 name G9
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side B
+pin name P#6 signal S295.ETTER__S922 layer 1 0 196
+
+pad 201 name G12
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#6 signal S300.ETTER__S647 layer 1 0 196
+
+pad 202 name G14
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#6 signal S304.ETTER__S643 layer 1 0 196
+
+pad 203 name G15
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#6 signal S266.ETTER__S857 layer 1 0 196
+
+pad 204 name G1
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+
+pad 205 name G2
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+
+pad 206 name G19
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#13 signal S277.TTER__S1218 layer 1 0 196
+
+pad 207 name G7
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#14 signal S292.TTER__S1192 layer 1 -56 196
+pin name P#12 signal S283.TTER__S1213 layer 1 0 196
+pin name P#1 signal S277.TTER__S1218 layer 1 56 196
+
+pad 208 name G8
+corners 4 -128 -196 -128 196 128 196 128 -196 
+restrict side R
+pin name P#11 signal S283.TTER__S1213 layer 1 0 196
+
+padgroup padgroup1 nopermute
+G29 fixed
+G28 fixed
+G25 fixed
+G6 fixed
+G13 fixed
+G9 fixed
+restrict side B
+
+padgroup padgroup2 nopermute
+G30 fixed
+G31 fixed
+G10 fixed
+G5 fixed
+G21 fixed
+G24 fixed
+G16 fixed
+G17 fixed
+restrict side L
+
+padgroup padgroup3 nopermute
+G12 fixed
+G14 fixed
+G15 fixed
+G1 fixed
+G2 fixed
+G19 fixed
+G7 fixed
+G8 fixed
+restrict side R
+
+padgroup padgroup4 nopermute
+G11 fixed
+G26 fixed
+G22 fixed
+G27 fixed
+G20 fixed
+G23 fixed
+restrict side T

@@ -1,0 +1,101 @@
+# ******************************************************************
+# YMAKE MACRO SUBSTITUTION FILE.
+# ****************** switches for compilation *******************
+CFLAGS=-g
+#
+# The target foreign machine is assumed to be running UNIX, if not
+# comment out following line.
+UNIX=-DUNIX
+#
+# If users system does not support UNIX signals, comment out the
+# signal handler defined on the next line.
+CLEANUP=-DCLEANUP_C 
+#
+# The makefile should automatically define this variable if an X11
+# server is not present, that is, /usr/include/X11 is not present.
+# uncomment line if you which to override.
+#NOGRAPHICS=-DNOGRAPHICS
+#
+# Normally the program is compiled with assertion checking.  If a 
+# on a sys5 machine uncomment out next line systype
+# use this only if problems arise with include files.
+# also check below for problems with ranlib.
+#SYS5=-DSYS5
+
+# smaller faster version is desired comment out next line.
+DEBUG=-DDEBUG
+#
+# if all feedthrus should have the same name uncomment the next line.
+# DFEED=-DNO_FEED_INSTANCES 
+
+# available for adding future options.
+OPTIONS=${UNIX} ${DEBUG} ${NOGRAPHICS} ${SYS5} ${DFEED}
+#
+# place where Xwindow include files reside
+XLIB=/usr/include/X11
+#
+# where the libraries are
+# where the <yalecad/base.h> etc. are located.
+# how set set the search directories for compilation
+INCLUDE=../../../include/
+YALELIB=${INCLUDE}yalecad/
+IDIR=-I. -I${INCLUDE} -I${XLIB} 
+# ****************** switches for linking *******************
+# Yale library - the first library uses the Yale memory manager
+# the second library uses the system's memory manager.
+NYCADSYS=libycad.sys.a 
+NYCADMEM=libycad.mem.a
+# residence at Yale
+#YCADMEM=/usr/local/lib/${NYCADMEM}
+#YCADSYS=/usr/local/lib/${NYCADSYS}
+# residence on foreign host
+YCADMEM=../../../lib/${NYCADMEM}
+YCADSYS=../../../lib/${NYCADSYS}
+# on this line pick which library you want 
+YALECAD=${YCADSYS}
+
+#
+# place where link libraries exist
+# user must supply math library and X11 library.
+# use -L option if libraries exist elsewhere ie. -L/usr/bills/X -lX11
+#
+# For VAX need -lc first because of lame libraries
+LINKLIB=-lc -lX11 -lm
+#
+# need these lines for yale installation. Null otherwise.
+GETDATE=
+DATE_C=../../date/src/date.c
+#
+# ******************* RENAME PROGRAMS *************************
+#
+AR=ar # archiving program.
+AWK=awk # awk language interpreter.
+CAT=cat # concatenate program.
+CC=cc # C compiler switch
+CHMOD=chmod # C compiler switch
+ECHO=echo # echo to the screen
+GREP=grep
+YMAKE=../../ymake/ymake # path of ymake program
+# if problems arise with makedepend uncomment out following line
+#YMAKEARGS=nodepend  # path of ymake program
+YMAKEFILE=Ymakefile # name of ymakefile.
+LEX=${ECHO}
+LD=ld # linker
+MAKE=/bin/make
+MAKEDEPEND=../../makedepend/makedepend # path of makedepend
+MV=mv # move program name
+PAS=/com/pas
+# on sys5 machines ranlib not supported uncomment second line
+RANLIB=ranlib
+#RANLIB=${ECHO}
+RM=/bin/rm -f
+STRIP=strip # strip symbol table from code.
+SCCS=sccs # software control program
+SCCS_OP=get #normal sccs operation
+# always use Bourne shell in makefile.
+SHELL=/bin/sh
+YACC=${ECHO}
+# if you dont have yacc and lex set to nop operation like echo
+LEXMV=${ECHO}
+YACCMV=${ECHO}
+# ******************************************************************

@@ -1,0 +1,90 @@
+# Imakefile for program condraw
+#  "@(#) Ymakefile (Yale) version 1.10 5/22/92 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=condraw
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	ascii.c \
+	binary.c \
+	main.c \
+	mif.c 
+
+OBJ= \
+	${O}main.o \
+	${O}ascii.o \
+	${O}binary.o \
+	${O}mif.o 
+
+INS= 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+
+# how to make condraw program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: 
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${OBJ}
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# ********************* begin sccs *********************************
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} preample.mif afterword.mif font.mif
+${SRC} ${INS} ${YMAKEFILE} preample.mif afterword.mif font.mif: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+# **********************  end sccs *********************************
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}ascii.o:ascii.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ascii.c
+	${MV} ascii.o ${O}ascii.o
+${O}binary.o:binary.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  binary.c
+	${MV} binary.o ${O}binary.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}mif.o:mif.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  mif.c
+	${MV} mif.o ${O}mif.o
+
+# end makefile

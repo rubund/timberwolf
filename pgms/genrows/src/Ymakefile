@@ -1,0 +1,118 @@
+#  Makefile for genrow standard cell row generator.
+#  "@(#) Ymakefile (Yale) version 3.11 3/7/91"
+#
+#include macros
+
+SCCS_OP=get #normal sccs operation
+
+#destination of output executable
+DEST=../
+PNAME=genrows
+
+# name of the graphics menu and its final destination
+MENU=genrows_menu genrows.dialog row.dialog macro.dialog
+
+#where object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC=    draw.c\
+	genrows.c \
+	main.c \
+	merge.c \
+	readpar.c
+
+OBJ=    ${O}draw.o\
+	${O}genrows.o \
+	${O}main.o \
+	${O}merge.o \
+	${O}readpar.o
+
+INS= globals.h dialog.h menus.h dialog2.h dialog3.h
+
+info:
+	-@${ECHO} "make ${PNAME} - usage:"
+	-@${ECHO} "Non-yale users should type "
+	-@${ECHO} "    'make install_non_yale <CR>' "
+	-@${ECHO} " "
+
+# how to make genrow program
+${DEST}${PNAME}:${OBJ} ${YALECAD} ${MENU}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o 
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB} 
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}:
+
+
+install:${DEST}${PNAME} ${MENU}
+
+install_non_yale:
+	-${S}if( test -d ${XLIB}${NOGRAPHICS} ) then \
+		${ECHO} " " ; \
+		${ECHO} "Note:found ${XLIB}"; \
+		${ECHO} "making version with XWindow graphics..." ;\
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" ;\
+		${ECHO} " " ; \
+	else \
+		${ECHO} " " ; \
+		${ECHO} "Note:didn't find ${XLIB} or NOGRAPHICS requested" ; \
+		${ECHO} "making version without XWindow graphics..." ; \
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" LINKLIB=-lm ;\
+	fi ; 
+
+clean:
+	${RM} ${O}* *~ core *.bak
+
+map :   
+	nm -apg ${PNAME}
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# ********************* begin sccs *********************************
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} ${MENU}
+${SRC} ${INS} ${YMAKEFILE} ${MENU}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+# **********************  end sccs *********************************
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#
+# Now for the detail routing code
+#
+${O}genrows.o : genrows.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c genrows.c
+	${MV} genrows.o ${O}genrows.o
+${O}draw.o : draw.c
+	${CC} ${CFLAGS} ${NOGRAPHICS} ${IDIR} ${OPTIONS} -c draw.c
+	${MV} draw.o ${O}draw.o
+${O}main.o : main.c
+	${CC} ${NOGRAPHICS} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS}\
+		-c main.c 
+	${MV} main.o ${O}main.o
+${O}merge.o : merge.c
+	${CC} ${CFLAGS} ${NOGRAPHICS} ${IDIR} ${OPTIONS} -c merge.c
+	${MV} merge.o ${O}merge.o
+${O}readpar.o : readpar.c
+	${CC} ${CFLAGS} ${NOGRAPHICS} ${IDIR} ${OPTIONS} -c readpar.c
+	${MV} readpar.o ${O}readpar.o
+#end of makefile

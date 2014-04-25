@@ -1,0 +1,64 @@
+# Ymakefile for program getdate
+#  "@(#) Ymakefile (Yale) version 1.3 3/7/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=getdate
+
+#where the object code is located
+objdir=.
+O=${objdir}/
+
+SRC= getdate.c 
+
+OBJ= \
+	${O}getdate.o 
+
+INS= 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+
+# how to make getdate program
+${DEST}${PNAME}:${OBJ}
+	${CC} ${CFLAGS} -o ${DEST}${PNAME} ${OBJ} 
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${OBJ}
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} date.c
+${SRC} ${INS} ${YMAKEFILE} date.c: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}getdate.o:getdate.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  getdate.c
+
+# end makefile

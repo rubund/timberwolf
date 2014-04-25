@@ -1,0 +1,138 @@
+#  Makefile for TimberWolf draw program.
+#  "@(#) Ymakefile (Yale) version 3.15 2/5/91"
+#
+#include macros
+
+SCCS_OP=get #normal sccs operation
+
+#destination of output executable
+DEST=../
+PNAME=draw
+
+# name of the graphics menu and its final destination
+MENU=draw_menu
+
+#where object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC=    main.c\
+	read.c\
+	cif.c\
+	colors.c\
+	rtf.c\
+	window_manager.c
+
+OBJ =   ${O}main.o\
+	${O}read.o\
+	${O}cif.o\
+	${O}colors.o\
+	${O}rtf.o\
+	${O}window_manager.o
+
+
+INS= globals.h menus.h
+
+info:
+	-@echo "make ${PNAME} - usage:"
+	-@echo "Non-yale users should type "
+	-@echo "    'make install_non_yale' - for first compile or "
+	-@echo "    'make non_yale' for subsequent compiles"
+	-@echo " "
+
+# how to make TimberWolfMC compactor
+${DEST}${PNAME}:${OBJ} ${YALECAD} ${MENU}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o 
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB} 
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}:
+
+
+install:${DEST}${PNAME} ${MENU}
+
+install_non_yale:
+	-${S}if( test -d ${XLIB}${NOGRAPHICS} ) then \
+		echo " " ; \
+		echo "Note:found ${XLIB}"; \
+		echo "making version with XWindow graphics..." ; \
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" LINKLIB="${LINKLIB}" ; \
+		echo " " ; \
+	else \
+		echo " " ; \
+		echo "Note:didn't find ${XLIB} or NOGRAPHICS requested"; \
+		echo "making version without XWindow graphics..." ; \
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+		    CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+		    UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+		    CFLAGS="${CFLAGS}" LINKLIB=-lm ; \
+	fi ; 
+
+clean:
+	${RM} ${O}* *~ core *.bak
+
+map :   
+	nm -apg ${PNAME}
+
+lint:
+#	lint ${IDIR} -Ctwtmp ${SRC2}
+#	lint ${IDIR} ${SRC} llib-ltwtmp.ln
+	lint ${IDIR} *.c  > fool
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# ********************* begin sccs *********************************
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} ${MENU}
+${SRC} ${INS} ${YMAKEFILE} ${MENU}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+# **********************  end sccs *********************************
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+# sort srcfiles for ${SRC}: 
+#    grep '\-c ${placer}' makefile | cut -f5 -d" " | sort
+
+#
+#how to compile the source
+#
+${O}cif.o : cif.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c cif.c 
+	${MV} cif.o ${O}cif.o
+${O}colors.o : colors.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c colors.c 
+	${MV} colors.o ${O}colors.o
+${O}main.o : main.c
+	${CC} ${CFLAGS} ${IDIR} ${CLEANUP} ${OPTIONS} -c main.c 
+	${MV} main.o ${O}main.o
+${O}misc.o : misc.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c misc.c 
+	${MV} misc.o ${O}misc.o
+${O}read.o : read.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c read.c 
+	${MV} read.o ${O}read.o
+${O}rtf.o : rtf.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c rtf.c 
+	${MV} rtf.o ${O}rtf.o
+${O}mst.o : mst.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c mst.c 
+	${MV} mst.o ${O}mst.o
+${O}window_manager.o : window_manager.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c window_manager.c 
+	${MV} window_manager.o ${O}window_manager.o
+#end of makefile

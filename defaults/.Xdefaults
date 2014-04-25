@@ -1,0 +1,44 @@
+# this is a comment
+#
+
+xclock.Mode:			digital
+xclock.Background:		black
+xclock.BorderWidth:		0
+xclock.Foreground:		yellow
+xclock.ReverseVideo:		off
+#
+# dxmail --- DECwindows interface to the mh Mail Handler
+#
+dxmail*background:		white
+dxmail*foreground:		blue
+dxmail*Border:			red
+dxmail*font:			a14
+dxmail*main.geometry:		600x380+0+0
+dxmail*read.geometry:		600x500+0+410
+dxmail.send.geometry:		590x800+610+0
+#
+# xterm
+#
+xterm*background:		blue
+xterm*cursorColor:		red
+xterm*font:			a14
+xterm*foreground:		white
+xterm*jumpScroll:		on
+xterm*pointerColor:		red
+xterm*saveLines:		5000
+xterm*scrollBar:		on
+
+#
+# TimberWolf graphics
+#
+twgraphics*geometry:       650x800+0+0
+#twgraphics*font:           fixed
+twgraphics*font:           times_bold14
+twgraphics*three_button_mouse: on
+twgraphics*dialogbox:      300x300+100+400
+twgraphics*geometry_tomus: 800x150+0+850
+twgraphics*stipple:        off
+#twgraphics*slow:          on
+
+# dxdb
+dxdb*geometry:             500x500+512+0

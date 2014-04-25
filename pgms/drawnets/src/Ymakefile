@@ -1,0 +1,91 @@
+# Ymakefile for program analyze_nets
+#  "@(#) Ymakefile (Yale) version 1.1 4/21/91"
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=analyze_nets
+MENU=menu
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	graphics.c \
+	main.c \
+	readnet.c 
+
+OBJ= \
+	${O}graphics.o \
+	${O}main.o \
+	${O}readnet.o 
+
+INS= \
+	globals.h \
+	menus.h
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make analyze_nets program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make analyze_nets lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} ${MENU}
+${SRC} ${INS} ${YMAKEFILE} ${MENU}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}graphics.o:graphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graphics.c
+	${MV} graphics.o ${O}graphics.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}readnet.o:readnet.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readnet.c
+	${MV} readnet.o ${O}readnet.o
+
+# end makefile

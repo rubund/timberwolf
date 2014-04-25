@@ -1,0 +1,59 @@
+#! /bin/csh -f
+#
+# This shell script creates initial files for TimberWolf System
+# "@(#) edit_mcfiles version 1.2 7/30/91"
+#
+if $1 != "" then
+    set design = $1
+else 
+    echo "syntax: edit_files designName"
+    echo "Make sure TWDIR environment variable is created first"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+onintr problem
+
+set test = ${?TWDIR}
+if $test != 1 then
+    echo ""
+    echo "ERROR:TWDIR environment variable not set"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+set twdir = $TWDIR
+set dirpath = $twdir/defaults
+
+set test = ${?EDITOR}
+if $test != 1 then
+    echo ""
+    echo "EDITOR environment variable is not set"
+    echo "Using vi as the default editor"
+    echo ""
+    set editor = vi
+else
+    set editor = $EDITOR
+endif
+
+# Now that we know how to get the directory path now copy the data
+#
+# Next the users stuff
+if( -e ${design}.par.sav ) then
+    mv ${design}.par.sav ${design}.par
+    $editor $design.par 
+    exit
+endif
+
+if(! -e ${design}.par ) then
+    cp $dirpath/xxx.macro.par ${design}.par
+endif
+
+$editor $design.par 
+
+exit
+
+problem :
+echo "Problem:suggestion does TWDIR environment variable exist?"

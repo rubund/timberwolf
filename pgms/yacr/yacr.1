@@ -1,0 +1,115 @@
+.TH YACR 1OCTTOOLS 11/23/84
+.SH NAME
+yacr \- Yet Another Channel Router
+.SH SYNOPSIS
+.B yacr
+[options] [file1 [file2]\|]
+.SH DESCRIPTION
+.I Yacr
+is a two-layer symbolic channel router.
+Its input is a list of pins that are to be connected on each
+edge of the channel, as well as optional lists of floating,
+relative fixed, or fixed pins on one or both edges of the channel.
+Floating pins can be on either end, while relative or absolutely
+fixed pins can be on only one end.
+Yacr is also able to route channels with irregular top or
+bottom edges.
+In this case, the relative offset of each pin position
+towards the center of the channel can be specified.
+See YACR(5OCTTOOLS) for more details.
+.PP
+The output is in the form of two arrays, one for each layer of the route.
+Each non-zero entry in an array is the name of the net that occupies that
+space in the routed channel.
+For information on input and output formats, see YACR(5OCTTOOLS).
+.PP
+File1 contains the input, file2 gets the output.
+If file2 is omitted, the output goes to standard out.
+If no files are specified, input is read from standard input,
+and output goes to standard output.
+.PP
+The command line options described below can be specified in any
+order, but must come before the input and output file names.
+.TP 8
+.B -a
+Add columns at the ends of the channel if necessary to complete
+the route.
+By default columns are not added,
+but if the channel has cyclic constraints, additional columns
+may be necessary.
+If
+.I yacr
+cannot complete a route, it will give a message recommending
+that this flag be used.
+.TP 8
+.B -c n
+Begin routing the channel starting in column "n".
+If this is not specified,
+or if "n" is less than one or greater than the number of columns
+in the channel,
+.I yacr
+will chose a starting column.
+.TP 8
+.B -d
+Sets the debug flag so that the channel will be printed
+(in the desired format)
+at the following times:
+when the current number of rows is found to be insufficient;
+when the route is completed, before metal maximization and cleanup;
+after metal maximization and cleanup.
+Also prints information about the vertical constraint graph,
+including the level from top and level from bottom of each net.
+Useful for debugging purposes.
+.TP 8
+.B -H
+Use an alternate input and output format (see YACR(5OCTTOOLS)).
+Also forces input to be read from standard input,
+and output to be written to standard output.
+.TP 8
+.B -O "filename"
+Read the normal input format, but place the results in
+the alternate format in "filename".  The statistics, etc.,
+are still written to any output file specified in the normal way.
+Useful to prepare output for arrayToCif or other post-processors.
+.TP 8
+.B -s
+Do not generate output for the channel; only print statistics
+for the channel width, number of vias, etc.
+.TP 8
+.B -C
+Do not print the list of cycles in the vertical constraint
+graph.  Channels with many fixed end pins may have thousands
+of cycles.
+.TP 8
+.B -m
+Do not perform metal maximization.
+.SH "SEE ALSO"
+YACR(5OCTTOOLS)
+.SH AUTHOR
+James Reed   Douglas Braun
+.SH DIAGNOSTICS
+The following error messages are all written to stderr.
+.br
+.sp
+.nf
+"net n is not properly routed
+     bad pins are: col1/edge1 .\|.\|.\|"
+.fi
+The verification routine has discovered a problem with the route.
+The pin of net "n" in column "col1" on edge "edge1" was not connected
+to the leftmost pin of net "n".
+This message will only appear when a bug in the code manifests itself.
+If Yacr is unable to provide a correct solution, 
+it will return a non-zero status.
+.PP
+.nf
+"The channel cannot be routed without additional columns,
+ please use the "-a" command line argument."
+.PP
+.nf
+"top_\|list already specified, first list used."
+.fi
+The input file tries to specify the top_\|list portion of the input
+more than once, all lists after the first are ignored.
+There are similar messages for the bottom_\|list, left_\|list,
+right_\|list, nnet, and ncol.

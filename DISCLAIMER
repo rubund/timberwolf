@@ -1,0 +1,12 @@
+The TimberWolf system is still evolving.  Several known problems
+are known to exist.  They will be remedied as soon as possible
+but in the meantime the code is distributed to enable
+interface building.
+
+Known problems include:
+
+1) The ordering of the pseudo pins in mc_route is suboptimal.  Currently,
+this algorithm is being modified.
+
+2) Macro obstacles do not keep out routing when only 1 layer is specified. 
+3) Soft pins may overlap at output.

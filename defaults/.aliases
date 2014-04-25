@@ -1,0 +1,140 @@
+#
+# $Header: aliases.csh,v 1.2 86/11/12 02:15:20 long Exp $
+#
+# Standard YALE CS default ~/.aliases file
+# C Shell command synonyms.
+#
+#
+
+#set noclobber
+
+
+alias	a       alias
+alias   beep	'echo ' 
+alias   cw      'clear;w'
+alias   home    cd
+alias   lo	logout
+alias   maek	make
+alias   msgs    'msgs -fp'
+alias   nocfile 'ls *[abd-gi-z] '
+alias   pev	printenv
+alias   rup     'ruptime -a | more'
+alias   so	source
+alias   sev	setenv
+alias   w  	'w|more'
+alias   where	whereis
+alias   whoami  'whoami -i'
+
+alias	wd      'echo $cwd'
+alias	pwd     'echo $cwd'
+
+alias	m       'more -c'
+alias	list    cat
+
+alias	cp      'cp -i'
+alias	cpdir	'cp -r'
+alias	copy    'cp -i'
+alias	rm      'rm -i'
+alias	del     'rm -i'
+alias	erase	'rm -i'
+alias	rename  'mv -i'
+alias	mv      'mv -i'
+alias   ren	'mv -i'
+alias   move	'mv -i'
+
+alias   k       kill
+alias   j       'jobs -l'
+alias   x       'chmod +x'
+alias   open    'chmod go+r'
+alias	shut    'chmod go-r'
+alias	ff      'home ; find . -name \!* -print ; back'
+alias	h	'if ("\!*" == "") set status=1 &&'\
+		'history | sed -n -e \$q -e /"\!*"/p ||'\
+		 history
+alias	psg     'ps -ax | grep \!* | grep -v grep'
+alias	grep    'grep -n'
+alias	g 	'grep -n \!* *.[yclh]'
+alias	gh 	'grep -n \!* *.[h]'
+
+alias   to      write
+alias   tn      telnet
+alias   koshy	'dlogin koshy'
+alias	robax	'dlogin robax'
+alias   rt1	'rlogin twolf1'
+alias   rt2	'rlogin twolf2'
+alias   rt3	'rlogin twolf3'
+alias   rt5	'rlogin twolf5'
+alias   rt6	'dlogin twolf6'
+alias	v	'setenv DISPLAY vhdl:0'
+
+alias   c	clear
+alias   ftp	'ftp -i'
+alias   psa     'ps aux | m'
+alias   res     'resize \!* >/tmp/rs.$$;source /tmp/rs.$$;\
+		/bin/rm -f /tmp/rs.$$'
+
+alias	cal	'rlogin celray -l calendar'
+alias   411	'sed -n "/\!^/,/^end/p" $home/lib/phone-book | /bin/grep -v end'
+alias   clock   'xclock -fn micr25sx -bg blue -fg white -update 1 =-0+0&'
+
+alias   d	'ls | more'
+alias   ls	'/bin/ls -aCF'
+alias	lc	'ls *.c | more'
+alias	llc	'ls -1 *.c | more'
+alias   dir	"ls -l | grep '^d'"
+alias   l	'/bin/ls -asFl \!* | more'
+alias   sus     suspend
+alias   emacs   '/usr/local/bin/emacs -fg white -bg blue -geometry =82x46+0+28 -cr red'
+# The TimberWolf commands
+alias	tw	'cd ~/TimberWolf; setenv TWDIR `pwd`'
+alias   p	'cd $TWDIR/pgms/\!*/src'
+alias   lib	'cd $TWDIR/pgms/Ylib/lib'
+alias   T	'cd $TWDIR'
+
+# set display environment variable 
+set mydpy = `hostname`
+set tt = `echo $mydpy | sed -e "s/^.*-//" | sed -e "s/\.arpa//"`
+set mydpy = "`echo $tt`:0"
+unset tt
+alias   sd      'setenv DISPLAY `echo $mydpy`'
+
+# directory manipulation...
+set myhst = `hostname`
+set tt = `echo $myhst | sed -e "s/^.*-//" | sed -e "s/\.arpa//"`
+set myhst = "`echo $tt`.`whoami`:"
+unset tt
+alias setprompt 'set prompt = "`echo $myhst``echo $cwd`\\
+(`echo {!}`)>>>"'
+setprompt
+
+alias title 'echo -n "]l \!* " '
+
+if( $?TERM ) then
+    if( $TERM == xterm ) then
+	alias setprompt 'title "`echo $myhst` `echo $cwd`" ; \\
+	set prompt = "`echo $myhst``echo $cwd`\\
+(`echo {!}`)>>>"'
+    setprompt
+    endif
+endif
+
+# directory manipulation...
+set DSSIZE = 10
+if (! $?DS) set DS = (~)
+alias back  \
+    'set xx=$DS[$#DS] DS[$#DS]=$cwd; chdir $xx; unset xx; setprompt'
+alias go    \
+    'set xx=$DS[\!*] DS[\!*]=$cwd; chdir $xx; unset xx; setprompt'
+alias ds    \
+    'echo $DS | tr " " "\012" | cat -n'
+#sys5 requires this mod
+#alias ds    \
+#    'echo $DS | tr " " "\012" | pr -n: -l10'
+alias cd   \
+'if ($#DS >= $DSSIZE) shift DS; set DS = ($DS $cwd);chdir \!*; setprompt'
+alias ov   \
+'if($#DS >= $DSSIZE) shift DS;set DS = ($DS $cwd);chdir ../\!*; setprompt'
+alias up   \
+'if ($#DS >= $DSSIZE) shift DS; set DS = ($DS $cwd);chdir ..; setprompt'
+
+	

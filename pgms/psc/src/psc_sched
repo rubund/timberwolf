@@ -1,0 +1,75 @@
+#! /bin/csh -f
+# Schedules a job on a remote machine.
+
+set numarg = $#argv
+# arguments:directory node program pargs design
+# ############## do not change below this line ################
+onintr problem 
+
+if( $numarg == 6 ) then
+#   rename variables for easier reading.
+    set dir = $1 ;
+    set node = $2 ;
+    set prog = $3 ;
+    set pargs = " " ;
+    set dsn  = $4 ;
+    set flowdir = $5 ;
+    set display = $6 ;
+else if( $numarg == 7 ) then
+#   rename variables for easier reading.
+    set dir = $1 ;
+    set node = $2 ;
+    set prog = $3 ;
+    set pargs = $4 ;
+    set dsn  = $5 ;
+    set flowdir = $6 ;
+    set display = $7 ;
+else 
+    echo "" ;
+    echo "Wrong number of arguments" ;
+    echo "Syntax: $0 <directory> <node> <prog> <progArgs> <design> <flowdir> <display>"
+    echo "" ;
+    exit(1) ;
+endif
+
+#delete old status logs
+/bin/rm -rf $dir/$dsn.$node.ok
+/bin/rm -rf $dir/$dsn.$node.errlog
+/bin/rm -rf /tmp/twsc.foo
+/bin/rm -rf $dir/$dsn.$node.out
+
+if( -e /tmp/twsc.foo ) then
+    echo `/bin/date` > $dir/$dsn.$node.errlog
+    echo "ERROR:could not remove /tmp/twsc.foo on node $node" >> $dir/$dsn.$node.errlog
+    echo "PSC does not have rights.  See system administrator." >> $dir/$dsn.$node.errlog
+    exit(1) ;
+endif
+
+
+# now start up the program detached
+echo "cd $dir; setenv DISPLAY $display; $prog $pargs $dsn $flowdir >& $dir/$dsn.$node.out"
+cd $dir; setenv DISPLAY $display; $prog $pargs $dsn $flowdir >& $dir/$dsn.$node.out
+
+if( $status == 0 ) then 
+    echo `/bin/date` > $dir/$dsn.$node.ok
+else 
+    echo `/bin/date` > $dir/$dsn.$node.errlog
+    echo "ERROR:problems executing TimberWolf." >> $dir/$dsn.$node.errlog
+    echo "See file $dir/$dsn.$node.out for details." >> $dir/$dsn.$node.errlog
+
+endif
+
+# remove lock file and foo file
+/bin/rm -rf /tmp/twsc.$dsn
+/bin/rm -rf /tmp/twsc.foo
+
+exit(0) ;
+
+problem:
+
+echo `/bin/date` > $dir/$dsn.$node.errlog
+# remove lock file and foo file
+/bin/rm -rf /tmp/twsc.$dsn
+/bin/rm -rf /tmp/twsc.foo
+
+exit(1) ;

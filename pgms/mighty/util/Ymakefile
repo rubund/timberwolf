@@ -1,0 +1,96 @@
+# Imakefile for program draw_route
+#  "@(#) Imakefile (Yale) version 1.1 12/16/89 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=draw_route
+
+#where the object code is located
+objdir=.
+O=${objdir}/
+
+SRC= \
+	main.c \
+	grid.c \
+	input.l \
+	input.y \
+	output.c 
+
+OBJ= \
+	${O}main.o \
+	${O}input.o \
+	${O}output.o 
+
+INS= \
+	globals.h
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+
+# how to make draw_route program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+#	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${OBJ}
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${IMAKEFILE}
+${SRC} ${INS} ${IMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+grid : grid.c
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+#	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} -o grid grid.c ${O}date.o ${YALECAD} ${LINKLIB}
+
+# How to compile the sources
+${O}main.o:main.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+${O}input.o:input.y input.l
+	${LEX} input.l
+	${LEXMV} lex.yy.c input.h
+	${YACC} input.y
+	${YACCMV} y.tab.c input.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" input.c > tmp; 	${MV} tmp input.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  input.c
+input.y:
+input.l:
+${O}output.o:output.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output.c
+
+# end makefile

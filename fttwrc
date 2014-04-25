@@ -1,0 +1,5 @@
+# set TW variables in bash shell
+# run by: source fttwrc
+export TWDIR=`pwd`
+export PATH=$PATH:$TWDIR/bin
+export DATADIR=$TWDIR/DATA

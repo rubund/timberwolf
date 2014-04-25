@@ -1,0 +1,46 @@
+#! /bin/csh -f
+#
+# This shell script reverse the order of corners and number of corners specified 
+# to be consistent with analog format and to insure context free language.
+# "%Z% %M% version %I% %G%"
+#
+if $1 != "" then
+    set design = $1
+else 
+    echo "syntax: reverse_corners designName"
+    echo "Make sure TWDIR environment variable is created first"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+onintr problem
+
+set test = ${?TWDIR}
+if $test != 1 then
+    echo ""
+    echo "ERROR:TWDIR environment variable not set"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+set twdir = $TWDIR
+set awkscript = $twdir/bin/reverse_corners.awk
+
+# Test to make sure file exists.
+if( -e ${design}.cel ) then
+    echo " "
+    echo "awk -f ${awkscript} ${design}.cel > ${design}.ncel..."
+    awk -f ${awkscript} ${design}.cel > ${design}.ncel
+    echo "reverse_corners successfully completed..."
+    echo " "
+    exit
+else
+    echo " "
+    echo "ERROR:File ${design}.cel does not exist or could not be opened..."
+    echo " "
+endif
+
+problem :
+echo "Problem:suggestion does TWDIR environment variable exist?"

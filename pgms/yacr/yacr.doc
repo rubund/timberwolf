@@ -1,0 +1,592 @@
+.ce
+.ps +2
+.b "YACR User's Guide"
+.ps -2
+.ce
+For Version 2.1
+.sp 2
+.ce
+James Reed
+.ce
+Douglas Braun
+.ls 1
+.sh 1 "Problem Formulation" 1
+.pp
+The channels that YACR can route have the following characteristics:
+.ip
+i)   a rectangular region with no obstructions,
+but possibly variations in the height of two opposite sides;
+.br
+ii)  two layers to be used for routing, referred to in this guide as "metal"
+and "poly" but the actual material is unimportant;
+.br
+iii) fixed terminals on two opposite edges of the rectangular region,
+called the "top" and "bottom" edges;
+.br
+iv) (optional) terminals on the other two edges, "left" and "right",
+of the rectangular region,
+exact position of these terminals is not specified,
+but order may be specified for one edge, or exact locations
+may be specified for one edge.
+.pp
+All of the routing is done within the boundaries of the rectangular
+region.
+The distance between the top and bottom edges is determined by YACR, but
+will be minimized.
+If fixed end terminals are specified, the width of the channel
+is implicitly determined by the locations of the fixed end terminals.
+The length of the top and bottom edges are given by the user, but in rare
+cases may be extended by YACR to complete the route.
+The top and bottom edges will be extended only by adding empty columns to
+their left or right ends; the spacing between terminals on the top and
+bottom edges will never be altered by YACR.
+.pp
+It is possible to specify variations in the height of the top and bottom edges.
+This is done by specifying the relative distance towards the
+center of the channel for each used or unused terminal position
+on the top and bottom of the channel. 
+When this is done, the top or bottom of the channel can be thought of as
+an irregular manhattan stairstep, with terminals only on the horizontal portions.
+.pp
+YACR is guaranteed to make all of the connections specified in its input,
+unless fixed end terminals are specified,
+in which case it will fail if the channel cannot be routed in the width
+implicitly specified by the side with fixed end terminals.
+The connections to the terminals on the top and bottom edges will be made
+with poly.
+The connections to the terminals on the left and right edges will be made
+with metal.
+.pp
+YACR routes on a symbolic manhattan grid.
+The metal layer is used for almost all routing segments that run parallel
+to the top and bottom edges;  poly is used for almost all
+segments parallel to the left and right edges.
+This choice was made because the length of segments running from top
+to bottom is usually less than the length of segments running from left
+to right and metal has lower resistance than poly.
+.pp
+YACR is a
+.i symbolic
+channel router; it does not specify routing geometries in terms of actual
+dimensions or location on a chip, but shows their relative positions in
+the channel.
+The output is comparable to a stick diagram of a circuit layout.
+.pp
+An interface to the HAWK graphics editor and SQUID data base that translates
+the symbolic output of YACR into physical geometries has been developed.
+For information on how this interface is used see
+.i "User's Guide to Routing in HAWK" .
+.ls 1
+.sh 1 "Yacr Input and Output" 2
+.sh 2 "Yacr Input File Formats"
+.pp
+Yacr can use either of two formats for input.
+The information that is supplied by both formats
+consists of:
+the number of nets to be routed;
+the number of columns in the channel;
+a list of pins that connect to the top edge of the channel;
+a list of pins that connect to the bottom edge of the channel;
+the number of pins that connect to the left edge of the channel;
+the list of pins on the left edge;
+the number of pins that connect to the right edge of the channel; and
+the list of pins on the right edge.
+Two lists of "offsets" may also be specified.
+The list of top offsets gives the relative distance towards the center
+of the channel of each top pin.
+The list of bottom offsets gives the relative distance towards the center
+of the channel of each bottom pin.
+
+First is a description of the default format,
+then the format called for by the "-H" command line argument to Yacr.
+.pp
+The number of nets in the channel is specified with the following line:
+.br
+	nnet= #
+.br
+The number must be separated from the equals sign by at least one white
+space character, a space, a tab, or a newline.
+No other spaces are allowed.
+.pp
+The number of columns in the channel is specified with the following line:
+.br
+	ncol= #
+.br
+As with the number of nets, the only space allowed is between the equals
+sign and the number.
+The space is also required.
+.pp
+The list of pins on the top edge of the channel is begun with the keyword
+"top_\|list".
+The keyword is followed by a white space separated list of numbers,
+representing nets.
+The list must contain "ncol" integers.
+The numbers need not be consecutive.
+"0" is a special number that means "this location has no net connected to it."
+.pp
+The list of pins on the bottom edge of the channel is begun with the
+keyword "bottom_\|list".
+The restriction for the top list also apply to the bottom list.
+.pp
+The list of nets connecting to the left edge of the channel is begun
+with the keyword "left_\|list".
+The keyword is followed by a number telling how many nets there are
+in the left list.
+This is followed by the list of nets.
+If there are no nets connecting to the left edge, this category may be
+omitted.
+By default, the order in which the nets are listed is not meaningful.
+If a specific order is desired, "left_\|list" should be preceeded by the
+keyword "relative".
+The order in which the nets are listed is then the order (from top to bottom)
+in which
+they will appear in the final route.
+If the word "fixed" instead of "relative", then an exact placement of
+the edge nets is specified.
+In this case, the edge list can contain zeroes like the top and bottom
+lists.
+The number of entries in a fixed edge list must be at least equal
+to the inital width of the channel, which is the same as the maximum channel
+density.
+If the list is longer, the inital width of the channel will be increased
+to the length of the list.
+.pp
+The list of nets connecting to the right edge of the channel is begun
+with the keyword "right_\|list".
+This category is exactly like the left list category.
+An important restriction to note is that relative or fixed
+order can be specified for only the left list
+.U or
+the right list.
+If it is specified for both,
+it will only be meaningful for the one that appears second in the
+input file.
+.pp
+The optional list of offsets for the top pins of the channel is
+begun with the keyword "top_\|offset".
+It is followed by the list of offsets, 
+which must contain "ncol" integers.
+Each entry gives the relative distance towards the center of
+the channel of the corresponding pin location or channel boundary,
+in grid units.
+The offsets normally range from zero upwards (with nonzero
+values representing an indentation into the side of the channel),
+but the values are internally scaled, so only the relative values
+matter.
+If all the values are identical,
+the top border of the channel is straight, and the results obtained
+will be the same as if no offsets were specified.
+.pp
+The list of offsets for the bottom pins is begun
+with the keyword "bottom_\|offsets", and
+is similar to the list of top offsets.
+Note that a positive value still means that the corresponding
+pin or channel border is moved closer to
+the center of the channel.
+One or both of the offset lists may be omitted.
+.pp
+The "-H" format is identical to the default format except that all
+keywords are omitted (except "relative" and "fixed") and
+all categories must be
+included in the following order:
+.br
+	number of nets
+.br
+	number of columns
+.br
+	top list
+.br
+	bottom list
+.br
+	left list
+.br
+	right list
+.br
+	top offsets (optional)
+.br
+	bottom offsets (optional)
+.pp
+The left list and the right list must be included, if there are no
+nets connecting to the edge of the channel, the list will be
+a single "0".
+The file will contain nothing but integers separated by white space,
+unless the keyword relative is included for the left or right list.
+The top and bottom offsets may be omitted if the sides of the channel
+have no indentations.
+.sh 2 "Yacr Output File Formats"
+.pp
+Just as there are two input formats, there are two output formats.
+One corresponds to the default input format and the other is used
+with the "-H" flag or "-O" flag.
+The default format is described first, then the differences between
+it and the -H format follows.
+.pp
+The file begins with the following information:
+input file; number of nets; number of columns; number of nets in the left
+list; number of nets in the right list;
+a list of edges removed from the vertical constraint graph to make it acyclic
+(if any);
+a list of columns with maximum density;
+a list of columns that appear to be the best choices for starting column;
+and the actual starting column.
+.pp
+The next section of the output contains a block for each "major attempt"
+Yacr makes at routing the channel.
+Each block has the number of rows used for the attempt, 
+followed by a list of vertical constraint violations (VCVs) that
+occurred, followed by a list of how each VCV column was routed
+(if it was).
+If a row was added to complete the route without starting over,
+that is included at the end of the last block.
+.pp
+The next and most important section gives the routing of the channel.
+The horizontal (metal) layer is given first, followed by the
+vertical (poly) layer.
+Each layer is described by a matrix of integers.
+Each row in the matrix represents a column in the channel
+(this keeps the lines shorter so a printout is easier to read).
+There are rows to represent the left and right edges of the channel;
+the extra rows are used to indicate nets that connect to the edges.
+Each integer in the matrices represents the net that occupies a given space
+in the grid.
+"0" means the space is empty.
+If offsets were specified,
+spaces that correspond to indentations in the channel
+(where no material can be placed) are represented by "X".
+Vias are not explicitly given, but implied at each location that
+the metal layer has the same net as the poly layer.
+.pp
+Finally, there is a summary that tells the number of vias used in the route,
+the total net length of all the nets, the longest net, and how much
+metal and poly were used to route the longest net.
+.pp
+The "-H" output format contains a minimum amount of information.
+It contains no keywords, just integers.
+The first two lines have the number of rows and columns, respectively,
+in the channel.
+The next row is the top row of the metal layer of the channel, listed
+from left to right.
+The entire metal layer is given followed by the poly layer.
+There are no extra columns representing the edges of the channel.
+The last line of the file has three integers, the first is the
+number of the net with the longest route, the amount of metal used
+to route it, and the amount of poly used to route it.
+Spaces inside indentations are now represented by a "0".
+.sh 2 Examples
+.ls 1
+.sh 3 "Example 1, Input (Default Format)"
+.nf
+nnet= 2 ncol= 3
+top_\|list
+  2 0 1
+bottom_\|list
+  1 0 2
+.sh 3 "Example 1, Output (Default Format)"
+.nf
+Input file: ex/2
+
+num_\|nets= 2, num_\|cols= 3, num_\|left_\|nets= 0, num_\|right_\|nets= 0
+Not closing cycle with edge from 1 to 2
+Columns with maximum density:  1
+Best choice(s) for starting column is (are):  1
+initial_\|column = 1
+num_\|rows = 2
+VCV: nets  1  2, column   3
+column 3 was not routed
+Row 1 is being used to complete the route.
+The final result is:
+
+The horizontal layer (turned sideways):
+  0  0  0  col =   0
+  0  2  2  col =   1
+  0  2  0  col =   2
+  0  2  0  col =   3
+  0  0  0  col =   4
+
+The vertical layer (turned sideways):
+  0  0  0   col =   0
+  1  0  2   col =   1
+  1  1  1   col =   2
+  2  2  1   col =   3
+  0  0  0   col =   4
+
+There are 2 vias
+The total net_\|length is 12
+The longest net is 2, metal length = 4, poly length = 3
+
+.sh 3 "Example 2, Input (Default Format)"
+.nf
+nnet= 72 
+ncol= 169  
+top_\|list
+  1  2  4  6  8 10 11 13  3  9 16  5 17 11  5 14 14  7 12 17 19  1 20 21
+ 23 24  0 16 10  3 11 25  0 26 11 26 11  0 27 28 11  3  9 16 30 27  5 31
+  1  5  1 20 32 23 24  0  9  1 20 29 23 24  0  3  8 30 38 28 19  6 40 27
+ 35 41 42  6 19 34 43 30  8 31 43 39 46 36 46 47 48 31  0 24 23 45 20  1
+ 51  0 40 39 40 39  0  8 30 50 54  0  0 55 49 19  6  0 47 42 47 42  0 53
+ 58  6 19 49 50 30  8 60 62 59 54 55 54 56 63 55 65  0 66 68 66 68  0 60
+ 68  0 46 44 46 44  0 69  0 55 58 55 58  0 64 71  0 72 63 72 63  0 57 62
+ 54 
+bottom_\|list
+  0  3  5  7  9  5 12 14 15  7 12 14  7  4 13  8  6 15 18 14  8  6 11 22
+ 21  0 18 16 18 16  0  8  6 26 11  0 24 23 25 20  1 29  0 22  3 22  3  0
+  0  9  2  9  2  0 32 23 33 19  6  8 30 27 34 35 36 37 39 31 39 35 38 31
+  8 30 37 41 19  6 44 45  0 33 31 33 31  0 27 35 36 48 49 31 39 46 47 50
+ 52 20 53 24  0 47 39  0 24 51 20 52 20 52 23  8 30 50 56  0  0 57 49 19
+  6  6 19 49 59  0  0 61 50 30  8 55  0 24 64 20 52  0 67 68 63 55 24 52
+ 20 69 24  0 46 62 63 68  0 24 65 20 52  0 70 60 62 54 63  0 24 71 20 52
+ 67
+relative right_\|list 6
+68 55 63 70 67 61
+top_\|offsets
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  1  1  1  1  5  5  5  5  5  5  5  5  5  4  4  4  4  4  4  4  4  4  4  4
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  1
+bottom_\|offsets
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  0  0  0  0  1  1  1  3  3  3  3  3  3  3  3  3  3  3  2  2  2  2  2  2
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  2  2  2  2  2  2  2  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1
+  1  1  1  1  5  5  5  5  5  5  5  5  5  4  4  4  4  4  4  4  4  4  4  4
+  4
+.ls 1
+.br
+.sh 1 "Running YACR" 3
+.sh 2 Description
+.pp
+YACR2 is run with the following command:
+.ce
+yacr [options] [file1 [file2]\|]
+.br
+File1 contains the input, file2 gets the output.
+If file2 is omitted, the output goes to standard out.
+If no files are specified, input is read from standard input,
+and output goes to standard output.
+.pp
+The command line options described below can be specified in any
+order, but must come before the input and output file names.
+.ip -a
+Add columns at the ends of the channel if necessary to complete
+the route.
+By default columns are not added,
+but if the channel has cyclic constraints, additional columns
+may be necessary.
+If
+.i yacr
+cannot complete a route, it will give a message recommending
+that this flag be used.
+.ip "-c n"
+Begin routing the channel starting in column "n".
+If this is not specified,
+or if "n" is less than one or greater than the number of columns
+in the channel,
+.i yacr
+will chose a starting column.
+If the left_\|list or right_\|list is specified in "relative"
+or "fixed" order,
+the "-c" option will be ignored.
+.ip -d
+Sets the debug flag so that the channel will be printed
+(in the desired format)
+at the following times:
+when the current number of rows is found to be insufficient;
+when the route is completed, before metal maximization and cleanup;
+after metal maximization and cleanup.
+Useful only for debugging purposes.
+.ip -H
+Use an alternate input and output format.
+Also forces input to be read from standard input,
+and output to be written to standard output.
+.ip "-O filename"
+Read the normal input format, but place the results in the
+alternate format in "filename".
+The statistics, etc., are still written to any output
+file specified in the normal way.
+Useful to prepare output for arrayToCif or other post-processors.
+.ip -s
+Do not generate output for the channel;
+only print statistics for the channel width, number of vias, etc.
+.ip -C
+Do not print the list of cycles in the vertical constraint graph.
+Channels with many fixed end pins may have thousands of cycles.
+.ip -m
+Do not perform metal maximization.
+.sh 2 Diagnostics
+.pp
+The following error messages are all written to stderr.
+Yacr will return a nonzero exit status if there is any fatal error.
+.sp
+.nf
+"net n is not properly routed
+     bad pins are: col1/edge1 .\|.\|.\|"
+.fi
+The verification routine has discovered a problem with the route.
+The pin of net "n" in column "col1" on edge "edge1" was not connected
+to the leftmost pin of net "n".
+This message will only appear when a bug in the code manifests itself.
+.pp
+.nf
+"The channel cannot be routed without additional columns,
+ please use the "-a" command line argument."
+.fi
+The channel has cyclic constraints that cannot be routed in the
+space provided.
+This has not happened on any of the hundreds of industrial channels
+routed by YACR to date.
+.pp
+.nf
+"top_\|list already specified, first list used."
+.fi
+The input file tries to specify the top_\|list portion of the input
+more than once, all lists after the first are ignored.
+There are similar messages for the bottom_\|list, left_\|list,
+right_\|list, nnet, and ncol.
+.sh 2 "Suggestions for Best Results"
+.pp
+The best suggestion that can be given here is:  Let YACR make as many
+decisions as possible.
+There are two ways in which the user may make decisions for YACR, either
+by specifying that the left_\|list or right_\|list is "relative" or
+"fixed", or by
+specifying the starting column with the "-c" command line argument.
+One decision that the user should make for YACR is whether or not it
+should be allowed to add columns to the channel ends to complete the route.
+.uh "Relative Order"
+.pp
+If the left_\|list or right_\|list is given a specfic order YACR will almost
+always require more rows for routing that if the order was not given.
+This happens for two reasons:  first, there are more restrictions that must
+be met by the final route; and second, in order to guarantee the restrictions
+are met, YACR must begin routing at either the left or right end of the
+channel (usually a bad place to start).
+If a fixed left or right list is given, there will be
+even more restrictions. 
+Also, if there are fixed end pins,
+the channel width will not be automatically expanded
+if Yacr fails to route. In this case, it is
+necessary to restart the problem, with another row
+specified by placing it in the list of fixed end pins.
+Remember that the list of fixed end pins must be at
+least as large as density.
+.uh "Use of -c"
+.pp
+Most of the time that YACR is allowed to choose its starting column
+it will route a channel in density.
+Occasionally, a small number of extra rows will be required to complete the
+route.
+Since the number of rows needed for the route will vary by one or two
+depending on which column YACR started with, the user can sometimes
+get YACR to route a channel in density by forcing it to begin in a column
+it would not normally choose.
+.pp
+Note that if the pins on the left or right edge have a specified order,
+the user is already forcing YACR to start in the first or last column.
+.pp
+The YACR output file contains information that is useful in picking a
+starting column that might be better than the column YACR chose.
+Consider the following portion of a YACR output file (only the routing
+of the channel is omitted):
+.nf
+.in +.5i
+.ls 1
+Input file: ex/3c
+num_\|nets= 54, num_\|cols= 103, num_\|left_\|nets= 0, num_\|right_\|nets= 0
+Columns with maximum density:  58 69
+Best choice(s) for starting column is (are):  58 69
+initial_\|column = 58
+num_\|rows = 18
+VCV: nets 38 45, column  71
+VCV: nets 21 45, column  63
+VCV: nets 21 24, column  75
+column 75 was routed by maze1a
+column 63 was not routed
+column 71 was not routed
+Row 1 is being used to complete the route.
+.in -.5i
+.sp
+.ls 1
+.fi
+In this example YACR was allowed to choose a starting column.
+It chose column 58, and ended up with two
+vertical constraint violations (VCVs)
+(in columns 63 and 71) that it could not remove.
+We could hope for better results by forcing YACR to start in any of
+columns 69, 63, or 71.
+We might choose 69 because YACR said it might be a good choice, or
+we might choose 63 or 71 in hopes that a difficult-to-remove
+VCV would be avoided.
+If we choose to force YACR to start routing in column 63 (with the
+command "yacr -c 63 inputfile outputfile") we get the following results.
+.nf
+.in +.5i
+.ls 1
+Input file: ex/3c
+num_\|nets= 54, num_\|cols= 103, num_\|left_\|nets= 0, num_\|right_\|nets= 0
+Columns with maximum density:  58 59 69 70
+initial_\|column = 63
+num_\|rows = 18
+VCV: nets 41 26, column  72
+VCV: nets 49 35, column  90
+column 72 was routed by maze2
+column 90 was routed by maze2
+.sp
+.ls 1
+.in -.5i
+.fi
+With the forced starting column YACR was able to route the channel in density.
+.pp
+There are several interesting things should be pointed out about the two
+output files.
+Notice that the first one lists 58 and 69 as the columns with maximum density
+and the second lists colums 58, 59, 69, and 70.
+This is not a contradiction, in this example columns 58 and 59 are
+crossed by the same nets (the same is true of columns 69 and 70).
+If YACR began routing in either column 58 or 59, it would achieve exactly
+the same results, so it removes all but one of the redundant columns from
+consideration.
+When the user specifies a starting column, YACR does not waste time
+figuring out if adjacent columns of maximum density are identical.
+.pp
+The other interesting fact is that there were not only a different number
+of columns with vertical constraint violations, but the columns were
+totally different when YACR began routing in a different column.
+.uh "Irregular Channels"
+.pp
+Yacr can handle channels with irregular sides.
+This is done by specifying the top and bottom offset lists
+in the input.
+Some points must be remembered.
+First, the offsets apply to the places where there are no pins,
+as well as the columns with pins.
+Second, if fixed end pins are specified at the same time as
+irregular edges, the horizontal segments of the fixed pins
+must not run into the indentations.
+Yacr will fail if this happens.
+Last,
+Yacr was only designed to handle relatively small indentations.
+If the effect of the indentations is to give the channel
+a zig-zag shape, and there are nets that span a large portion
+of the channel, Yacr will use more tracks than necessary.
+This is because Yacr does not dogleg nets, so the nets
+cannot bend to get around the indentations.
+.uh "Use of -a"
+.pp
+There are some cases in which YACR will think it needs extra columns, but
+could actually complete the route by adding only rows.
+Since the times when YACR really needs extra rows are rare (it has not yet
+happend in a industrial example), you should only use the "-a" command
+line argument after YACR tells you it is necessary.
+.sh 2 "Reed's Rule of Routing"
+.pp
+Routers do weird things.
+.pp
+When looking at the output of YACR (or any other router) it
+is always a good idea to keep in mind
+this variant of the widely known Murphy's law.

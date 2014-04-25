@@ -1,0 +1,301 @@
+# Ymakefile for program Tomus
+#  "@(#)%main.c(Yale) version % /12/91" 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=Tomus
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	acceptt.c \
+	b_sort.c \
+	cluster.c \
+	dimbox.c \
+	findcost.c \
+	gr.c \
+	hash.c \
+	init_cost.c \
+	lib.c \
+	main.c \
+	maindraw.c \
+	mergetile.c \
+	newtemp.c \
+	output.c \
+	paint.c \
+	partition.c \
+	paths.c \
+#ifdef YALE \
+	readcell.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readcell.y \
+#else /* YALE */ \
+	readcell.c \
+#endif /* YALE */ \
+#ifdef YALE \
+	readmver.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readmver.y \
+#else /* YALE */ \
+	readmver.c \
+#endif /* YALE */ \
+#ifdef YALE \
+	readnets.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readnets.y \
+#else /* YALE */ \
+	readnets.c \
+#endif /* YALE */ \
+	readpar.c \
+	set_limits.c \
+	sortpin.c \
+	tilecost.c \
+	tilepenal.c \
+	ucxx1.c \
+	ucxx2.c \
+	uloop.c \
+	ulp_end.c \
+	ulp_util.c \
+	utemp.c 
+
+OBJ= \
+	${O}acceptt.o \
+	${O}b_sort.o \
+	${O}cluster.o \
+	${O}dimbox.o \
+	${O}findcost.o \
+	${O}gr.o \
+	${O}hash.o \
+	${O}init_cost.o \
+	${O}lib.o \
+	${O}main.o \
+	${O}maindraw.o \
+	${O}mergetile.o \
+	${O}newtemp.o \
+	${O}output.o \
+	${O}paint.o \
+	${O}partition.o \
+	${O}paths.o \
+	${O}readcell.o \
+	${O}readmver.o \
+	${O}readnets.o \
+	${O}readpar.o \
+	${O}set_limits.o \
+	${O}sortpin.o \
+	${O}tilecost.o \
+	${O}tilepenal.o \
+	${O}ucxx1.o \
+	${O}ucxx2.o \
+	${O}uloop.o \
+	${O}ulp_end.o \
+	${O}ulp_util.o \
+	${O}utemp.o 
+
+INS= \
+	date.h \
+	dialog.h \
+	dialogpart.h \
+	main.h \
+	menus.h \
+	parser.h \
+	readcell.h \
+	readmver.h \
+	readnets.h \
+	standard.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make Tomus program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make Tomus lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}acceptt.o:acceptt.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  acceptt.c
+	${MV} acceptt.o ${O}acceptt.o
+${O}b_sort.o:b_sort.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  b_sort.c
+	${MV} b_sort.o ${O}b_sort.o
+${O}cluster.o:cluster.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  cluster.c
+	${MV} cluster.o ${O}cluster.o
+${O}dimbox.o:dimbox.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  dimbox.c
+	${MV} dimbox.o ${O}dimbox.o
+${O}findcost.o:findcost.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  findcost.c
+	${MV} findcost.o ${O}findcost.o
+${O}gr.o:gr.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  gr.c
+	${MV} gr.o ${O}gr.o
+${O}hash.o:hash.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  hash.c
+	${MV} hash.o ${O}hash.o
+${O}init_cost.o:init_cost.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  init_cost.c
+	${MV} init_cost.o ${O}init_cost.o
+${O}lib.o:lib.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  lib.c
+	${MV} lib.o ${O}lib.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}maindraw.o:maindraw.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  maindraw.c
+	${MV} maindraw.o ${O}maindraw.o
+${O}mergetile.o:mergetile.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  mergetile.c
+	${MV} mergetile.o ${O}mergetile.o
+${O}newtemp.o:newtemp.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  newtemp.c
+	${MV} newtemp.o ${O}newtemp.o
+${O}output.o:output.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output.c
+	${MV} output.o ${O}output.o
+${O}paint.o:paint.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  paint.c
+	${MV} paint.o ${O}paint.o
+${O}partition.o:partition.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  partition.c
+	${MV} partition.o ${O}partition.o
+${O}paths.o:paths.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  paths.c
+	${MV} paths.o ${O}paths.o
+#ifdef YALE
+${O}readcell.o:readcell.y readcell.l
+	${LEX} readcell.l
+	${LEXMV} lex.yy.c readcell_l.h
+	${YACC} readcell.y
+	${YACCMV} y.tab.c readcell.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readcell.c > tmp; 	${MV} tmp readcell.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcell.c
+	${MV} readcell.o ${O}readcell.o
+readcell.y:
+readcell.l:
+#else  /* YALE */ 
+${O}readcell.o:readcell.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcell.c
+	${MV} readcell.o ${O}readcell.o
+#endif /* YALE */ 
+#ifdef YALE
+${O}readmver.o:readmver.y readmver.l
+	${LEX} readmver.l
+	${LEXMV} lex.yy.c readmver_l.h
+	${YACC} readmver.y
+	${YACCMV} y.tab.c readmver.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readmver.c > tmp; 	${MV} tmp readmver.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readmver.c
+	${MV} readmver.o ${O}readmver.o
+readmver.y:
+readmver.l:
+#else  /* YALE */ 
+${O}readmver.o:readmver.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readmver.c
+	${MV} readmver.o ${O}readmver.o
+#endif /* YALE */ 
+#ifdef YALE
+${O}readnets.o:readnets.y readnets.l
+	${LEX} readnets.l
+	${LEXMV} lex.yy.c readnets_l.h
+	${YACC} readnets.y
+	${YACCMV} y.tab.c readnets.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readnets.c > tmp; 	${MV} tmp readnets.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readnets.c
+	${MV} readnets.o ${O}readnets.o
+readnets.y:
+readnets.l:
+#else  /* YALE */ 
+${O}readnets.o:readnets.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readnets.c
+	${MV} readnets.o ${O}readnets.o
+#endif /* YALE */ 
+${O}readpar.o:readpar.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readpar.c
+	${MV} readpar.o ${O}readpar.o
+${O}set_limits.o:set_limits.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  set_limits.c
+	${MV} set_limits.o ${O}set_limits.o
+${O}sortpin.o:sortpin.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  sortpin.c
+	${MV} sortpin.o ${O}sortpin.o
+${O}tilecost.o:tilecost.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  tilecost.c
+	${MV} tilecost.o ${O}tilecost.o
+${O}tilepenal.o:tilepenal.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  tilepenal.c
+	${MV} tilepenal.o ${O}tilepenal.o
+${O}ucxx1.o:ucxx1.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ucxx1.c
+	${MV} ucxx1.o ${O}ucxx1.o
+${O}ucxx2.o:ucxx2.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ucxx2.c
+	${MV} ucxx2.o ${O}ucxx2.o
+${O}uloop.o:uloop.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  uloop.c
+	${MV} uloop.o ${O}uloop.o
+${O}ulp_end.o:ulp_end.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ulp_end.c
+	${MV} ulp_end.o ${O}ulp_end.o
+${O}ulp_util.o:ulp_util.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ulp_util.c
+	${MV} ulp_util.o ${O}ulp_util.o
+${O}utemp.o:utemp.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  utemp.c
+	${MV} utemp.o ${O}utemp.o
+
+# end makefile

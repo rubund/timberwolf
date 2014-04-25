@@ -1,0 +1,148 @@
+# Ymakefile for program twflow
+#  "@(#) Ymakefile (Yale) version 2.6 3/12/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=twflow
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	autoflow.c \
+	findflow.c \
+	graphics.c \
+	io.c \
+	main.c \
+#ifdef YALE \
+	readobjects.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readobjects.y \
+#else /* YALE */ \
+	readobjects.c \
+#endif /* YALE */ 
+	program.c
+
+OBJ= \
+	${O}autoflow.o \
+	${O}findflow.o \
+	${O}graphics.o \
+	${O}io.o \
+	${O}main.o \
+	${O}program.o \
+	${O}readobjects.o 
+
+INS= \
+	globals.h \
+	menus.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make twflow program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:
+	-${S}if( test -d ${XLIB}${NOGRAPHICS} ) then \
+		echo " " ; \
+		echo "Note:found ${XLIB}"; \
+		echo "making version with XWindow graphics..." ;\
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+			CLEANUP=${CLEANUP} NOGRAPHICS=${NOGRAPHICS} \
+			UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} ;\
+		echo " " ; \
+	else \
+		echo " " ; \
+		echo "Note:didn't find ${XLIB} or NOGRAPHICS requested"; \
+		echo "making version without XWindow graphics..." ; \
+		make ${DEST}${PNAME} GETDATE= CC=${CC} \
+			CLEANUP=${CLEANUP} NOGRAPHICS=-DNOGRAPHICS \
+			UNIX=${UNIX} DEBUG=${DEBUG} YALECAD=${YALECAD} \
+			CFLAGS="${CFLAGS}" LINKLIB="${LINKLIB}" ;\
+	fi ;  
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make twflow lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}autoflow.o:autoflow.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  autoflow.c
+	${MV} autoflow.o ${O}autoflow.o
+${O}findflow.o:findflow.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  findflow.c
+	${MV} findflow.o ${O}findflow.o
+${O}graphics.o:graphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graphics.c
+	${MV} graphics.o ${O}graphics.o
+${O}io.o:io.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  io.c
+	${MV} io.o ${O}io.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}program.o:program.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  program.c
+	${MV} program.o ${O}program.o
+#ifdef YALE
+${O}readobjects.o:readobjects.y readobjects.l
+	${LEX} readobjects.l
+	${LEXMV} lex.yy.c readobjects_l.h
+	${YACC} readobjects.y
+	${YACCMV} y.tab.c readobjects.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readobjects.c > tmp; 	${MV} tmp readobjects.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readobjects.c
+	${MV} readobjects.o ${O}readobjects.o
+readobjects.y:
+readobjects.l:
+#else  /* YALE */ 
+${O}readobjects.o:readobjects.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readobjects.c
+	${MV} readobjects.o ${O}readobjects.o
+#endif /* YALE */ 
+
+# end makefile

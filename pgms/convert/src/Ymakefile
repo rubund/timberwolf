@@ -1,0 +1,108 @@
+# Ymakefile for program convert
+#  "@(#) Ymakefile (Yale) version 1.13 2/23/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=convert
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+#ifdef YALE
+	convert.l \
+#endif /* YALE */ \
+#ifdef YALE
+	convert.y \
+#endif /* YALE */ \
+	main.c \
+	pads.c 
+
+OBJ= \
+	${O}convert.o \
+	${O}main.o \
+	${O}pads.o 
+
+INS= \
+	globals.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make convert program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make convert lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+#ifdef YALE
+${O}convert.o:convert.y convert.l
+	${LEX} convert.l
+	${LEXMV} lex.yy.c convert_l.h
+	${YACC} convert.y
+	${YACCMV} y.tab.c convert.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" convert.c > tmp; 	${MV} tmp convert.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  convert.c
+	${MV} convert.o ${O}convert.o
+convert.y:
+convert.l:
+#else  /* YALE */ 
+${O}convert.o:convert.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  convert.c
+	${MV} convert.o ${O}convert.o
+#endif /* YALE */ 
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}pads.o:pads.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  pads.c
+	${MV} pads.o ${O}pads.o
+
+# end makefile

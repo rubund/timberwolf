@@ -1,0 +1,220 @@
+# Ymakefile for program TimberWolfDR
+#  "@(#) Ymakefile (Yale) version 6.5 2/5/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=TimberWolfDR
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	allocate.c \
+	append.c \
+	assign.c \
+	cycle.c \
+	density.c \
+	graph.c \
+	impr0.c \
+	impr1.c \
+	impr2.c \
+	impr3.c \
+	impr4.c \
+#ifdef YALE \
+	input.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	input.y \
+#else /* YALE */ \
+	input.c \
+#endif /* YALE */ \
+	level.c \
+	link.c \
+	macro.c \
+	main.c \
+	memory.c \
+	misc.c \
+	obstacle.c \
+	output.c \
+	path.c \
+	pins.c \
+	post.c \
+	sched.c \
+	stack.c 
+
+OBJ= \
+	${O}allocate.o \
+	${O}append.o \
+	${O}assign.o \
+	${O}cycle.o \
+	${O}density.o \
+	${O}graph.o \
+	${O}impr0.o \
+	${O}impr1.o \
+	${O}impr2.o \
+	${O}impr3.o \
+	${O}impr4.o \
+	${O}input.o \
+	${O}level.o \
+	${O}link.o \
+	${O}macro.o \
+	${O}main.o \
+	${O}memory.o \
+	${O}misc.o \
+	${O}obstacle.o \
+	${O}output.o \
+	${O}path.o \
+	${O}pins.o \
+	${O}post.o \
+	${O}sched.o \
+	${O}stack.o 
+
+INS= \
+	mighty.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make TimberWolfDR program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make TimberWolfDR lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}allocate.o:allocate.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  allocate.c
+	${MV} allocate.o ${O}allocate.o
+${O}append.o:append.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  append.c
+	${MV} append.o ${O}append.o
+${O}assign.o:assign.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  assign.c
+	${MV} assign.o ${O}assign.o
+${O}cycle.o:cycle.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  cycle.c
+	${MV} cycle.o ${O}cycle.o
+${O}density.o:density.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  density.c
+	${MV} density.o ${O}density.o
+${O}graph.o:graph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graph.c
+	${MV} graph.o ${O}graph.o
+${O}impr0.o:impr0.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  impr0.c
+	${MV} impr0.o ${O}impr0.o
+${O}impr1.o:impr1.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  impr1.c
+	${MV} impr1.o ${O}impr1.o
+${O}impr2.o:impr2.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  impr2.c
+	${MV} impr2.o ${O}impr2.o
+${O}impr3.o:impr3.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  impr3.c
+	${MV} impr3.o ${O}impr3.o
+${O}impr4.o:impr4.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  impr4.c
+	${MV} impr4.o ${O}impr4.o
+#ifdef YALE
+${O}input.o:input.y input.l
+	${LEX} input.l
+	${LEXMV} lex.yy.c input_l.h
+	${YACC} input.y
+	${YACCMV} y.tab.c input.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" input.c > tmp; 	${MV} tmp input.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  input.c
+	${MV} input.o ${O}input.o
+input.y:
+input.l:
+#else  /* YALE */ 
+${O}input.o:input.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  input.c
+	${MV} input.o ${O}input.o
+#endif /* YALE */ 
+${O}level.o:level.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  level.c
+	${MV} level.o ${O}level.o
+${O}link.o:link.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  link.c
+	${MV} link.o ${O}link.o
+${O}macro.o:macro.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  macro.c
+	${MV} macro.o ${O}macro.o
+${O}main.o:main.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  main.c
+	${MV} main.o ${O}main.o
+${O}memory.o:memory.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  memory.c
+	${MV} memory.o ${O}memory.o
+${O}misc.o:misc.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  misc.c
+	${MV} misc.o ${O}misc.o
+${O}obstacle.o:obstacle.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  obstacle.c
+	${MV} obstacle.o ${O}obstacle.o
+${O}output.o:output.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  output.c
+	${MV} output.o ${O}output.o
+${O}path.o:path.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  path.c
+	${MV} path.o ${O}path.o
+${O}pins.o:pins.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  pins.c
+	${MV} pins.o ${O}pins.o
+${O}post.o:post.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  post.c
+	${MV} post.o ${O}post.o
+${O}sched.o:sched.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  sched.c
+	${MV} sched.o ${O}sched.o
+${O}stack.o:stack.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stack.c
+	${MV} stack.o ${O}stack.o
+
+# end makefile

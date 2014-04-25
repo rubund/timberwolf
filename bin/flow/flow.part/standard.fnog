@@ -1,0 +1,56 @@
+numobjects 5
+
+pobject edit_twfiles 1: 0
+path  : 
+drawn : 450 850 750 950
+edge 0:
+ifiles:
+ofiles: $.par
+args  : $
+drawn : 600 950 600 1050
+	600 950 620 970
+	600 950 580 970
+
+pobject Mincut 2: 1
+path  : 
+drawn : 450 650 750 750
+edge 1: 
+ifiles: $.cel $.stat
+ofiles: $.mcel $.scel
+args  : $
+drawn : 600 750 600 850
+	600 750 620 770
+	600 750 580 770
+
+pobject TimberWolfMC 3: 2
+path  : 
+drawn : 450 450 750 550
+edge 2: 
+ifiles: $.mcel $.mpar
+ofiles: $.mdat
+args  : -n $
+drawn : 600 550 600 650
+	600 550 620 570
+	600 550 580 570
+
+pobject Tomus 4: 3
+path  :
+drawn : 450 250 750 350
+edge 3: 
+ifiles: $.mdat $.mver $.cel $.par
+ofiles: $.pout $.pcel
+args  : -w $ @WINDOWID
+drawn : 600 350 600 450
+	600 350 620 370
+	600 350 580 370
+
+pobject PSC 5: 4
+path  :
+drawn : 450  50 750 150
+edge 4: 
+ifiles: $.par
+ofiles: 
+args  : -n $ @FLOWDIR
+drawn : 600 150 600 250
+	600 150 620 170
+	600 150 580 170

@@ -1,0 +1,201 @@
+
+   This version of YACR sought to improve routine performance through the
+compaction of channel area, as measured through channel width. A secondary
+consideration was the reduction of system runtime in the routing of channels.  
+
+   A modification of the cost functions were used to realize the proposed
+improvements. In YACR, the routing of irregular channels is accomodated by the
+emulation of a wider channel. However, this places no constraints on the row
+in which a net is placed, other than the specification of legal placements.
+That is, indentations are utilized as an extension of the channel. The
+modification to YACR approached indentations from a different vantage point.
+Nets may now be classified into two divisions: 1) those that may fit into an
+indentation and 2) those that must lie in a track in the main thoroughfare. By
+placing partial constraints on nets in group 1, the weighting of net costs
+across channels was achieved. Through this, a net in group 1 has more
+probability to be placed in an indentation, thus increasing the likelihood of
+a more elegant route with less channel area. Also, since this decreases
+iteration of row addition, execution time also becomes optimized.  
+
+-------------------------------------------------------------------------------
+
+			Density calculations for YACR
+
+
+modified by H. Sheng 6/88
+
+   The density calculations for YACR were changed to reflect a more accurate
+estimation of a lower bound for channel width. The channel may be divided into
+a grid-like structure. The fixed pins are located on the top an bottom edges.
+The left and right edges may also contain either fixed or floating
+constraints. The density of a channel is defined as an absolute lower bound on
+the width of that channel in order for it to be successfully routed. For a
+channel with straight sides, this is an easy quantity to determine. The local
+density is the number of nets crossing a column. The global density is the
+maximum value of the local densities across the channel. The density of the
+channel, then, is the global density.  
+
+   For irregular channels, finding an absolute lower bound becomes more
+complicated than in the case of straight edges. It would be nice, however, to
+have a general algorithm that reduces to the one given above in the special
+case. Previously, the algorithm YACR implemented was basically the same as
+above. However, the top and bottom offsets of the edges were also added to the
+local density. However, this underestimates the real minimum on channel width
+in many cases. For instance, there are many indentations where no nets may be
+placed. Thus, this should increment the density. However, this was not taken
+into account. 
+
+   The revised density calculations reveal a generalization of the previous
+approach to regular channels. This algorithm assumes first a regular channel.
+Then, as nets with the ability to be placed in indentations are discovered,
+the densities are decreased. When all the possible indentations are filled, or
+all the nets have been inserted into indentations, the density is given.  Thus
+the calculation is as follows: 
+
+	density = max_top_offset + max_bottom_offset 
+                  + number of nets
+                  - min(number of nets able to be placed in an indentation,
+                        depth of indentation)
+
+
+** if all horizontal net segments are able to be placed in indentations, the 
+   density of a column will reflect the smallest possible value of width. That
+   is, the column will be compacted as much as possible to find its density.
+
+   For straight channels, the first two terms, along with the last, are NULL
+valued. No nets can fit into any indentations. Thus, the only contributing
+factor in the calculation of density is the number of nets - which is the same
+as before, in the special case. 
+
+   For irregular channels, it is easy to see that this will give a good
+estimate on the number of rows needed for routing. Since many nets may be
+placed into indentations, the density would be less than in the case of
+straight channel (which entails the first three terms of the previous
+equation). The magnitude of this difference is modeled by the last term. 
+
+
+Accomodation of partial end constraints:
+Implementation: 6-27-88  H. Sheng
+
+   Channel routing is a technique of decomposing a large, complex problem into
+many smaller subproblems. Specifically, channel routing arises in the problem
+of routing the interconnections of standard cell layouts. The advantages of
+decomposition lie in the simplification of the problem. This also brings about
+a reduction in the degrees of freedom for a solution. In most cases, this is a
+good idea. However, it leaves out information that is sometimes useful in
+routing of an IC. One example of this is when a net exiting from a channel
+must turn. It would minimize the wire length in some instances if the net was
+laid down in a track closer to the edge in the direction of the turn. However,
+our primary concern is still that of the minimization of channel area. So,
+interconnection length is a secondary concern.  
+
+   Thus, the cost function has been modified to handle the implementation of
+partial boundary constraints. The specification of nets that 'should' lie
+closer to the top or bottom edge because of 'turning' after channel exit is
+not a strict ordering. Nets are placed as usual unless there is a partial
+constraint and the cost of placing a net closer to the edge is about the same
+as the minimal cost of rows across the channel. A linearly graded function is
+used to determine the weight of the constraint cost. Through this
+implementation we achieve a 'partial ordering'. That is, vertical and
+horizontal constraints will not be violated in an attempt to satisfy edge
+constaints. Furthermore, degradation of channel area is minimal if it exists
+at all. 
+
+   The determination of a slope for the gradient function is accomplished
+through a combination of parameters. These include the characteristics of the
+net in question. The number of pins of the net in the top and bottom edges are
+the primary considerations. These determine the feasibility of the edge
+weighting. For instance, if there exists 10 pins on the lower edge and only
+one on the top edge, it would be infeasible to place the net in an upper
+track, even if the net turns upward after exiting the channel, since that
+would increase the total net length rather than decrease it.  
+
+   For the purposes of determining the gradient for the function, the turning
+of the net after channel exit may be considered as just another pin connection
+to either the top or the bottom of the channel. This is the equivalent for
+definition of the net length. The movement of the row from the present track
+to a new one will yield a difference in net length. This difference will be
+referred to as D. This is a superposition of contributions from each pin
+connection (since horizontal segment lengths are unaffected). For each pin in
+the top edge, the contribution will be 'dn'. For each pin in the bottom edge,
+the contribution will be '-dn'. So the total net length difference may be
+determined by the composition of the component contributions.  
+
+	D = (# of top pins)*dn + (# of bottom pins)*(-dn)
+
+   The gradient is determined by the following:
+
+	gradient = alpha*D
+
+   Here, alpha is a weighting constant to give this partial constraining a
+higher preference in the cost function. YACR uses a value of 2 for alpha.  
+
+   The weighting can now be determined through the integration of this
+gradient function from the weighted edge to the track we are interested in.
+The weighting may be denoted by f(row), since the value of this integration
+function is row dependent. f(row) is then added to the cost function to create
+weighting for partial constraining.  
+
+   Through this modification, better routes for net length optimization may be
+realized. More relavant data is included to resrtict the degrees of freedom in
+the direction of a more optimal design while having little effect on
+time-space considerations. The order of run-time for the added routines are
+linear - thus, having no effect on the order of run-time for the entire router
+algorithm. 
+
+-------------------------------------------------------------------------------
+
+This is a log of fixes to yacr.  The channel files in this directory were
+ones which yacr had problems routing. This may be due to bugs in the router.  
+
+
+6/8/88 	changed 'check_pin' in 'verify.c' so that the entire pin 
+        list of a net is traversed. That way, if two pins of the 
+        same net had identical columns, both would be verified.
+        Also, modified the loop boundary constraints to end if 
+        we've passed the column we're interested in.
+	YACR now works with 'yacr.in9'.
+ 
+
+6/9/88  yacr.in21 and yacr.in109 work ok. Commented out the iteration 
+        constraint for straightening the sides. Will check on other
+        examples. runtime for yacr.in109 ~2 hrs.
+        modified select_column so that channels with one or two columns of
+        maximum density are handled correctly. 
+        modified looping conditions in set_border_cost to eliminate 
+        unnecessary checking of rows that have already been found to be
+        illegal.      
+
+6/10/88 the reason why yacr performs poorly with very irregular channels is
+        due to both the lack of doglegging ability and the density 
+	calculations. Since we are constrained to using one track per
+  	net (i.e. no doglegging), an attempt to improve the run-time 
+ 	performance of YACR is to improve its calculation of density.
+
+6/13/88 To obtain a better density estimate, we must take into account 
+	not only the number of nets crossing the column and the edge
+ 	indentation offsets, but also the tracks that the horizontal segments
+        of nets cannot be physically placed into without horizontal constraint
+	violations.
+  
+6/15/88 finished modifications on density calculations. Gives a better 
+        estimation of the true channel width necessary for completion of
+        routing. First assumes straight sides and then decrements the 
+        densities as nets are found that can be placed in indentations. 
+        If all nets can be placed in indentations, then the channel density 
+        is decreased to the minimum possible magnitude.
+
+6/16/88 optimized code in density calculations. eliminated redundant looping,
+        compacted unnecessary statements. documented code.
+
+
+6/20/88 fixed bug for channels with no horizontal net segments. Can route 
+  	channels whose nets run strictly vertically.
+
+6/24/88 finished modification of cost function to handle partial boundary
+        constraints. YACR now has the capability to give some degree of
+        preference in the placement of nets in tracks.
+
+6/27/88 documented, commented modifications. modified partial constraint code
+        for faster operation.
+ 

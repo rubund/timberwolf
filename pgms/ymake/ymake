@@ -1,0 +1,62 @@
+#! /bin/csh -f
+# use awk to make makefiles out of Ymakefiles
+# user may need to specify path of awk and cat.
+set awkpath = awk
+set catpath = cat
+# set makepath = /usr/local/bin/make
+set makepath = `which make`
+
+# ############## do not change below this line ################
+onintr problem 
+
+set test = ${?TWDIR}
+if $test != 1 then
+    echo ""
+    echo "ERROR:TWDIR environment variable not set"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+if( -e Makefile ) then
+    mv -f Makefile Makefile.bak
+endif
+
+# get environment variable TWDIR
+set twdir = $TWDIR
+
+$awkpath -f $twdir/pgms/ymake/ymake1.awk Ymakefile > Makefile
+
+# the body
+# see if we need to strip the body of YALE includes 
+set test = ${?YALE}
+if $test != 1 then
+#   this is normal path outside of Yale
+#   the macro includes first
+    $catpath $twdir/pgms/ymake/Ymake.macro >> Makefile
+#   then the body of the makefile.
+    $awkpath -f $twdir/pgms/ymake/ymake2.awk Ymakefile >> Makefile
+else
+    if $YALE == TRUE then
+#   add yale define.
+	$awkpath -f $twdir/pgms/ymake/ymake3.awk \
+	    $twdir/pgms/ymake/Ymake.macro >> Makefile
+    else
+	$awkpath -f $twdir/pgms/ymake/ymake3a.awk \
+	    $twdir/pgms/ymake/Ymake.macro >> Makefile
+    endif
+#   this is the makefile at Yale strip out Yale defines.
+    $awkpath -f $twdir/pgms/ymake/ymake4.awk Ymakefile >> Makefile
+endif
+
+# you may comment out the following if problems arise.
+# you lose accuracy in the makefiles.
+# now call the make depend program
+if( $1 != nodepend ) then
+    $makepath depend
+endif
+
+exit
+
+problem:
+echo "ERROR! Suggestion:does TWDIR environment variable exist?"

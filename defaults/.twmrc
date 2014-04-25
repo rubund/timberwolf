@@ -1,0 +1,122 @@
+#**********************************************************************
+#
+#    .twmrc
+#
+#**********************************************************************
+
+# ReverseVideo
+WarpCursor
+BorderWidth	3
+TitleFont	"8x13"
+MenuFont	"*courier-medium-r-normal--12*"
+IconFont	"*courier-medium-r-normal--12*"
+ResizeFont	"8x13"
+IconDirectory	"/usr/include/X11/bitmaps"
+ShowIconManager
+IconManagerGeometry "=100x5+155-100"
+
+Color
+{
+    BorderColor "red"
+    BorderTileForeground "yellow"
+    BorderTileBackground "yellow"
+    TitleForeground "black"
+    TitleBackground "PaleGreen"
+    MenuForeground "white"
+    MenuBackground "CadetBlue"
+    MenuTitleForeground "white"
+    MenuTitleBackground "CornflowerBlue"
+    MenuShadowColor "black"
+    IconForeground "white"
+    IconBackground "cadetblue"
+    IconBorderColor "green"
+    IconManagerForeground "black"
+    IconManagerBackground "thistle"
+}
+
+#Button = KEYS : CONTEXT : FUNCTION
+#----------------------------------
+Button1 =      : root    : f.menu "button1"
+Button2 =      : root    : f.menu "button2"
+Button3 =      : root    : f.menu "button3"
+Button3 = m    : root    : f.circledown
+Button3 = c    : root    : f.circleup
+Button3 = m    : window  : f.circledown
+Button3 = c    : window  : f.circleup
+Button1 = c    : window  : f.resize
+Button2 = c    : window  : f.move
+Button1 =      : title   : f.raise
+Button2 =      : title   : f.move
+Button3 =      : title   : f.lower
+Monochrome
+{
+  BorderColor "white"
+  TitleForeground "white"
+  TitleBackground "black"
+}
+
+NoTitle
+{
+  "xclock"
+  "xbiff"
+  "xload"
+}
+
+AutoRaise{
+#  "xterm"	# auto-raise all my xterm windows
+}
+
+menu "button1"
+{
+"Hosts" f.title
+"bills1"                         !"xterm -sb -sl 1000 -cr red -fg white -bg blue -n bills1-twolf6 -geometry =82x46+0+28  &"
+"bills2"                         !"xterm -fb cmi5 -fn 6x13 -ls -sb -sl 1000 -cr red -fg white -bg blue -n bills2-twolf6 -geometry =82x46-0+28  &"
+"bills3"                         !"xterm -fb cmi5 -fn 6x13 -ls -sb -sl 1000 -cr red -fg white -bg blue -n bills3-twolf6 -geometry =82x46+0-0&"
+"bills4"                         !"xterm -fb cmi5 -fn 6x13 -ls -sb -sl 1000 -cr red -fg white -bg blue -n bills4-twolf6 -geometry =82x46-0-0   &"
+"bills5"                         !"xterm -fb cmi5 -fn 6x13 -ls -sb -sl 1000 -cr red -fg white -bg blue -n bills5-twolf6 -geometry =140x46+0+0   &"
+"xeyes"                      !"xeyes -bg white -fg red -geometry 40x40+0+0&"
+"puzzle"                 !"/user/bills/X11/core.src/demos/puzzle/puzzle&"
+}
+
+menu "button2"
+{
+"Window Ops"		f.title
+"Add Big Window"	 !"xterm -sb -fn 8x13 -n Xterm &"
+"Add TinyWindow"	 !"xterm -sb -n Xterm -fn  6x13 &"
+"Refresh"		f.refresh
+"Focus on Root"		f.focus
+"Unfocus"		f.unfocus
+"Source .twmrc"		f.twmrc
+"twm Version"		f.version
+"(De)iconfy"		f.iconify
+"Move Window"		f.move
+"Resize Window"		f.resize
+"Raise Window"		f.raise
+"Lower Window"		f.lower
+"Focus on Window"	f.focus
+"Destroy Window"	f.destroy
+"Show IconManager"	f.showiconmgr
+"Hide IconManager"	f.hideiconmgr
+"Kill twm"		f.quit
+}
+
+menu "button3"
+{
+"X Utilities"		 f.title
+"XBiff"                  !"dxbiff &"
+"XCalc"                  !"dxcalc &"
+"XCalendar"              !"dxcalendar &"
+"XClipboard"		 !"dxclipboard &"
+"XClock"                 !"dxclock -bd red -geometry 150x150 &"
+"XCutSel"		 !"dxcutsel &"
+"XEdit"                  !"dxedit &"
+"XIpr"			 !"dxipr &"
+"XKill"			 !"dxkill &"
+"XLoad"                  !"dxload =200x50 &"
+"XLock"			 !"/nfsusr/usr.bin.X11/xlock &"
+"XMag" 			 !"dxmag &"
+"XMan"			 !"dxman &"
+"XPerfMon"		 !"dxperfmon &"
+"XWinInfo"		 !"dxwininfo &"
+"XMailer"		 !"dxmail -bd red -bg LightBlue &"
+}

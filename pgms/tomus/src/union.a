@@ -1,0 +1,24 @@
+##########################################################################
+#
+#	FILENAME :	union.a
+#
+#	FUNCTION :	Union circuitName.cel file  
+#	    file circuitName.cel contains the standard cell part. 
+#
+#	RESTRICTION :	All cells must be separated by a blank line.
+#
+#	USAGE :		awk -f [/path/]union.a circuitName.cel 
+#
+#       
+#       "@(#) union.a (Yale) version 1.2 12/18/89"
+##########################################################################
+
+BEGIN	{
+    filename = substr( FILENAME , 0 , length( FILENAME ) - 4 ) ;
+	    cfile = sprintf( "%s.%s" , filename , "pcel" ) ;
+	    printf( "\n" ) > cfile
+	}
+$1 == "cell"       {  sc = 1; print $0 >> cfile; next }
+$1 == "hardcell"   {  sc = 0; next }
+$1 == "pad"        {  sc = 0; next }
+sc == 1            {  print $0 >> cfile }

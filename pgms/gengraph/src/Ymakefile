@@ -1,0 +1,166 @@
+# Ymakefile for program gengraph
+#  "@(#) Ymakefile (Yale) version 1.7 5/1/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=gengraph
+MENU=gengraph_menu
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	23tree.c \
+	changraph.c \
+	dens.c \
+	findnodes.c \
+	fulllink.c \
+	gentwf.c \
+	gmain.c \
+	graphics.c \
+	hprobes.c \
+	makelink.c \
+	polar.c \
+	printgph.c \
+	readgeo.c \
+	rectlin.c \
+	reduceg.c \
+	vprobes.c \
+	xgraph.c \
+	ygraph.c 
+
+OBJ= \
+	${O}23tree.o \
+	${O}changraph.o \
+	${O}dens.o \
+	${O}findnodes.o \
+	${O}fulllink.o \
+	${O}gentwf.o \
+	${O}gmain.o \
+	${O}graphics.o \
+	${O}hprobes.o \
+	${O}makelink.o \
+	${O}polar.o \
+	${O}printgph.o \
+	${O}readgeo.o \
+	${O}rectlin.o \
+	${O}reduceg.o \
+	${O}vprobes.o \
+	${O}xgraph.o \
+	${O}ygraph.o 
+
+INS= \
+	23tree.h \
+	dens.h \
+	menus.h \
+	geo.h 
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+
+
+# how to make gengraph program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+lint:  
+	${LINT} ${LINT_OPT} ${OPTIONS} ${IDIR} ${SRC}
+
+clean: ;
+	${RM} ${O}* *~ core *.bak
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE} ${MENU}
+${SRC} ${INS} ${YMAKEFILE} ${MENU}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}23tree.o:23tree.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  23tree.c
+	${MV} 23tree.o ${O}23tree.o
+${O}changraph.o:changraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  changraph.c
+	${MV} changraph.o ${O}changraph.o
+${O}dens.o:dens.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  dens.c
+	${MV} dens.o ${O}dens.o
+${O}findnodes.o:findnodes.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  findnodes.c
+	${MV} findnodes.o ${O}findnodes.o
+${O}fulllink.o:fulllink.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  fulllink.c
+	${MV} fulllink.o ${O}fulllink.o
+${O}gentwf.o:gentwf.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  gentwf.c
+	${MV} gentwf.o ${O}gentwf.o
+${O}gmain.o:gmain.c
+	${CC} ${CFLAGS} ${CLEANUP} ${IDIR} ${OPTIONS} -c  gmain.c
+	${MV} gmain.o ${O}gmain.o
+${O}graphics.o:graphics.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  graphics.c
+	${MV} graphics.o ${O}graphics.o
+${O}hprobes.o:hprobes.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  hprobes.c
+	${MV} hprobes.o ${O}hprobes.o
+${O}makelink.o:makelink.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  makelink.c
+	${MV} makelink.o ${O}makelink.o
+${O}polar.o:polar.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  polar.c
+	${MV} polar.o ${O}polar.o
+${O}printgph.o:printgph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  printgph.c
+	${MV} printgph.o ${O}printgph.o
+${O}readgeo.o:readgeo.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readgeo.c
+	${MV} readgeo.o ${O}readgeo.o
+${O}rectlin.o:rectlin.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  rectlin.c
+	${MV} rectlin.o ${O}rectlin.o
+${O}reduceg.o:reduceg.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  reduceg.c
+	${MV} reduceg.o ${O}reduceg.o
+${O}vprobes.o:vprobes.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  vprobes.c
+	${MV} vprobes.o ${O}vprobes.o
+${O}xgraph.o:xgraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  xgraph.c
+	${MV} xgraph.o ${O}xgraph.o
+${O}ygraph.o:ygraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ygraph.c
+	${MV} ygraph.o ${O}ygraph.o
+
+# end makefile

@@ -1,0 +1,193 @@
+# Ymakefile for program mc_compact
+#  "@(#) Ymakefile (Yale) version 7.5 2/23/91 " 
+#
+#include macros
+
+#destination of output executable
+DEST=../
+PNAME=mc_compact
+
+#where the object code is located
+objdir=../obj
+O=${objdir}/
+
+SRC= \
+	cdraw.c \
+	cmain.c \
+	changraph.c \
+	compactor.c \
+	debug2.c \
+	grid.c \
+	io.c \
+	movestrat.c \
+	movestrat2.c \
+	multi.c \
+#ifdef YALE \
+	readtiles.l \
+#endif /* YALE */ \
+#ifdef YALE \
+	readtiles.y \
+#else /* YALE */ \
+	readtiles.c \
+#endif /* YALE */ \
+	stdmacro.c \
+	xcompact.c \
+#ifdef YALE \
+	readcgraph.y \
+#else /* YALE */ \
+	readcgraph.c \
+#endif /* YALE */ \
+#ifdef YALE \
+	readcgraph.l \
+#endif /* YALE */ 
+	ycompact.c
+
+OBJ= \
+	${O}cdraw.o \
+	${O}changraph.o \
+	${O}cmain.o \
+	${O}compactor.o \
+	${O}debug2.o \
+	${O}grid.o \
+	${O}io.o \
+	${O}movestrat.o \
+	${O}movestrat2.o \
+	${O}multi.o \
+	${O}readtiles.o \
+	${O}stdmacro.o \
+	${O}xcompact.o \
+	${O}ycompact.o \
+	${O}readcgraph.o 
+
+INS= \
+	compact.h \
+	menus.h \
+	readcgraph.h
+
+info:   ; 
+	-@${ECHO} "make ${DEST}${PNAME} - usage:" 
+	-@${ECHO} "   make install - build program" 
+	-@${ECHO} "   make install_non_yale - build program at foreign host" 
+	-@${ECHO} "   make clean - remove binary" 
+	-@${ECHO} "   make depend - added makefile dependencies" 
+	-@${ECHO} "   make sources - pull sources from SCCS" 
+	-@${ECHO} "   make lint - run lint on the sources" 
+
+
+# how to make mc_compact program
+${DEST}${PNAME}:${OBJ} ${YALECAD}
+	${GETDATE}
+	${CC} ${CFLAGS} -I. -c ${DATE_C}
+	${MV} date.o ${O}date.o
+	${CC} ${CFLAGS} ${OPTIONS} -o ${DEST}${PNAME} ${OBJ} ${O}date.o \
+	${YALECAD} ${LINKLIB}
+
+# we can't do anything about yalecad but want to update if it has changed
+${YALECAD}: ;
+
+install:${DEST}${PNAME}
+
+install_non_yale:${DEST}${PNAME}
+
+clean: ;
+	${RM} ${O}* ~* core *.bak foo* y.output y.tab.c
+
+# how to build makefile dependencies
+depend : ;
+	${MAKEDEPEND} ${CFLAGS} ${OPTIONS} ${IDIR} ${SRC}
+
+# how to make mc_compact lint
+lint:  ; 
+	${LINT} ${LINT_OPT} ${IDIR} ${OPTIONS} *.c > lint.out 
+
+#default sccs operation is get
+SCCS_OP=get
+#current release
+REL=
+
+# how to get sources from sccs
+sources : ${SRC} ${INS} ${YMAKEFILE}
+${SRC} ${INS} ${YMAKEFILE}: 
+	${SCCS} ${SCCS_OP} ${REL} $@
+
+#BEGIN DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+#END DEPENDENCIES -- DO NOT DELETE THIS LINE
+
+
+# How to compile the sources
+${O}cdraw.o:cdraw.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  cdraw.c
+	${MV} cdraw.o ${O}cdraw.o
+${O}cmain.o:cmain.c
+	${CC} ${CLEANUP} ${CFLAGS} ${IDIR} ${OPTIONS} -c  cmain.c
+	${MV} cmain.o ${O}cmain.o
+${O}compactor.o:compactor.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  compactor.c
+	${MV} compactor.o ${O}compactor.o
+${O}changraph.o:changraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  changraph.c
+	${MV} changraph.o ${O}changraph.o
+${O}debug2.o:debug2.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  debug2.c
+	${MV} debug2.o ${O}debug2.o
+${O}grid.o:grid.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  grid.c
+	${MV} grid.o ${O}grid.o
+${O}io.o:io.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  io.c
+	${MV} io.o ${O}io.o
+${O}movestrat.o:movestrat.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  movestrat.c
+	${MV} movestrat.o ${O}movestrat.o
+${O}movestrat2.o:movestrat2.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  movestrat2.c
+	${MV} movestrat2.o ${O}movestrat2.o
+${O}multi.o:multi.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  multi.c
+	${MV} multi.o ${O}multi.o
+#ifdef YALE
+${O}readtiles.o:readtiles.y readtiles.l
+	${LEX} readtiles.l
+	${LEXMV} lex.yy.c readtiles_l.h
+	${YACC} readtiles.y
+	${YACCMV} y.tab.c readtiles.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readtiles.c > tmp; 	${MV} tmp readtiles.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readtiles.c
+	${MV} readtiles.o ${O}readtiles.o
+readtiles.y:
+readtiles.l:
+#else  /* YALE */ 
+${O}readtiles.o:readtiles.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readtiles.c
+	${MV} readtiles.o ${O}readtiles.o
+#endif /* YALE */ 
+${O}stdmacro.o:stdmacro.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  stdmacro.c
+	${MV} stdmacro.o ${O}stdmacro.o
+${O}xcompact.o:xcompact.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  xcompact.c
+	${MV} xcompact.o ${O}xcompact.o
+${O}ycompact.o:ycompact.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  ycompact.c
+	${MV} ycompact.o ${O}ycompact.o
+#ifdef YALE
+${O}readcgraph.o:readcgraph.y readcgraph.l
+	${LEX} readcgraph.l
+	${LEXMV} lex.yy.c readcgraph_l.h
+	${YACC} readcgraph.y
+	${YACCMV} y.tab.c readcgraph.c
+#	use grep to remove # line so dbx works correctly
+	${GREP} -v "# line" readcgraph.c > tmp; 	${MV} tmp readcgraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcgraph.c
+	${MV} readcgraph.o ${O}readcgraph.o
+readcgraph.y:
+readcgraph.l:
+#else  /* YALE */ 
+${O}readcgraph.o:readcgraph.c
+	${CC} ${CFLAGS} ${IDIR} ${OPTIONS} -c  readcgraph.c
+	${MV} readcgraph.o ${O}readcgraph.o
+#endif /* YALE */ 
+
+# end makefile

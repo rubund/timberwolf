@@ -1,0 +1,36 @@
+#!/bin/csh -f
+#
+# This shell script toggles between global routers
+onintr problem 
+
+set test = ${?TWDIR}
+if $test != 1 then
+    echo ""
+    echo "ERROR:TWDIR environment variable not set"
+    echo "TWDIR is pathname of TimberWolf root directory"
+    echo ""
+    exit
+endif
+
+# get environment variable TWDIR
+set twdir = $TWDIR
+
+if( -e $twdir/bin/globe.new ) then
+    echo "Global router now set to Mickey"
+    mv $twdir/bin/Mickey $twdir/bin/globe.old
+    mv $twdir/bin/globe.new $twdir/bin/Mickey
+    
+else if( -e $twdir/bin/globe.old ) then 
+    echo "Global router now set to original TimberWolfMC version"
+    mv $twdir/bin/Mickey $twdir/bin/globe.new
+    mv $twdir/bin/globe.old $twdir/bin/Mickey
+endif
+endif
+
+exit
+
+problem:
+echo "ERROR! Suggestion:does TWDIR environment variable exist?"
+
+
+

@@ -1,0 +1,114 @@
+hardcell 1  name bk1 
+corners 4 1060 1040 1060 1230 1540 1230 1540 1040 
+class 0    8 orientations 0 1 2 3 4 5 6 7 
+pin name 1.1 signal A layer 1 1510 1230 
+pin name 1.2 signal B layer 1 1060 1100 
+pin name 1.3 signal D layer 1 1090 1230 
+pin name 1.4 signal C layer 1 1060 1200 
+pin name 1.5 signal F layer 1 1540 1200 
+instance one 
+corners 8 1060 1040 1060 1230 1100 1230 1100 1400 
+1400 1400 1400 1230 1540 1230  1540 1040 
+class 0    8 orientations 0 1 2 3 4 5 6 7
+pin name 1.1 signal A layer 1 1520 1230 
+pin name 1.2 signal B layer 1 1060 1200 
+pin name 1.3 signal D layer 1 1090 1230 
+pin name 1.4 signal C layer 1 1060 1220 
+pin name 1.5 signal F layer 1 1540 1220 
+
+hardcell 2  name blk2
+corners 4 990 1790 990 1960 1530 1960 1530 1790 
+class 0    1 orientations /* 0 1 2 3 4 5 6 */ 7
+pin name 2.1 signal A layer 1 990 1890 
+pin name 2.2 signal G layer 1 990 1840 
+pin name 2.3 signal D layer 1 990 1850 
+pin name 2.4 signal H layer 1 990 1900 
+pin name 2.5 signal C layer 1 990 1910 
+equiv name 2.5b layer 1 1530 1910 
+
+hardcell 3  name blk3
+corners 4 340 1790 340 1990 570 1990 570 1790 
+class 0    8 orientations 0 1 2 3 4 5 6 7
+pin name 3.1 signal B layer 1 410 1990 
+pin name 3.2 signal H layer 1 520 1990 
+pin name 3.3 signal G layer 1 560 1990 
+pin name 3.4 signal F layer 1 440 1790 
+pin name 3.5 signal E layer 1 570 1890 
+pin name 3.6 signal I layer 1 390 1990 
+
+softcell 4  name bk4
+corners 4 940 810 940 880 1110 880 1110 810 
+asplb 0.5 aspub 2.0
+class 0    8 orientations 0 1 2 3 4 5 6 7
+softpin name a signal B
+softpin name b signal F
+softpin name c signal E 
+/* addequiv restrict side 1 2 */
+softpin name d signal I  
+softpin name e signal H 
+/* addequiv restrict side 3 */
+/* equiv name e2 layer 1 connect 
+equiv name e3 layer 2 restrict side 1 2
+*/
+softpin name f signal A
+
+pin_group pg1 nopermute
+a nonfixed
+b nonfixed
+c nonfixed
+restrict side 1
+
+pin_group pg2 permute
+d nonfixed
+e nonfixed
+f nonfixed
+restrict side 3 4
+
+softcell 5  name bk5
+corners 8 1060 1040 1060 1230 1100 1230 1100 1400 
+1400 1400 1400 1230 1540 1230  1540 1040
+asplb 0.5 aspub 2.0
+class 0    8 orientations 0 1 2 3 4 5 6 7
+pin name h1 signal A layer 1 1510 1230 
+pin name h2 signal D layer 1 1090 1230 
+pin name h3 signal C layer 1 1060 1200 
+pin name h4 signal B layer 1 1060 1100 
+pin name h5 signal F layer 1 1540 1200 
+softpin name s1 signal A 
+softpin name s2 signal A layer 1 restrict side 3 4 
+
+pad 1  name P1
+corners 4 0 0 0 20 20 20 20 0 
+restrict side R
+pin name 1  signal A layer 1 0 20
+
+pad 10  name P27
+corners 4 0 0 0 20 20 20 20 0 
+restrict side T
+pin name 10  signal B layer 1 10 20
+
+pad 19  name P33
+corners 4 0 0 0 20 20 20 20 0 
+restrict side L
+pin name 19  signal C layer 1 20 20
+
+pad 26  name P8
+corners 4 0 0 0 20 20 20 20 0 
+/* restrict side B */
+pin name 26  signal A layer 1 10 20
+
+/* normal four pads */
+
+pad 27  name P9
+corners 4 0 0 0 20 20 20 20 0 
+pin name 27  signal D layer 1 10 20
+
+pad 28  name P10
+corners 4 0 0 0 20 20 20 20 0 
+pin name 28  signal F layer 1 10 0
+
+padgroup padgroup1 nopermute
+P8 nonfixed
+P9 nonfixed
+P10 nonfixed
+restrict side B

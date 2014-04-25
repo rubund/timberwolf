@@ -1,0 +1,54 @@
+# This is the default parameter file for the TimberWolf system.
+# Please change the variables below to their appropriate values.
+#
+RULES
+    layer   metal  0.05  0.1E-15   horizontal
+    layer   poly   20.0  0.1E-15   vertical
+#   layer   metal2 0.05  0.1E-15   vertical
+    via     contact  metal poly
+#   via     via      metal metal2
+    width   metal  4.0
+    spacing metal  metal    4.0
+    width   poly   4.0
+    spacing poly   poly     4.0
+    spacing metal  poly     0.0
+    width   contact 4.0
+#   width   via     3.0
+
+    # this means stacked vias - a nonzero number would disallow them.
+#    spacing contact via  0.0
+
+ENDRULES
+
+# General parameters controlling the TimberWolf system.
+*vertical_wire_weight   : 1.0
+*vertical_path_weight   : 1.0
+*rowSep                 : 1.0
+*padspacing             : abut
+TWSC*minimum_pad_space  : 50
+
+# Parameters controlling TimberWolfMC.
+TWMC*fast               : 20
+TWMC*chip.aspect.ratio  : 1.0
+TWMC*default.tracks.per.channel : 0
+TWMC*random.seed        : 130609838
+TWMC*restart: off
+TWMC*cost_only: off
+TWMC*graphics.wait: on
+TWMC*padspacing             : abut
+
+# Parameters controlling TimberWolfSC.
+TWSC*feedThruWidth      : 8 layer 1
+TWSC*do.global.route    : on
+TWSC*restart            : off
+TWSC*print_pins         : 9
+TWSC*fast               : 10
+TWSC*cost_only          : off
+TWSC*random.seed      : 889110398
+
+# Parameters controlling genrows configuration program.
+GENR*feed_percentage    :   5.0
+GENR*row_to_tile_spacing:   1
+
+# Parameter controlling the partitioning program.
+# PART*slow             :  2

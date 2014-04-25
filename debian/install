@@ -5,6 +5,8 @@ pgms/syntax/syntax usr/share/timberwolf/bin
 pgms/twmc/TimberWolfMC usr/share/timberwolf/bin
 pgms/twsc/TimberWolfSC usr/share/timberwolf/bin
 bin/show_flows usr/share/timberwolf/bin
+bin/splt_file.a usr/share/timberwolf/bin
+.twrc usr/share/timberwolf
 bin/flow/flow usr/share/timberwolf/bin/flow
 bin/flow/flow.noroute/macro.fdbg usr/share/timberwolf/bin/flow/flow.noroute
 bin/flow/flow.noroute/macro.flow usr/share/timberwolf/bin/flow/flow.noroute

@@ -10,8 +10,8 @@
 
 override_dh_auto_configure:
 	TWDIR=`pwd`
-	PATH=$PATH:$TWDIR/bin
-	DATADIR=$TWDIR/DATA
+	PATH=$$PATH:$$TWDIR/bin
+	DATADIR=$$TWDIR/DATA
 	TWDIR=`pwd` make Makefiles
 
 override_dh_auto_clean:

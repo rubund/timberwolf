@@ -1,4 +1,4 @@
-pgms/twflow/twflow usr/bin
+pgms/twflow/twflow usr/share/timberwolf/bin
 pgms/genrows/genrows usr/share/timberwolf/bin
 pgms/mincut/Mincut usr/share/timberwolf/bin
 pgms/syntax/syntax usr/share/timberwolf/bin

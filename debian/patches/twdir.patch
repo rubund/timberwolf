@@ -1,7 +1,7 @@
 Index: timberwolf-6.3.6/pgms/twflow/src/findflow.c
 ===================================================================
---- timberwolf-6.3.6.orig/pgms/twflow/src/findflow.c	2014-04-25 23:07:37.246157943 +0200
-+++ timberwolf-6.3.6/pgms/twflow/src/findflow.c	2014-04-26 00:18:28.234203537 +0200
+--- timberwolf-6.3.6.orig/pgms/twflow/src/findflow.c	2014-04-26 00:35:55.482214770 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/findflow.c	2014-04-26 00:35:55.478214770 +0200
 @@ -93,7 +93,7 @@
  	    return( fp ) ;
  	}
@@ -31,8 +31,8 @@ Index: timberwolf-6.3.6/pgms/twflow/src/findflow.c
  	Ylog_msg( "Syntax started..." ) ;
 Index: timberwolf-6.3.6/pgms/twflow/src/globals.h
 ===================================================================
---- timberwolf-6.3.6.orig/pgms/twflow/src/globals.h	2014-04-26 00:15:52.698201869 +0200
-+++ timberwolf-6.3.6/pgms/twflow/src/globals.h	2014-04-26 00:20:52.198205081 +0200
+--- timberwolf-6.3.6.orig/pgms/twflow/src/globals.h	2014-04-26 00:35:55.482214770 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/globals.h	2014-04-26 00:35:55.482214770 +0200
 @@ -111,6 +111,7 @@
  EXTERN INT  numobjectsG ;        /* number of program objects */
  EXTERN char *cktNameG ;          /* name of the design */
@@ -43,8 +43,8 @@ Index: timberwolf-6.3.6/pgms/twflow/src/globals.h
  EXTERN BOOL autoflowG ;          /* whether autoflow is enabled */
 Index: timberwolf-6.3.6/pgms/twflow/src/main.c
 ===================================================================
---- timberwolf-6.3.6.orig/pgms/twflow/src/main.c	2014-04-26 00:15:59.658201944 +0200
-+++ timberwolf-6.3.6/pgms/twflow/src/main.c	2014-04-26 00:21:35.574205547 +0200
+--- timberwolf-6.3.6.orig/pgms/twflow/src/main.c	2014-04-26 00:35:55.482214770 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/main.c	2014-04-26 00:35:55.482214770 +0200
 @@ -70,12 +70,12 @@
      flow_dirG = NIL(char *) ;
  
@@ -83,8 +83,8 @@ Index: timberwolf-6.3.6/pgms/twflow/src/main.c
  } /* end show_flows */
 Index: timberwolf-6.3.6/pgms/twflow/src/program.c
 ===================================================================
---- timberwolf-6.3.6.orig/pgms/twflow/src/program.c	2014-04-25 23:07:37.246157943 +0200
-+++ timberwolf-6.3.6/pgms/twflow/src/program.c	2014-04-26 00:19:53.258204449 +0200
+--- timberwolf-6.3.6.orig/pgms/twflow/src/program.c	2014-04-26 00:35:55.482214770 +0200
++++ timberwolf-6.3.6/pgms/twflow/src/program.c	2014-04-26 00:35:55.482214770 +0200
 @@ -58,7 +58,7 @@
  	sprintf( command, "%s", Yfixpath( obj->path,TRUE ) ) ;
      } else {
@@ -94,3 +94,42 @@ Index: timberwolf-6.3.6/pgms/twflow/src/program.c
      }
      argv = adjptr->argv ;
      for( i = 0 ; i < adjptr->argc; i++ ){
+Index: timberwolf-6.3.6/bin/show_flows
+===================================================================
+--- timberwolf-6.3.6.orig/bin/show_flows	2014-04-25 23:07:37.194157943 +0200
++++ timberwolf-6.3.6/bin/show_flows	2014-04-26 00:37:44.558215940 +0200
+@@ -3,14 +3,14 @@
+ # This shell script shows the flow directory options
+ # "@(#) show_flows version 1.1 4/27/91"
+ 
+-set test = ${?TWDIR}
+-if $test != 1 then
+-    echo ""
+-    echo "ERROR[show_flows]:TWDIR environment variable not set"
+-    echo "TWDIR is pathname of TimberWolf root directory"
+-    echo ""
+-    exit(1) ;
+-endif
++#set test = ${?TWDIR}
++#if $test != 1 then
++#    echo ""
++#    echo "ERROR[show_flows]:TWDIR environment variable not set"
++#    echo "TWDIR is pathname of TimberWolf root directory"
++#    echo ""
++#    exit(1) ;
++#endif
+ 
+ echo " "
+ echo " "
+@@ -18,9 +18,9 @@
+ 
+ 
+ # get environment variable TWDIR
+-set twdir = $TWDIR
++set twdir = /usr/share/timberwolf
+ 
+-/bin/ls -1l ${TWDIR}/bin/flow | awk '{ print $8  $9  $10 }'
++/bin/ls -1l /usr/share/timberwolf/bin/flow | awk '{ print $8  $9  $10 }'
+ 
+ echo " "
+ echo "The current default flow directory is denoted by the arrow."

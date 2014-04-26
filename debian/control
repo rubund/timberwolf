@@ -2,7 +2,7 @@ Source: timberwolf
 Section: electronics
 Priority: extra
 Maintainer: Ruben Undheim <ruben.undheim@gmail.com>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9), tcsh, libx11-dev
 Standards-Version: 3.9.5
 
 Package: timberwolf

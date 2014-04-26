@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGENAME=timberwolf
-VERSION=6.3.6
+VERSION=6.3.5cleaned
 rm -rf createdeb/
 mkdir createdeb
 #rm -rf createdeb/$PACKAGENAME-$VERSION

@@ -1,5 +1,0 @@
-#!/bin/csh
-
-echo "dbx -I /nova/bills/TimberWolf/pgms/Ylib/lib -I /nova/bills/TimberWolf/pgms/$1/src /nova/bills/TimberWolf/bin/$2"
-
-dbx -I /nova/bills/TimberWolf/pgms/Ylib/lib -I /nova/bills/TimberWolf/pgms/$1/src /nova/bills/TimberWolf/bin/$2

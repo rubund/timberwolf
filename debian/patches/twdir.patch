@@ -37,7 +37,7 @@ Index: timberwolf-6.3.6/pgms/twflow/src/globals.h
  EXTERN INT  numobjectsG ;        /* number of program objects */
  EXTERN char *cktNameG ;          /* name of the design */
  EXTERN char *twdirG ;            /* name of the TimberWolf directory */
-+#define TWDIR "/usr/share/timberwolf"
++#define TWDIR "/usr/lib/timberwolf"
  EXTERN char *flow_dirG ;         /* name of user specified flow dir. */
  EXTERN BOOL graphicsG ;          /* whether graphics is requested */
  EXTERN BOOL autoflowG ;          /* whether autoflow is enabled */
@@ -126,10 +126,10 @@ Index: timberwolf-6.3.6/bin/show_flows
  
  # get environment variable TWDIR
 -set twdir = $TWDIR
-+set twdir = /usr/share/timberwolf
++set twdir = /usr/lib/timberwolf
  
 -/bin/ls -1l ${TWDIR}/bin/flow | awk '{ print $8  $9  $10 }'
-+/bin/ls -1l /usr/share/timberwolf/bin/flow | awk '{ print $8  $9  $10 }'
++/bin/ls -1l /usr/lib/timberwolf/bin/flow | awk '{ print $8  $9  $10 }'
  
  echo " "
  echo "The current default flow directory is denoted by the arrow."

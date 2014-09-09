@@ -1,2 +1,0 @@
-?package(timberwolf):needs="X11|text|vc|wm" section="Applications/electronics"\
-  title="timberwolf" command="/usr/bin/timberwolf"

@@ -7,7 +7,6 @@ pgms/twsc/TimberWolfSC usr/lib/timberwolf/bin
 bin/show_flows usr/lib/timberwolf/bin
 bin/splt_file.a usr/lib/timberwolf/bin
 .twrc usr/lib/timberwolf
-bin/flow/flow usr/lib/timberwolf/bin/flow
 bin/flow/flow.noroute/macro.fdbg usr/lib/timberwolf/bin/flow/flow.noroute
 bin/flow/flow.noroute/macro.flow usr/lib/timberwolf/bin/flow/flow.noroute
 bin/flow/flow.noroute/macro.fnog usr/lib/timberwolf/bin/flow/flow.noroute
